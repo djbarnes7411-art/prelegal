@@ -1,13 +1,25 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent, { type UserEvent } from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { NdaWorkspace } from "./NdaWorkspace";
+import { ApiError, sendChatTurn } from "@/lib/api";
+import type { CoverPageData } from "@/lib/nda/types";
 
 /*
  * Integration tests: everything is driven through the real UI, the way a user
  * would, and the assertions are on the rendered agreement and the print call.
+ *
+ * The assistant is the one thing substituted. What it would say is not this
+ * suite's business; what the workspace does with what it says is.
  */
+
+vi.mock("@/lib/api", async () => {
+  const actual = await vi.importActual<typeof import("@/lib/api")>("@/lib/api");
+  return { ...actual, sendChatTurn: vi.fn() };
+});
+
+const asMock = vi.mocked(sendChatTurn);
 
 const PARTY_ONE = {
   companyName: "Northwind Labs, Inc.",
@@ -23,58 +35,59 @@ const PARTY_TWO = {
   noticeAddress: "410 Bridge St, Austin, TX 78701",
 };
 
+/** Everything the empty cover page is still short of. */
+const EVERYTHING_MISSING: Partial<CoverPageData> = {
+  governingLaw: "Delaware",
+  jurisdiction: "New Castle, DE",
+  partyOne: PARTY_ONE,
+  partyTwo: PARTY_TWO,
+};
+
 let print: ReturnType<typeof vi.fn>;
 
 beforeEach(() => {
   print = vi.fn();
   vi.stubGlobal("print", print);
+  asMock.mockReset();
 });
 
 afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-/**
- * Fills a party card by its heading, e.g. "Party 1".
- *
- * Scoped to the form: the same labels appear again as column headers in the
- * rendered signature block.
- */
-async function fillParty(
-  user: UserEvent,
-  heading: string,
-  party: typeof PARTY_ONE,
-) {
-  const card = [...document.querySelectorAll(".party")].find((node) =>
-    node.querySelector(".party-name")?.textContent === heading,
-  ) as HTMLElement | undefined;
-
-  if (!card) throw new Error(`No party card headed "${heading}"`);
-
-  await user.type(within(card).getByLabelText("Company"), party.companyName);
-  await user.type(within(card).getByLabelText("Signed by"), party.signatoryName);
-  await user.type(within(card).getByLabelText("Title"), party.signatoryTitle);
-  await user.type(
-    within(card).getByLabelText("Notice address"),
-    party.noticeAddress,
-  );
+/** Scripts the assistant's next reply. */
+function assistantAnswers(patch: Partial<CoverPageData>, reply = "Done.") {
+  asMock.mockResolvedValueOnce({ reply, patch });
 }
 
-/** Answers every required question. */
-async function completeForm(user: UserEvent) {
-  await user.type(screen.getByLabelText("State"), "Delaware");
-  await user.type(screen.getByLabelText("Courts located in"), "New Castle, DE");
-  await fillParty(user, "Party 1", PARTY_ONE);
-  await fillParty(user, "Party 2", PARTY_TWO);
+/** Says something and waits for the turn to land. */
+async function say(user: UserEvent, text: string) {
+  await user.type(screen.getByLabelText("Your message"), text);
+  await user.click(screen.getByRole("button", { name: "Send" }));
+  await waitFor(() => expect(asMock).toHaveBeenCalled());
+}
+
+/** Gets the whole agreement answered in one turn. */
+async function completeAgreement(user: UserEvent) {
+  assistantAnswers(EVERYTHING_MISSING, "All noted.");
+  await say(user, "Here are all the details.");
+  await screen.findByText("All noted.");
 }
 
 describe("NdaWorkspace", () => {
-  it("starts with the purpose and today's date already answered", () => {
+  it("opens with a greeting, before anything has been sent anywhere", () => {
     render(<NdaWorkspace />);
-    expect(screen.getByLabelText("Purpose")).toHaveValue(
-      "Evaluating whether to enter into a business relationship with the other party.",
-    );
-    expect(screen.getByLabelText("Effective date")).not.toHaveValue("");
+
+    expect(screen.getByText(/I'll help you fill in this Mutual NDA/)).toBeInTheDocument();
+    expect(asMock).not.toHaveBeenCalled();
+  });
+
+  it("says which fields it has already filled in", () => {
+    /* The document beside it is not blank, and the greeting must not imply it is. */
+    render(<NdaWorkspace />);
+    expect(
+      screen.getByText(/standard Purpose, today's date, and one-year terms/),
+    ).toBeInTheDocument();
   });
 
   it("reports how many answers are still missing", () => {
@@ -82,79 +95,143 @@ describe("NdaWorkspace", () => {
     expect(screen.getByText("10 fields left to fill in")).toBeInTheDocument();
   });
 
+  describe("a turn", () => {
+    it("shows what the user said", async () => {
+      const user = userEvent.setup();
+      render(<NdaWorkspace />);
+      assistantAnswers({});
+
+      await say(user, "Delaware law.");
+
+      expect(screen.getByText("Delaware law.")).toBeInTheDocument();
+    });
+
+    it("shows the reply", async () => {
+      const user = userEvent.setup();
+      render(<NdaWorkspace />);
+      assistantAnswers({ governingLaw: "Delaware" }, "Delaware it is.");
+
+      await say(user, "Delaware law.");
+
+      expect(await screen.findByText("Delaware it is.")).toBeInTheDocument();
+    });
+
+    it("sends the transcript and the agreement as it stands", async () => {
+      const user = userEvent.setup();
+      render(<NdaWorkspace />);
+      assistantAnswers({});
+
+      await say(user, "Delaware law.");
+
+      const [messages, coverPage] = asMock.mock.calls[0];
+      expect(messages.at(-1)).toEqual({ role: "user", content: "Delaware law." });
+      expect(messages[0].role).toBe("assistant");
+      expect(coverPage.purpose).toContain("Evaluating whether to enter into");
+    });
+
+    it("carries the answers into the next turn", async () => {
+      const user = userEvent.setup();
+      render(<NdaWorkspace />);
+
+      assistantAnswers({ governingLaw: "Delaware" }, "Noted.");
+      await say(user, "Delaware law.");
+      await screen.findByText("Noted.");
+
+      assistantAnswers({}, "And?");
+      await say(user, "What else?");
+
+      expect(asMock.mock.calls[1][1].governingLaw).toBe("Delaware");
+    });
+  });
+
   describe("live document", () => {
-    it("reflects typing into the agreement as you go", async () => {
+    it("writes an answer into the agreement", async () => {
       const user = userEvent.setup();
       const { container } = render(<NdaWorkspace />);
+      assistantAnswers({ governingLaw: "Delaware" });
 
-      await user.type(screen.getByLabelText("State"), "Delaware");
+      await say(user, "Delaware law.");
 
-      const clause9 = container.querySelectorAll(".clause")[8];
-      expect(clause9.textContent).toContain("the laws of the State of Delaware");
+      await waitFor(() => {
+        const clause9 = container.querySelectorAll(".clause")[8];
+        expect(clause9.textContent).toContain("the laws of the State of Delaware");
+      });
     });
 
     it("rewrites the purpose everywhere it appears", async () => {
       const user = userEvent.setup();
       const { container } = render(<NdaWorkspace />);
+      assistantAnswers({ purpose: "Discussing a possible acquisition." });
 
-      const purpose = screen.getByLabelText("Purpose");
-      await user.clear(purpose);
-      await user.type(purpose, "Discussing a possible acquisition.");
+      await say(user, "It's about an acquisition.");
 
-      const clause1 = container.querySelectorAll(".clause")[0];
-      expect(clause1.textContent).toContain(
-        "the Purpose (Discussing a possible acquisition)",
-      );
+      await waitFor(() => {
+        const clause1 = container.querySelectorAll(".clause")[0];
+        expect(clause1.textContent).toContain(
+          "the Purpose (Discussing a possible acquisition)",
+        );
+      });
     });
 
-    it("switches the agreement wording when the term choice changes", async () => {
+    it("switches the wording when the term changes", async () => {
       const user = userEvent.setup();
       const { container } = render(<NdaWorkspace />);
+      assistantAnswers({ mndaTerm: { kind: "untilTerminated" } });
 
-      await user.click(screen.getByLabelText(/Runs until either party terminates/));
+      await say(user, "Make it run until someone ends it.");
 
-      const clause5 = container.querySelectorAll(".clause")[4];
-      expect(clause5.textContent).toContain(
-        "which continues until terminated in accordance with the terms of this MNDA",
-      );
+      await waitFor(() => {
+        const clause5 = container.querySelectorAll(".clause")[4];
+        expect(clause5.textContent).toContain(
+          "which continues until terminated in accordance with the terms of this MNDA",
+        );
+      });
     });
 
-    it("switches to perpetual confidentiality", async () => {
+    it("replaces a party wholesale rather than field by field", async () => {
+      /*
+       * State is merged shallowly, so a party arriving without all four of its
+       * fields would blank the ones the assistant did not mention.
+       */
       const user = userEvent.setup();
-      const { container } = render(<NdaWorkspace />);
+      render(<NdaWorkspace />);
+      assistantAnswers({ partyOne: PARTY_ONE });
 
-      await user.click(screen.getByLabelText("Forever"));
+      await say(user, "Northwind Labs, Dana Reyes signing.");
 
-      const clause5 = container.querySelectorAll(".clause")[4];
-      expect(clause5.textContent).toContain(
-        "Term of Confidentiality (in perpetuity)",
-      );
+      const table = await screen.findByRole("table");
+      expect(within(table).getByText(PARTY_ONE.companyName)).toBeInTheDocument();
+      expect(within(table).getByText(PARTY_ONE.noticeAddress)).toBeInTheDocument();
     });
   });
 
   describe("clause linking", () => {
-    it("marks the clauses fed by the focused group", async () => {
+    it("marks the clauses the assistant just changed", async () => {
       const user = userEvent.setup();
       const { container } = render(<NdaWorkspace />);
+      assistantAnswers({ governingLaw: "Delaware" });
 
-      await user.click(screen.getByLabelText("State"));
+      await say(user, "Delaware law.");
 
-      const linked = [
-        ...container.querySelectorAll('.clause[data-linked="true"]'),
-      ].map((node) => node.querySelector(".clause-number")?.textContent);
-      expect(linked).toEqual(["§9"]);
+      await waitFor(() => {
+        const linked = [
+          ...container.querySelectorAll('.clause[data-linked="true"]'),
+        ].map((node) => node.querySelector(".clause-number")?.textContent);
+        expect(linked).toEqual(["§9"]);
+      });
     });
 
-    it("marks both purpose clauses", async () => {
+    it("marks nothing when a turn changed nothing", async () => {
       const user = userEvent.setup();
       const { container } = render(<NdaWorkspace />);
+      assistantAnswers({}, "Which state's law should govern?");
 
-      await user.click(screen.getByLabelText("Purpose"));
+      await say(user, "Not sure yet.");
+      await screen.findByText("Which state's law should govern?");
 
-      const linked = [
-        ...container.querySelectorAll('.clause[data-linked="true"]'),
-      ].map((node) => node.querySelector(".clause-number")?.textContent);
-      expect(linked).toEqual(["§1", "§2"]);
+      expect(
+        container.querySelectorAll('.clause[data-linked="true"]'),
+      ).toHaveLength(0);
     });
   });
 
@@ -168,43 +245,39 @@ describe("NdaWorkspace", () => {
       expect(print).not.toHaveBeenCalled();
     });
 
-    it("stays silent about errors until the first download attempt", () => {
-      render(<NdaWorkspace />);
-      expect(screen.queryByText("Required")).not.toBeInTheDocument();
-    });
-
-    it("reveals every missing answer on a failed attempt", async () => {
+    it("says what is still missing rather than failing silently", async () => {
       const user = userEvent.setup();
       render(<NdaWorkspace />);
 
       await user.click(screen.getByRole("button", { name: "Download PDF" }));
 
-      expect(screen.getAllByText("Required")).toHaveLength(10);
+      expect(screen.getByText(/the governing law/)).toBeInTheDocument();
+      expect(screen.getByText(/still missing/)).toBeInTheDocument();
     });
 
-    it("marks the missing fields invalid for assistive technology", async () => {
-      const user = userEvent.setup();
-      const { container } = render(<NdaWorkspace />);
-
-      await user.click(screen.getByRole("button", { name: "Download PDF" }));
-
-      expect(container.querySelectorAll('[aria-invalid="true"]')).toHaveLength(10);
-    });
-
-    it("moves focus to the first missing answer", async () => {
+    it("counts that list itself rather than asking the assistant", async () => {
       const user = userEvent.setup();
       render(<NdaWorkspace />);
 
       await user.click(screen.getByRole("button", { name: "Download PDF" }));
 
-      expect(screen.getByLabelText("State")).toHaveFocus();
+      expect(asMock).not.toHaveBeenCalled();
+    });
+
+    it("puts the cursor where the answer would be typed", async () => {
+      const user = userEvent.setup();
+      render(<NdaWorkspace />);
+
+      await user.click(screen.getByRole("button", { name: "Download PDF" }));
+
+      expect(screen.getByLabelText("Your message")).toHaveFocus();
     });
 
     it("prints once every answer is given", async () => {
       const user = userEvent.setup();
       render(<NdaWorkspace />);
 
-      await completeForm(user);
+      await completeAgreement(user);
       await user.click(screen.getByRole("button", { name: "Download PDF" }));
 
       expect(print).toHaveBeenCalledTimes(1);
@@ -214,70 +287,110 @@ describe("NdaWorkspace", () => {
       const user = userEvent.setup();
       render(<NdaWorkspace />);
 
-      await completeForm(user);
+      await completeAgreement(user);
 
       expect(screen.queryByText(/fields left to fill in/)).not.toBeInTheDocument();
       expect(screen.getByText(/Save as PDF/)).toBeInTheDocument();
     });
 
-    it("clears an error as soon as the answer is supplied", async () => {
-      const user = userEvent.setup();
-      render(<NdaWorkspace />);
-
-      await user.click(screen.getByRole("button", { name: "Download PDF" }));
-      expect(screen.getAllByText("Required")).toHaveLength(10);
-
-      await user.type(screen.getByLabelText("State"), "Delaware");
-      expect(screen.getAllByText("Required")).toHaveLength(9);
-    });
-  });
-
-  describe("year inputs", () => {
-    it("announces its error like every other field", async () => {
-      const user = userEvent.setup();
-      render(<NdaWorkspace />);
-
-      const years = screen.getByLabelText("Years until the NDA expires");
-      await user.clear(years);
-      await user.click(screen.getByRole("button", { name: "Download PDF" }));
-
-      expect(years).toHaveAttribute("aria-invalid", "true");
-      const describedBy = years.getAttribute("aria-describedby");
-      expect(describedBy).toBeTruthy();
-      expect(document.getElementById(describedBy!)).toHaveTextContent(
-        "Enter a whole number of years",
-      );
-    });
-
     it("does not print while a term length is unusable", async () => {
       const user = userEvent.setup();
       render(<NdaWorkspace />);
+      await completeAgreement(user);
 
-      await completeForm(user);
-      await user.clear(screen.getByLabelText("Years until the NDA expires"));
+      assistantAnswers({ mndaTerm: { kind: "expires", years: 0 } }, "Hmm.");
+      await say(user, "Zero years.");
+      await screen.findByText("Hmm.");
+
       await user.click(screen.getByRole("button", { name: "Download PDF" }));
 
       expect(print).not.toHaveBeenCalled();
     });
+  });
 
-    it("never lets the document assert a term the user did not choose", async () => {
-      const user = userEvent.setup();
-      const { container } = render(<NdaWorkspace />);
-
-      await user.clear(screen.getByLabelText("Years until the NDA expires"));
-
-      const clause5 = container.querySelectorAll(".clause")[4];
-      expect(clause5.textContent).not.toContain("zero (0) years");
-      expect(clause5.textContent).toContain("length not yet specified");
-    });
-
-    it("disables the count when the open-ended option is chosen", async () => {
+  describe("knowing when it is finished", () => {
+    it("says so the moment the last blank is filled", async () => {
       const user = userEvent.setup();
       render(<NdaWorkspace />);
 
-      await user.click(screen.getByLabelText(/Runs until either party terminates/));
+      await completeAgreement(user);
 
-      expect(screen.getByLabelText("Years until the NDA expires")).toBeDisabled();
+      expect(
+        await screen.findByText(/That's everything the cover page needs/),
+      ).toBeInTheDocument();
+    });
+
+    it("stays quiet while anything is still missing", async () => {
+      const user = userEvent.setup();
+      render(<NdaWorkspace />);
+      assistantAnswers({ governingLaw: "Delaware" }, "Noted.");
+
+      await say(user, "Delaware law.");
+      await screen.findByText("Noted.");
+
+      expect(
+        screen.queryByText(/That's everything the cover page needs/),
+      ).not.toBeInTheDocument();
+    });
+  });
+
+  describe("when the assistant cannot answer", () => {
+    it("says why", async () => {
+      const user = userEvent.setup();
+      render(<NdaWorkspace />);
+      asMock.mockRejectedValueOnce(
+        new ApiError("The assistant is unavailable right now.", 503),
+      );
+
+      await say(user, "Delaware law.");
+
+      expect(await screen.findByRole("alert")).toHaveTextContent(
+        "The assistant is unavailable right now.",
+      );
+    });
+
+    it("keeps the message that failed, so it need not be retyped", async () => {
+      const user = userEvent.setup();
+      render(<NdaWorkspace />);
+      asMock.mockRejectedValueOnce(new ApiError("Could not reach the server.", 0));
+
+      await say(user, "Delaware law.");
+      await screen.findByRole("alert");
+
+      expect(screen.getByText("Delaware law.")).toBeInTheDocument();
+    });
+
+    it("resends that same message on a retry", async () => {
+      const user = userEvent.setup();
+      render(<NdaWorkspace />);
+      asMock.mockRejectedValueOnce(new ApiError("Could not reach the server.", 0));
+
+      await say(user, "Delaware law.");
+      await screen.findByRole("alert");
+
+      assistantAnswers({ governingLaw: "Delaware" }, "Got it.");
+      await user.click(screen.getByRole("button", { name: "Try again" }));
+
+      expect(await screen.findByText("Got it.")).toBeInTheDocument();
+      expect(asMock.mock.calls[1][0].at(-1)).toEqual({
+        role: "user",
+        content: "Delaware law.",
+      });
+    });
+
+    it("clears the alarm once a turn succeeds", async () => {
+      const user = userEvent.setup();
+      render(<NdaWorkspace />);
+      asMock.mockRejectedValueOnce(new ApiError("Could not reach the server.", 0));
+
+      await say(user, "Delaware law.");
+      await screen.findByRole("alert");
+
+      assistantAnswers({}, "Got it.");
+      await user.click(screen.getByRole("button", { name: "Try again" }));
+      await screen.findByText("Got it.");
+
+      expect(screen.queryByRole("alert")).not.toBeInTheDocument();
     });
   });
 
@@ -286,7 +399,7 @@ describe("NdaWorkspace", () => {
       const user = userEvent.setup();
       render(<NdaWorkspace />);
 
-      await completeForm(user);
+      await completeAgreement(user);
 
       expect(document.title).toBe(
         "Mutual NDA - Northwind Labs, Inc. and Kestrel Analytics LLC",
@@ -304,7 +417,7 @@ describe("NdaWorkspace", () => {
       const user = userEvent.setup();
       render(<NdaWorkspace />);
 
-      await completeForm(user);
+      await completeAgreement(user);
 
       const table = screen.getByRole("table");
       expect(within(table).getByText(PARTY_ONE.companyName)).toBeInTheDocument();
@@ -316,7 +429,7 @@ describe("NdaWorkspace", () => {
       const user = userEvent.setup();
       const { container } = render(<NdaWorkspace />);
 
-      await completeForm(user);
+      await completeAgreement(user);
 
       expect(container.querySelectorAll(".blank")).toHaveLength(0);
     });

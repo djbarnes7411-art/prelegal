@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { ApiError, login, signup } from "./api";
+import { ApiError, login, sendChatTurn, signup } from "./api";
+import { createEmptyCoverPage } from "./nda/types";
 
 const USER_PAYLOAD = {
   id: 1,
@@ -80,6 +81,69 @@ describe("login", () => {
     await expect(login("nobody@example.com", "hunter2")).rejects.toThrow(
       "No account found for that email.",
     );
+  });
+});
+
+describe("sendChatTurn", () => {
+  const messages = [{ role: "user" as const, content: "Delaware law." }];
+
+  it("sends the transcript and the agreement as it stands", async () => {
+    fetchMock.mockResolvedValue(respondWith({ reply: "Noted.", patch: {} }));
+    const coverPage = createEmptyCoverPage();
+
+    await sendChatTurn(messages, coverPage);
+
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("/api/nda/chat");
+    expect(init.method).toBe("POST");
+    expect(JSON.parse(init.body)).toEqual({ messages, coverPage });
+  });
+
+  it("returns the reply and the patch", async () => {
+    fetchMock.mockResolvedValue(
+      respondWith({ reply: "Delaware it is.", patch: { governingLaw: "Delaware" } }),
+    );
+
+    await expect(sendChatTurn(messages, createEmptyCoverPage())).resolves.toEqual({
+      reply: "Delaware it is.",
+      patch: { governingLaw: "Delaware" },
+    });
+  });
+
+  it("treats a turn that changed nothing as an empty patch", async () => {
+    fetchMock.mockResolvedValue(respondWith({ reply: "Which state?" }));
+
+    const turn = await sendChatTurn(messages, createEmptyCoverPage());
+
+    expect(turn.patch).toEqual({});
+  });
+
+  it("surfaces the server's reason for an unavailable assistant", async () => {
+    fetchMock.mockResolvedValue(
+      respondWith({ detail: "The assistant is unavailable right now." }, 503),
+    );
+
+    await expect(sendChatTurn(messages, createEmptyCoverPage())).rejects.toThrow(
+      "The assistant is unavailable right now.",
+    );
+  });
+
+  it("does not blame the login form for a rejected message", async () => {
+    fetchMock.mockResolvedValue(
+      respondWith({ detail: [{ loc: ["body", "messages"] }] }, 422),
+    );
+
+    await expect(sendChatTurn(messages, createEmptyCoverPage())).rejects.toThrow(
+      "That message could not be sent. Try rewording it.",
+    );
+  });
+
+  it("reports an unreachable server", async () => {
+    fetchMock.mockRejectedValue(new TypeError("Failed to fetch"));
+
+    await expect(
+      sendChatTurn(messages, createEmptyCoverPage()),
+    ).rejects.toMatchObject({ status: 0 });
   });
 });
 

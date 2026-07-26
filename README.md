@@ -88,6 +88,12 @@ uv run uvicorn app.main:app --reload --port 8000
 Settings are all optional and all default to the repository layout:
 `PRELEGAL_DATABASE_PATH`, `PRELEGAL_FRONTEND_DIR`, `PRELEGAL_DEV_ORIGINS`.
 
+`OPENROUTER_API_KEY` is the exception worth knowing about. Copy `.env.example` to
+`.env` at the repo root and fill it in — the backend reads that file on startup,
+and `docker compose` passes the value through to the container. Without it the app
+still starts and serves, but the chat cannot answer, and the chat is the only way
+to fill a document in.
+
 ### Frontend
 
 ```bash
@@ -101,15 +107,24 @@ available. `build` writes the static export to `frontend/out/`, which is what th
 container serves. See [`frontend/TESTING.md`](frontend/TESTING.md) for what the
 automated tests cover and what still has to be checked by hand.
 
-The NDA workspace is at `/nda/` and drafts the document entirely in the browser —
-nothing you type into the agreement is sent anywhere.
+The NDA workspace is at `/nda/`. You draft the agreement by talking to an
+assistant, which asks about each field and fills the document in as you answer.
+
+### What leaves the browser
+
+What you type into the chat, and the cover-page values as they stand, are sent to
+the backend on each turn and forwarded to the model provider. That is a change
+from how this workspace started: it used to be a form that sent nothing anywhere.
+Nothing is written to disk at either end — the conversation lives in the tab and
+is gone when you close it — and the app says all of this above the chat.
 
 ## Roadmap
 
 - [x] Mutual NDA creator (PL-3)
 - [x] V1 foundation: backend, database, container, scripts (PL-4)
+- [x] AI chat to fill the document in (PL-5)
 - [ ] Real authentication and accounts that persist
-- [ ] AI chat to choose a document and fill it in
+- [ ] AI chat to choose *which* document to draft
 - [ ] Remaining agreement types from `catalog.json`
 - [ ] Target completion — August 1, 2026
 

@@ -18,7 +18,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .config import Settings, load_settings
 from .db import reset_database
-from .routers import auth, health
+from .routers import auth, chat, health
 
 logger = logging.getLogger(__name__)
 
@@ -53,6 +53,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app.include_router(health.router)
     app.include_router(auth.router)
+    app.include_router(chat.router)
     _mount_frontend(app, resolved)
 
     return app
