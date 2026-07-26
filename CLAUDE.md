@@ -65,7 +65,7 @@ Done, on `main`:
 ### How it fits together
 
 - `backend/` is a uv project. FastAPI serves `/api/*` and the built frontend from one origin on port 8000 — no reverse proxy, no Node at runtime. Stdlib `sqlite3` plus a small repository in `app/users.py`; no ORM.
-- The database is deleted and recreated from `app/schema.sql` on **every startup**, with no volume over it. Nothing survives a restart. Settings (all optional): `PRELEGAL_DATABASE_PATH`, `PRELEGAL_FRONTEND_DIR`, `PRELEGAL_DEV_ORIGINS`, `OPENROUTER_API_KEY`.
+- The database is deleted and recreated from `app/schema.sql` on **every startup**, with no volume over it. Nothing survives a restart. Settings: `PRELEGAL_DATABASE_PATH`, `PRELEGAL_FRONTEND_DIR`, `PRELEGAL_DEV_ORIGINS` — all optional, all defaulting to the repo layout. `OPENROUTER_API_KEY` is optional in the sense that the app starts and serves without it, but the chat cannot answer, and the chat is the only way to fill a document in.
 - `frontend/` exports to static files (`output: "export"`, `trailingSlash: true`). `/` is the login screen, `/nda/` the NDA workspace.
 - Run it with the `scripts/` above; run the tests with `cd backend && uv run pytest` (99) and `cd frontend && npm test` (235).
 
@@ -76,6 +76,8 @@ Done, on `main`:
 - **`merge_patch` is the trust boundary and the only route from a model's output to the agreement.** It drops any field that fails a check rather than rejecting the turn — one bad year should not throw away a good reply and four good fields. It also returns *complete* objects: a party arrives with all four fields, because the frontend merges shallowly and a partial one would blank the rest. Read the tests in `test_nda_chat.py` before changing it.
 - Failures are HTTP 503 with a readable `detail`, shown as an error bubble with **Try again**. There is no form to fall back to, so a missing key means the document cannot be filled in at all — say so plainly rather than degrading quietly.
 - The greeting, the privacy notice, the "still missing" nudge and the "you're done" message are ours, in `lib/nda/chat-copy.ts`. None of them costs a round trip, and the missing-field list is counted from `validateCoverPage`, never recalled by the model.
+- **The key reaches the app two ways, and is baked into nothing.** `config.py` calls `load_dotenv(REPO_ROOT / ".env", override=False)` at import, so a checkout works; `docker-compose.yml` interpolates `${OPENROUTER_API_KEY}` from that same file, so the container works. `override=False` means a real environment variable always wins over the file. `.env.example` documents the variable; `.env` is gitignored.
+- **No test reaches the network.** `test_chat.py` substitutes `complete_structured`, `test_llm.py` substitutes the completion function, and the frontend mocks `sendChatTurn`. An autouse fixture in `conftest.py` also strips `OPENROUTER_API_KEY` from the environment, because `load_dotenv` would otherwise put a live key there and a mocking mistake would spend real money.
 
 ### What leaves the browser
 
@@ -89,6 +91,8 @@ visible and keep it honest as scope grows.
 
 `/api/auth/signup` and `/api/auth/login` create and look up accounts for real, but the password is **never stored, hashed, or compared** — there is no password column. Knowing an email address is enough to sign in as it, and the login screen says so. Adding real auth means changing those two function bodies, not the wiring.
 
+**Since PL-5 that has a cost attached.** `/api/nda/chat` takes no session and has no rate limit, so anyone who can reach the port can spend the OpenRouter key. The only bounds today are the request model's caps on message count and length. That is fine on localhost and not fine on a public address — this is the thing to fix before the app is ever exposed, ahead of the login screen itself.
+
 ### Conventions worth knowing
 
 - **Two palettes, deliberately.** The colours above are the platform's, used on the login screen. The NDA workspace keeps its own dark-panel palette so the document beside it reads as paper — don't "correct" it to brand colours. Note `#888888` is only 3.5:1 on a light card, so body copy uses a darkened sibling.
@@ -98,4 +102,4 @@ visible and keep it honest as scope grows.
 
 ### Not built yet
 
-Choosing *which* document to draft (the chat only knows the Mutual NDA), every document other than the Mutual NDA, real authentication, and persistence of any kind — including the conversation, which is lost on reload.
+Choosing *which* document to draft (the chat only knows the Mutual NDA), every document other than the Mutual NDA, real authentication, any rate limiting or spend control on the chat endpoint, and persistence of any kind — including the conversation, which is lost on reload.
