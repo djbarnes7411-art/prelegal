@@ -1,4 +1,4 @@
-# Testing the Mutual NDA creator
+# Testing the frontend
 
 ## Automated
 
@@ -7,7 +7,7 @@ npm test          # once
 npm run test:watch
 ```
 
-160 tests across five files. What they cover:
+197 tests across eight files. What they cover:
 
 | File | Covers |
 | --- | --- |
@@ -16,6 +16,11 @@ npm run test:watch
 | `lib/nda/standard-terms.test.ts` | **Diffs the transcribed legal text against `templates/mutual-nda.md`**, clause by clause |
 | `components/NdaDocument.test.tsx` | Rendered cover page and clauses, blanks, checkbox states, signature block, CC BY attribution, cover-page fidelity |
 | `components/NdaWorkspace.test.tsx` | The whole journey through the real UI: typing, live document updates, clause linking, download gating, focus management, PDF filename |
+| `components/LoginScreen.test.tsx` | Signing in, creating an account, switching between the two, server refusals, the already-signed-in state, and the notice about there being no authentication |
+| `lib/api.test.ts` | Request shape, snake_case to camelCase, which server errors are shown verbatim and which are replaced, an unreachable server |
+| `lib/session.test.ts` | Round trip through storage, and every way a stored value can be unusable |
+
+The backend has its own suite — see the root [README](../README.md).
 
 ### About the fidelity test
 
@@ -40,6 +45,10 @@ Automation cannot reach these. Run them before releasing, and after any change t
 ```bash
 npm run dev    # http://localhost:3000
 ```
+
+Sign in first — the workspace is at `/nda/` and sends you back to `/` without a
+session. `npm run dev` needs the backend running on port 8000 for that; the root
+[README](../README.md) covers starting it.
 
 ### 1. Print and PDF output — highest priority
 
@@ -98,7 +107,25 @@ Only Chrome has been exercised.
 - [ ] Right-to-left text degrades acceptably
 - [ ] A very large year count (e.g. 99) reads correctly in both the cover page and clause 5
 
-### 6. Legal review — not an engineering task
+### 6. Login screen
+
+Covered by `LoginScreen.test.tsx` with the router and API mocked, so the real
+round trip and the layout still need eyes.
+
+- [ ] Create an account, then restart the container and confirm the same email is
+      unknown again — the accounts really are temporary
+- [ ] Sign in with the wrong password: it works, and the notice on the card says
+      why. If that ever stops being true, this file is out of date
+- [ ] Stop the backend and submit: the message names an unreachable server rather
+      than showing a raw fetch error
+- [ ] Visit `/nda/` in a fresh profile: it redirects to `/` without flashing the
+      workspace
+- [ ] Already signed in, visit `/`: "Welcome back" appears without flashing the form
+- [ ] The card is usable at 375px
+- [ ] Tab order runs email → password → submit → switch link, and the focus ring is
+      visible on the purple button
+
+### 7. Legal review — not an engineering task
 
 - [ ] A lawyer confirms the two documented clause 9 deviations ("such State", "such courts") are acceptable
 - [ ] A lawyer confirms resolving cover-page references inline in the Standard Terms does not change their meaning

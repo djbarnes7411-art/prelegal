@@ -28,10 +28,15 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+/*
+ * The document pages retitle themselves once mounted — browsers use
+ * `document.title` as the default "Save as PDF" filename, so the agreement's own
+ * name has to win there. See `documentTitle` in `lib/nda/render.ts`.
+ */
 export const metadata: Metadata = {
-  title: "Mutual NDA",
+  title: "Prelegal",
   description:
-    "Fill in a Common Paper Mutual NDA and download it as a PDF, ready to sign.",
+    "Draft legal agreements from vetted templates and download them ready to sign.",
 };
 
 export default function RootLayout({
