@@ -630,6 +630,103 @@ body {
   color: inherit;
 }
 
+/* An omitted optional value. The standard terms read it as "none", so it is
+   stated rather than left as a gap that would look unfinished. */
+.ink-none {
+  color: var(--ink-unchosen);
+}
+
+/* Said where a document supplements another agreement rather than standing on
+   its own — a fact about the template, so it sits on the page, not just in
+   the conversation. */
+.doc-attachment-note {
+  margin: 0 0 1.25rem;
+  padding: 0.625rem 0.75rem;
+  border-left: 2px solid var(--hand);
+  background: color-mix(in srgb, var(--hand) 5%, transparent);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/*
+ * Nested standard terms.
+ *
+ * The Mutual NDA's eleven clauses are a flat list; every other document runs
+ * 1 -> 1.1 -> a -> i. Depth is indented rather than renumbered, so the number
+ * printed here is the one the agreement cross-references elsewhere.
+ */
+.doc-clauses-nested .clause {
+  margin-bottom: 0.75rem;
+}
+
+.doc-clauses-nested .clause-number {
+  width: 2.75rem;
+  text-align: right;
+}
+
+.doc-clauses-nested .clause[data-depth="0"] {
+  margin-top: 1.5rem;
+  margin-bottom: 0.875rem;
+}
+
+.doc-clauses-nested .clause-section {
+  margin: 0;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.doc-clauses-nested .clause[data-depth="1"] {
+  margin-left: 1.25rem;
+}
+
+.doc-clauses-nested .clause[data-depth="2"] {
+  margin-left: 2.5rem;
+}
+
+.doc-clauses-nested .clause[data-depth="3"] {
+  margin-left: 3.75rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * The catalog, before a document is chosen
+ * ------------------------------------------------------------------ */
+
+.catalog-list {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.catalog-item {
+  padding: 0.875rem 0;
+  border-top: 1px solid var(--paper-edge);
+}
+
+.catalog-name {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.catalog-summary {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.catalog-note {
+  margin: 0.375rem 0 0;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--ink-unchosen);
+}
+
 /* ------------------------------------------------------------------ *
  * Entry: the login screen
  * ------------------------------------------------------------------ */

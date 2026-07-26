@@ -1,0 +1,153 @@
+# Note on scope: the published Professional Services Agreement expects a set of
+# separate SOW documents, each with its own deliverables, fees and dates. This
+# product has no repeating-group field type yet, so the SOW details are gathered
+# as free text here — one engagement described in prose rather than N structured
+# statements of work. It produces an honest document; it does not produce the
+# multi-SOW framework the standard terms contemplate. See CLAUDE.md.
+
+slug = "professional-services-agreement"
+name = "Professional Services Agreement"
+template = "templates/professional-services-agreement.md"
+
+summary = "A framework for delivering professional services against a statement of work, covering deliverables, acceptance and payment."
+aliases = [
+  "PSA",
+  "services agreement",
+  "consulting agreement",
+  "statement of work",
+  "SOW",
+  "implementation services",
+  "contractor agreement",
+  "professional services",
+]
+
+[fields.provider]
+type = "party"
+label = "the company providing the services"
+required = true
+
+[fields.customer]
+type = "party"
+label = "the customer receiving them"
+required = true
+
+[fields.deliverable]
+type = "longText"
+label = "what will be delivered"
+hint = "Describe the deliverables for this engagement. Several can be listed in one answer."
+required = true
+
+[fields.sowTerm]
+type = "text"
+label = "how long the engagement runs"
+hint = "A length or an end date, such as '6 months from the Effective Date'."
+required = true
+
+[fields.fees]
+type = "money"
+label = "what the services cost"
+hint = "An amount, a rate, or a schedule such as '$15,000 per month'."
+required = true
+
+[fields.effectiveDate]
+type = "date"
+label = "the date the agreement starts"
+required = true
+default = "today"
+
+[fields.governingLaw]
+type = "text"
+label = "the law that governs the agreement"
+hint = "Usually a US state, such as 'the laws of the State of Delaware'."
+required = true
+
+[fields.chosenCourts]
+type = "text"
+label = "the courts that would hear a dispute"
+hint = "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+required = true
+
+[fields.paymentPeriod]
+type = "text"
+label = "how long the customer has to pay an invoice"
+hint = "Such as '30 days from the invoice date'."
+required = false
+
+[fields.rejectionPeriod]
+type = "text"
+label = "how long the customer has to reject a deliverable"
+hint = "Such as '10 business days after delivery'."
+required = false
+
+[fields.resubmissionPeriod]
+type = "text"
+label = "how long the provider has to fix a rejected deliverable"
+required = false
+
+[fields.timeOfAssignment]
+type = "longText"
+label = "when intellectual property in the deliverables transfers"
+hint = "Commonly on full payment, or on acceptance."
+required = false
+
+[fields.customerObligations]
+type = "longText"
+label = "what the customer has to provide"
+hint = "Such as access, environments, data, or staff time."
+required = false
+
+[fields.customerPolicies]
+type = "longText"
+label = "any customer policies the provider must follow"
+required = false
+
+[fields.generalCapAmount]
+type = "money"
+label = "the cap on each party's total liability"
+required = false
+
+[fields.insuranceMinimums]
+type = "longText"
+label = "any insurance the provider must carry"
+required = false
+
+[fields.securityPolicy]
+type = "text"
+label = "the security policy that applies"
+required = false
+
+[fields.dpa]
+type = "text"
+label = "the data processing agreement, if one applies"
+hint = "Name the DPA and its date, or leave it out if there is none."
+required = false
+
+[fields.increasedCapAmount]
+type = "money"
+label = "a higher liability cap for certain claims"
+required = false
+
+[fields.increasedClaims]
+type = "longText"
+label = "which claims that higher cap applies to"
+required = false
+
+[fields.unlimitedClaims]
+type = "longText"
+label = "any claims that are not capped at all"
+required = false
+
+[fields.providerCoveredClaim]
+type = "longText"
+label = "what the provider indemnifies the customer against"
+required = false
+
+[fields.customerCoveredClaim]
+type = "longText"
+label = "what the customer indemnifies the provider against"
+required = false
+
+[fields.additionalWarranties]
+type = "longText"
+label = "any warranties beyond the standard ones"
+required = false

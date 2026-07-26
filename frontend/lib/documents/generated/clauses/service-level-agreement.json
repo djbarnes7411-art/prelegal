@@ -1,0 +1,931 @@
+{
+  "slug": "service-level-agreement",
+  "clauses": [
+    {
+      "number": "1",
+      "depth": 0,
+      "heading": "Uptime",
+      "segments": []
+    },
+    {
+      "number": "1.1",
+      "depth": 1,
+      "heading": "Target Uptime",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If there is a "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Uptime",
+          "key": "targetUptime"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will use commercially reasonable efforts to make the Cloud Service available for at least the "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Uptime",
+          "key": "targetUptime"
+        },
+        {
+          "kind": "text",
+          "text": " as calculated each calendar month."
+        }
+      ]
+    },
+    {
+      "number": "1.2",
+      "depth": 1,
+      "heading": "Calculating Uptime",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " agree to calculate availability of the Cloud Service as the total number of Available Minutes minus the number of Downtime Minutes, divided by the total number of Available Minutes, measured in a calendar month. If the "
+        },
+        {
+          "kind": "variable",
+          "text": "Subscription Period",
+          "key": "subscriptionPeriod"
+        },
+        {
+          "kind": "text",
+          "text": " includes a partial month, the numerator and denominator will only include the days that are part of the "
+        },
+        {
+          "kind": "variable",
+          "text": "Subscription Period",
+          "key": "subscriptionPeriod"
+        },
+        {
+          "kind": "text",
+          "text": " for that month."
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "depth": 0,
+      "heading": "Response Time",
+      "segments": []
+    },
+    {
+      "number": "2.1",
+      "depth": 1,
+      "heading": "Target Response Time",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If there is a "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Response Time",
+          "key": "targetResponseTime"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will use commercially reasonable efforts to respond to support requests sent to the "
+        },
+        {
+          "kind": "variable",
+          "text": "Support Channel",
+          "key": "supportChannel"
+        },
+        {
+          "kind": "text",
+          "text": " within the "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Response Time",
+          "key": "targetResponseTime"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "2.2",
+      "depth": 1,
+      "heading": "Calculating Response Time",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " agree to calculate "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " response time as the total time between when "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " submits a support request to the "
+        },
+        {
+          "kind": "variable",
+          "text": "Support Channel",
+          "key": "supportChannel"
+        },
+        {
+          "kind": "text",
+          "text": " and when "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " or "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " support representative specifically acknowledges the request. An automated response is not a specific acknowledgement for purposes of this SLA."
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "depth": 0,
+      "heading": "Remedies",
+      "segments": []
+    },
+    {
+      "number": "3.1",
+      "depth": 1,
+      "heading": "Service Credit",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If there is a "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Uptime",
+          "key": "targetUptime"
+        },
+        {
+          "kind": "text",
+          "text": " and Cloud Service availability falls below the "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Uptime",
+          "key": "targetUptime"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is eligible to receive an "
+        },
+        {
+          "kind": "variable",
+          "text": "Uptime Credit",
+          "key": "uptimeCredit"
+        },
+        {
+          "kind": "text",
+          "text": ". If there is a "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Response Time",
+          "key": "targetResponseTime"
+        },
+        {
+          "kind": "text",
+          "text": " and neither "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " nor "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " support representative acknowledge a support request submitted to the "
+        },
+        {
+          "kind": "variable",
+          "text": "Support Channel",
+          "key": "supportChannel"
+        },
+        {
+          "kind": "text",
+          "text": " within the "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Response Time",
+          "key": "targetResponseTime"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is eligible to receive a "
+        },
+        {
+          "kind": "variable",
+          "text": "Response Time Credit",
+          "key": "responseTimeCredit"
+        },
+        {
+          "kind": "text",
+          "text": ". Service Credits only apply towards future Cloud Service Fees owed by "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "3.2",
+      "depth": 1,
+      "heading": "Requesting A Service Credit",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "To receive a Service Credit, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " must notify "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " within 7 days of the end of the month in which "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " believes the Service Credit was earned, otherwise Service Credit eligibility will expire for that month."
+        }
+      ]
+    },
+    {
+      "number": "3.2.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "For Uptime Credit, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " must include information about when it was unable to access the Cloud Service. "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " may be required to provide additional details about its attempts to access the Cloud Service. If "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " can verify Cloud Service unavailability in its internal monitoring systems and the disruption does not qualify as Excluded Minutes or "
+        },
+        {
+          "kind": "variable",
+          "text": "Scheduled Downtime",
+          "key": "scheduledDowntime"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will calculate and issue the applicable "
+        },
+        {
+          "kind": "variable",
+          "text": "Uptime Credit",
+          "key": "uptimeCredit"
+        },
+        {
+          "kind": "text",
+          "text": " on "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " account to apply towards a future invoice."
+        }
+      ]
+    },
+    {
+      "number": "3.2.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "For Response Time Credit, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " must include information about when and how "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " contacted "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": ". "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " may be required to provide additional details about the related incident and its attempts to receive support. If "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " can verify neither "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " nor "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " support representative responded to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " support request within the "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Response Time",
+          "key": "targetResponseTime"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will calculate and issue the applicable "
+        },
+        {
+          "kind": "variable",
+          "text": "Response Time Credit",
+          "key": "responseTimeCredit"
+        },
+        {
+          "kind": "text",
+          "text": " on "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " account to apply towards a future invoice."
+        }
+      ]
+    },
+    {
+      "number": "3.3",
+      "depth": 1,
+      "heading": "Service Credit Limitations",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Service Credits may not be exchanged for, or converted to, monetary amounts. Service Credits do not earn interest. Service Credits will not accumulate within a single "
+        },
+        {
+          "kind": "variable",
+          "text": "Subscription Period",
+          "key": "subscriptionPeriod"
+        },
+        {
+          "kind": "text",
+          "text": " in an amount more than 8% of Cloud Service Fees for that "
+        },
+        {
+          "kind": "variable",
+          "text": "Subscription Period",
+          "key": "subscriptionPeriod"
+        },
+        {
+          "kind": "text",
+          "text": ". Service Credits expire when the applicable Order Form ends."
+        }
+      ]
+    },
+    {
+      "number": "3.4",
+      "depth": 1,
+      "heading": "Termination",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If the Cloud Service does not meet the "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Uptime",
+          "key": "targetUptime"
+        },
+        {
+          "kind": "text",
+          "text": " for two (2) out of any three (3) consecutive months and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " notified "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " of the failures within 7 days of the end of each impacted month, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " may immediately terminate the affected Order Form by giving written notice to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": ". If "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " terminates an Order Form under this section, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will pay to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " a prorated refund of prepaid fees for the remainder of the "
+        },
+        {
+          "kind": "variable",
+          "text": "Subscription Period",
+          "key": "subscriptionPeriod"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "3.5",
+      "depth": 1,
+      "heading": "Exclusive Remedy",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This SLA describes "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " exclusive remedy and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " entire liability for any failure of the Cloud Service to meet the "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Uptime",
+          "key": "targetUptime"
+        },
+        {
+          "kind": "text",
+          "text": " and for any inability to meet the "
+        },
+        {
+          "kind": "variable",
+          "text": "Target Response Time",
+          "key": "targetResponseTime"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "depth": 0,
+      "heading": "Definitions",
+      "segments": []
+    },
+    {
+      "number": "4.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Available Minutes\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": "  means the total number of minutes in a calendar month, minus Excluded Minutes and "
+        },
+        {
+          "kind": "variable",
+          "text": "Scheduled Downtime",
+          "key": "scheduledDowntime"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "4.2",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Downtime Minutes\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the total number of minutes in a calendar month when the Cloud Service is not available to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": ", as confirmed by "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " internal monitoring systems, minus Excluded Minutes and "
+        },
+        {
+          "kind": "variable",
+          "text": "Scheduled Downtime",
+          "key": "scheduledDowntime"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "4.3",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Excluded Minutes\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means when the Cloud Service is not available because of (a) a Force Majeure Event; (b) general Internet connectivity issues; (c) equipment or software made available by anyone other than "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and that is not within "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " reasonable control; or (d) "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " use of the Cloud Service in a manner not authorized by the Agreement."
+        }
+      ]
+    },
+    {
+      "number": "4.4",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Service Credit\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the accrued "
+        },
+        {
+          "kind": "variable",
+          "text": "Uptime Credit",
+          "key": "uptimeCredit"
+        },
+        {
+          "kind": "text",
+          "text": " plus the accrued "
+        },
+        {
+          "kind": "variable",
+          "text": "Response Time Credit",
+          "key": "responseTimeCredit"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "4.5",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"SLA\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means these SLA Standard Terms as incorporated into the applicable Order Form."
+        }
+      ]
+    },
+    {
+      "number": "4.6",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"SLA Standard Terms\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means these Common Paper Service Level Agreement Standard Terms Version 2.0, which are posted at https://commonpaper.com/standards/service-level-agreement/2.0/."
+        }
+      ]
+    }
+  ]
+}

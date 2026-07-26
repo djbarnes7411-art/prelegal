@@ -107,12 +107,29 @@ available. `build` writes the static export to `frontend/out/`, which is what th
 container serves. See [`frontend/TESTING.md`](frontend/TESTING.md) for what the
 automated tests cover and what still has to be checked by hand.
 
-The NDA workspace is at `/nda/`. You draft the agreement by talking to an
-assistant, which asks about each field and fills the document in as you answer.
+The workspace is at `/draft/`. You describe what you need, the assistant works
+out which of the eleven documents fits, and then asks about each field and fills
+the document in as you answer. Ask for something we have no template for and it
+says so, and offers the closest thing it can draft.
+
+### Adding or changing a document
+
+Documents are compiled from `templates/*.md` plus a definition in
+`definitions/*.toml`:
+
+```bash
+cd backend
+uv run python -m app.documents.build           # writes the generated catalog
+uv run python -m app.documents.build --check    # verifies it is committed and current
+```
+
+The build fails if a template cites a fill-in value no definition describes, or
+if a definition describes one the template never uses — so a field cannot go
+missing from the form while the clause that needs it stays in the agreement.
 
 ### What leaves the browser
 
-What you type into the chat, and the cover-page values as they stand, are sent to
+What you type into the chat, and the document's values as they stand, are sent to
 the backend on each turn and forwarded to the model provider. That is a change
 from how this workspace started: it used to be a form that sent nothing anywhere.
 Nothing is written to disk at either end — the conversation lives in the tab and
@@ -123,9 +140,10 @@ is gone when you close it — and the app says all of this above the chat.
 - [x] Mutual NDA creator (PL-3)
 - [x] V1 foundation: backend, database, container, scripts (PL-4)
 - [x] AI chat to fill the document in (PL-5)
+- [x] AI chat to choose *which* document to draft, and every agreement type from `catalog.json` (PL-6)
 - [ ] Real authentication and accounts that persist
-- [ ] AI chat to choose *which* document to draft
-- [ ] Remaining agreement types from `catalog.json`
+- [ ] Rate limiting and spend control on the chat endpoint
+- [ ] Structured repeating fields (DPA subprocessors, multiple SOWs)
 - [ ] Target completion — August 1, 2026
 
 ## Contributing

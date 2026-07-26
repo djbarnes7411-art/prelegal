@@ -40,6 +40,13 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 COPY backend/ ./backend/
 COPY --from=frontend /build/out ./frontend/out
+# The document catalog: field definitions, blurbs and aliases, compiled from
+# definitions/*.toml by `app.documents.build`. Both halves read this one file —
+# the browser imports it, the backend builds its prompts from it — so it is
+# committed under `frontend/` where Turbopack can resolve it, and copied here
+# separately because the export above carries only the built pages.
+COPY frontend/lib/documents/generated/catalog.json \
+     ./frontend/lib/documents/generated/catalog.json
 
 # Matches the repository layout, so `config.py`'s defaults resolve with no
 # environment variables set.

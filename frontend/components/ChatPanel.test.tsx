@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { createRef } from "react";
 import { describe, expect, it, vi } from "vitest";
 
-import { NdaChat, type ChatEntry } from "./NdaChat";
+import { ChatPanel, type ChatEntry } from "./ChatPanel";
 
 /* The panel on its own: what it shows, and what the keyboard does to it. */
 
@@ -12,12 +12,12 @@ const MESSAGES: ChatEntry[] = [
   { id: 1, role: "user", content: "Northwind Labs and Kestrel Analytics." },
 ];
 
-function setup(overrides: Partial<Parameters<typeof NdaChat>[0]> = {}) {
+function setup(overrides: Partial<Parameters<typeof ChatPanel>[0]> = {}) {
   const onSend = vi.fn();
   const onRetry = vi.fn();
 
   render(
-    <NdaChat
+    <ChatPanel
       messages={MESSAGES}
       sending={false}
       error={null}
@@ -31,7 +31,7 @@ function setup(overrides: Partial<Parameters<typeof NdaChat>[0]> = {}) {
   return { onSend, onRetry };
 }
 
-describe("NdaChat", () => {
+describe("ChatPanel", () => {
   it("shows the conversation so far", () => {
     setup();
     expect(

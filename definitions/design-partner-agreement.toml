@@ -1,0 +1,66 @@
+slug = "design-partner-agreement"
+name = "Design Partner Agreement"
+template = "templates/design-partner-agreement.md"
+
+summary = "An early-stage collaboration in which a partner works with you on a product and gives feedback, which you are free to use."
+aliases = [
+  "design partner",
+  "early access program",
+  "beta program",
+  "co-development",
+  "build it with a customer",
+  "feedback agreement",
+  "founding customer",
+]
+
+[fields.provider]
+type = "party"
+label = "the company running the program"
+required = true
+
+[fields.partner]
+type = "party"
+label = "the design partner"
+required = true
+
+[fields.program]
+type = "longText"
+label = "what the design partner program involves"
+hint = "What each side will actually do together."
+required = true
+
+[fields.term]
+type = "text"
+label = "how long the collaboration runs"
+hint = "A length or an end date, such as '6 months from the Effective Date'."
+required = true
+
+[fields.effectiveDate]
+type = "date"
+label = "the date the agreement starts"
+required = true
+default = "today"
+
+[fields.governingLaw]
+type = "text"
+label = "the law that governs the agreement"
+hint = "Usually a US state, such as 'the laws of the State of Delaware'."
+required = true
+
+[fields.chosenCourts]
+type = "text"
+label = "the courts that would hear a dispute"
+hint = "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+required = true
+
+[fields.fees]
+type = "money"
+label = "anything the partner pays"
+hint = "Often nothing at all in a design partnership. Leave it out and no fees apply."
+required = false
+
+[fields.noticeAddress]
+type = "text"
+label = "where legal notices should be sent"
+hint = "Leave this out and notices go to the addresses in the signature block."
+required = false

@@ -1,7 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ApiError, login, sendChatTurn, signup } from "./api";
-import { createEmptyCoverPage } from "./nda/types";
+import { createEmptyState } from "./documents/values";
+import { DOCUMENTS } from "./documents/catalog";
 
 const USER_PAYLOAD = {
   id: 1,
@@ -86,17 +87,49 @@ describe("login", () => {
 
 describe("sendChatTurn", () => {
   const messages = [{ role: "user" as const, content: "Delaware law." }];
+  const nda = DOCUMENTS.find((document) => document.slug === "mutual-nda")!;
+  const fields = () => createEmptyState(nda);
 
-  it("sends the transcript and the agreement as it stands", async () => {
+  it("sends the transcript, the document, and its values", async () => {
     fetchMock.mockResolvedValue(respondWith({ reply: "Noted.", patch: {} }));
-    const coverPage = createEmptyCoverPage();
+    const sent = fields();
 
-    await sendChatTurn(messages, coverPage);
+    await sendChatTurn(messages, "mutual-nda", sent);
 
     const [url, init] = fetchMock.mock.calls[0];
-    expect(url).toBe("/api/nda/chat");
+    expect(url).toBe("/api/chat");
     expect(init.method).toBe("POST");
-    expect(JSON.parse(init.body)).toEqual({ messages, coverPage });
+    expect(JSON.parse(init.body)).toEqual({
+      messages,
+      documentSlug: "mutual-nda",
+      fields: sent,
+    });
+  });
+
+  it("asks which document is meant when none has been chosen", async () => {
+    fetchMock.mockResolvedValue(respondWith({ reply: "Which one?", patch: {} }));
+
+    await sendChatTurn(messages, null, {});
+
+    expect(JSON.parse(fetchMock.mock.calls[0][1].body).documentSlug).toBeNull();
+  });
+
+  it("reports the document the assistant settled on", async () => {
+    fetchMock.mockResolvedValue(
+      respondWith({ reply: "Right.", documentSlug: "pilot-agreement", patch: {} }),
+    );
+
+    const turn = await sendChatTurn(messages, null, {});
+
+    expect(turn.documentSlug).toBe("pilot-agreement");
+  });
+
+  it("treats an absent document as no choice made", async () => {
+    fetchMock.mockResolvedValue(respondWith({ reply: "Which one?" }));
+
+    const turn = await sendChatTurn(messages, null, {});
+
+    expect(turn.documentSlug).toBeNull();
   });
 
   it("returns the reply and the patch", async () => {
@@ -104,8 +137,9 @@ describe("sendChatTurn", () => {
       respondWith({ reply: "Delaware it is.", patch: { governingLaw: "Delaware" } }),
     );
 
-    await expect(sendChatTurn(messages, createEmptyCoverPage())).resolves.toEqual({
+    await expect(sendChatTurn(messages, "mutual-nda", fields())).resolves.toEqual({
       reply: "Delaware it is.",
+      documentSlug: null,
       patch: { governingLaw: "Delaware" },
     });
   });
@@ -113,7 +147,7 @@ describe("sendChatTurn", () => {
   it("treats a turn that changed nothing as an empty patch", async () => {
     fetchMock.mockResolvedValue(respondWith({ reply: "Which state?" }));
 
-    const turn = await sendChatTurn(messages, createEmptyCoverPage());
+    const turn = await sendChatTurn(messages, "mutual-nda", fields());
 
     expect(turn.patch).toEqual({});
   });
@@ -123,7 +157,7 @@ describe("sendChatTurn", () => {
       respondWith({ detail: "The assistant is unavailable right now." }, 503),
     );
 
-    await expect(sendChatTurn(messages, createEmptyCoverPage())).rejects.toThrow(
+    await expect(sendChatTurn(messages, "mutual-nda", fields())).rejects.toThrow(
       "The assistant is unavailable right now.",
     );
   });
@@ -133,7 +167,7 @@ describe("sendChatTurn", () => {
       respondWith({ detail: [{ loc: ["body", "messages"] }] }, 422),
     );
 
-    await expect(sendChatTurn(messages, createEmptyCoverPage())).rejects.toThrow(
+    await expect(sendChatTurn(messages, "mutual-nda", fields())).rejects.toThrow(
       "That message could not be sent. Try rewording it.",
     );
   });
@@ -142,7 +176,7 @@ describe("sendChatTurn", () => {
     fetchMock.mockRejectedValue(new TypeError("Failed to fetch"));
 
     await expect(
-      sendChatTurn(messages, createEmptyCoverPage()),
+      sendChatTurn(messages, "mutual-nda", fields()),
     ).rejects.toMatchObject({ status: 0 });
   });
 });

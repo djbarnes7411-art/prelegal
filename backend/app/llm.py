@@ -6,8 +6,8 @@ the two failure modes worth telling a user apart. Callers hand over messages and
 a Pydantic class describing the answer they want, and get an instance of that
 class back or an exception; they never see LiteLLM, OpenRouter, or Cerebras.
 
-Kept separate from `nda_chat.py` so the domain module can be unit-tested by
-substituting one function, with no network and no key.
+Kept separate from `documents/chat.py` so the domain module can be unit-tested
+by substituting one function, with no network and no key.
 """
 
 from __future__ import annotations

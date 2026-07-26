@@ -1,0 +1,2990 @@
+{
+  "slug": "professional-services-agreement",
+  "clauses": [
+    {
+      "number": "1",
+      "depth": 0,
+      "heading": "Services",
+      "segments": []
+    },
+    {
+      "number": "1.1",
+      "depth": 1,
+      "heading": "Providing Services",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " or its Affiliates may enter SOWs with "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": ". "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will perform the Services as detailed in an applicable SOW. Each SOW together with the Key Terms and Standard Terms will constitute a separate agreement. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will comply with "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer Policies",
+          "key": "customerPolicies"
+        },
+        {
+          "kind": "text",
+          "text": ", if any. If a "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " Affiliate enters an SOW with "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": ", references to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " in the SOW, Key Terms, or Standard Terms will mean that Affiliate for that agreement."
+        }
+      ]
+    },
+    {
+      "number": "1.2",
+      "depth": 1,
+      "heading": "Cooperation",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " will reasonably cooperate with "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " to allow the performance of Services. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " is not responsible for an inability to perform the Services caused by "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " failure to cooperate as reasonably requested. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will provide its own equipment and tools to perform the Services."
+        }
+      ]
+    },
+    {
+      "number": "1.3",
+      "depth": 1,
+      "heading": "Change Orders",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " or "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " may amend any SOW by entering a Change Order. If a party requests a Change Order, the other party will review and consider the proposed changes in good faith and respond to the Change Order request within a reasonable timeframe. However, a Change Order will not be binding until "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " agree in writing on the Change Order."
+        }
+      ]
+    },
+    {
+      "number": "1.4",
+      "depth": 1,
+      "heading": "Acceptance",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If according to the SOW "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " are subject to this section, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " will be deemed to have approved a "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverable",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " if "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " does not reject the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverable",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " within the "
+        },
+        {
+          "kind": "variable",
+          "text": "Rejection Period",
+          "key": "rejectionPeriod"
+        },
+        {
+          "kind": "text",
+          "text": ". If "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " rejects a "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverable",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " must notify "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " in writing with reasonable detail about why the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverable",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " did not meet the requirements in the SOW. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will correct the issue and resubmit the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverable",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " within the "
+        },
+        {
+          "kind": "variable",
+          "text": "Resubmission Period",
+          "key": "resubmissionPeriod"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "1.5",
+      "depth": 1,
+      "heading": "Subcontractors",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may use Subcontractors to perform the Services only with "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " prior permission. However, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may use its Affiliates to perform Services without "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " prior permission. If "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " uses Subcontractors to perform Services, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " is responsible for (a) all acts and omissions of its Subcontractors, (b) ensuring its Subcontractors’ compliance with this Agreement and the applicable SOW, and (c) making all payments owed to its Subcontractors for their portion of the Services."
+        }
+      ]
+    },
+    {
+      "number": "1.6",
+      "depth": 1,
+      "heading": "Customer Obligations",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " will comply with "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer Obligations",
+          "key": "customerObligations"
+        },
+        {
+          "kind": "text",
+          "text": ", if any."
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "depth": 0,
+      "heading": "Intellectual Property",
+      "segments": []
+    },
+    {
+      "number": "2.1",
+      "depth": 1,
+      "heading": "Deliverables",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except for Pre-Existing Materials and Third-Party Materials, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " assigns all right, title, and interest in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " (if any) to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " at the "
+        },
+        {
+          "kind": "variable",
+          "text": "Time of Assignment",
+          "key": "timeOfAssignment"
+        },
+        {
+          "kind": "text",
+          "text": ". Upon the "
+        },
+        {
+          "kind": "variable",
+          "text": "Time of Assignment",
+          "key": "timeOfAssignment"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will assert no rights over such "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "2.2",
+      "depth": 1,
+      "heading": "Customer Materials",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may copy, display, modify, and use Customer Materials only as needed to provide the Services. "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is responsible for the accuracy and content of Customer Materials."
+        }
+      ]
+    },
+    {
+      "number": "2.3",
+      "depth": 1,
+      "heading": "Pre-Existing Materials",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "To the extent "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " incorporates Pre-Existing Materials into "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " grants "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " a non-exclusive, non-transferrable, perpetual, irrevocable, worldwide license to use Pre-Existing Materials only as necessary to use the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " according to this Agreement."
+        }
+      ]
+    },
+    {
+      "number": "2.4",
+      "depth": 1,
+      "heading": "Third-Party Materials",
+      "segments": []
+    },
+    {
+      "number": "2.4.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may incorporate Third-Party Materials into "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " only if allowed in the SOW and as authorized by "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " in writing (including by email)."
+        }
+      ]
+    },
+    {
+      "number": "2.4.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " is responsible for obtaining all rights, licenses, consents, approvals, and authorizations necessary to use and incorporate the Third-Party Materials procured by "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and incorporated into the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": ". This includes securing the ability to grant "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " rights in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " under this Agreement and ensuring that "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " has all rights necessary in these "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": "-procured Third-Party Materials so that "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " may use "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " according to this Agreement."
+        }
+      ]
+    },
+    {
+      "number": "2.4.c",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is responsible for obtaining all rights, licenses, consents, approvals, and authorizations necessary to use and incorporate the Third-Party Materials procured by "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " and incorporated into the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": ". This includes securing the ability to grant "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " rights in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": "-procured Third-Party Materials so "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " can incorporate these Third-Party Materials into "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": ". "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will reasonably assist "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " in obtaining the necessary rights, licenses, consents, approvals, and authorizations for the Third-Party Materials that "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " recommends but that "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " procures."
+        }
+      ]
+    },
+    {
+      "number": "2.5",
+      "depth": 1,
+      "heading": "Feedback and Usage Data",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " may, but is not required to, give "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " Feedback, in which case "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " gives Feedback \"AS IS\". "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may use all Feedback freely without any restriction or obligation. In addition, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may collect and analyze Usage Data, and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may freely use Usage Data to maintain, improve, and enhance "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " products and services without restriction or obligation. However, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may only share Usage Data with others if the Usage Data is aggregated and does not identify "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "2.6",
+      "depth": 1,
+      "heading": "Reservation of Rights",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except for (a) "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " ownership of "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " (if any) under Section 2.1 (Deliverables); (b) "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " rights to use Customer Materials in Section 2.2 (Customer Materials); and (c) "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " rights to Pre-Existing Materials in Section 2.3 (Pre-Existing Materials), neither party transfers any rights in any of their products, data, or any other intellectual property."
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "depth": 0,
+      "heading": "Privacy & Security",
+      "segments": []
+    },
+    {
+      "number": "3.1",
+      "depth": 1,
+      "heading": "Personal Data",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If the parties have a "
+        },
+        {
+          "kind": "variable",
+          "text": "DPA",
+          "key": "dpa"
+        },
+        {
+          "kind": "text",
+          "text": ", each party will comply with its obligations in the "
+        },
+        {
+          "kind": "variable",
+          "text": "DPA",
+          "key": "dpa"
+        },
+        {
+          "kind": "text",
+          "text": ", the terms of the "
+        },
+        {
+          "kind": "variable",
+          "text": "DPA",
+          "key": "dpa"
+        },
+        {
+          "kind": "text",
+          "text": " will control each party’s rights and obligations as to Personal Data, and the terms of the "
+        },
+        {
+          "kind": "variable",
+          "text": "DPA",
+          "key": "dpa"
+        },
+        {
+          "kind": "text",
+          "text": " will control in the event of any conflict with this Agreement."
+        }
+      ]
+    },
+    {
+      "number": "3.2",
+      "depth": 1,
+      "heading": "Security",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will comply with the "
+        },
+        {
+          "kind": "variable",
+          "text": "Security Policy",
+          "key": "securityPolicy"
+        },
+        {
+          "kind": "text",
+          "text": ", if any."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "depth": 0,
+      "heading": "Payment & Taxes",
+      "segments": []
+    },
+    {
+      "number": "4.1",
+      "depth": 1,
+      "heading": "Fees and Invoices",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Unless the currency is specified in the SOW, all "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": " are in U.S. Dollars and are exclusive of taxes. Except for the prorated refund of prepaid "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": " allowed with specific termination rights, "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": " are non-refundable. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will send invoices for "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": " as described in the SOW."
+        }
+      ]
+    },
+    {
+      "number": "4.2",
+      "depth": 1,
+      "heading": "Payment",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " will pay "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " the "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": " and taxes in each invoice in U.S. Dollars, unless the SOW specifies a different currency, within the "
+        },
+        {
+          "kind": "variable",
+          "text": "Payment Period",
+          "key": "paymentPeriod"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "4.3",
+      "depth": 1,
+      "heading": "Taxes",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is responsible for all duties, taxes, and levies that apply to "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": ", including sales, use, VAT, GST, or withholding, that "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " itemizes and includes in an invoice. However, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is not responsible for "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " income taxes."
+        }
+      ]
+    },
+    {
+      "number": "4.4",
+      "depth": 1,
+      "heading": "Payment Dispute",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " has a good-faith disagreement about the amounts charged on an invoice, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " must notify "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " about the dispute during the "
+        },
+        {
+          "kind": "variable",
+          "text": "Payment Period",
+          "key": "paymentPeriod"
+        },
+        {
+          "kind": "text",
+          "text": " for the invoice and must pay all undisputed amounts on time. The parties will work together to resolve the dispute within 15 days after the end of the "
+        },
+        {
+          "kind": "variable",
+          "text": "Payment Period",
+          "key": "paymentPeriod"
+        },
+        {
+          "kind": "text",
+          "text": ". If no resolution is agreed, each party may pursue any remedies available under the Agreement, the applicable SOW, or Applicable Laws."
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "depth": 0,
+      "heading": "Term & Termination",
+      "segments": []
+    },
+    {
+      "number": "5.1",
+      "depth": 1,
+      "heading": "Term",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This Agreement will start on the "
+        },
+        {
+          "kind": "variable",
+          "text": "Effective Date",
+          "key": "effectiveDate"
+        },
+        {
+          "kind": "text",
+          "text": " and continue until 12 months have elapsed since the end of the latest "
+        },
+        {
+          "kind": "variable",
+          "text": "SOW Term",
+          "key": "sowTerm"
+        },
+        {
+          "kind": "text",
+          "text": " end date."
+        }
+      ]
+    },
+    {
+      "number": "5.2",
+      "depth": 1,
+      "heading": "Termination",
+      "segments": []
+    },
+    {
+      "number": "5.2.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Either party may terminate this Agreement or an SOW immediately if the other party (i) fails to cure a material breach of the Agreement or SOW within 30 days after receiving notice of the breach; (ii) materially breaches the Agreement or SOW in a manner that cannot be cured; (iii) dissolves or stops conducting business without a successor; (iv) makes an assignment for the benefit of creditors; or (v) becomes the debtor in insolvency, receivership, or bankruptcy proceedings that continue for more than 60 days."
+        }
+      ]
+    },
+    {
+      "number": "5.2.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Either party may terminate an affected SOW immediately if a Force Majeure Event prevents "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " from providing the Services for 30 or more consecutive days."
+        }
+      ]
+    },
+    {
+      "number": "5.2.c",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Either party may terminate this Agreement for any or no reason if there are no active SOWs."
+        }
+      ]
+    },
+    {
+      "number": "5.2.d",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "A party must notify the other of its reason for termination."
+        }
+      ]
+    },
+    {
+      "number": "5.3",
+      "depth": 1,
+      "heading": "Effect of Termination",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Upon any expiration or termination:"
+        }
+      ]
+    },
+    {
+      "number": "5.3.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Termination of the Agreement pursuant to Section 5.2(a) or the Key Terms will automatically terminate all SOWs."
+        }
+      ]
+    },
+    {
+      "number": "5.3.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will no longer have to provide the Services."
+        }
+      ]
+    },
+    {
+      "number": "5.3.c",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Each Recipient will return or destroy Discloser’s Confidential Information in its possession or control."
+        }
+      ]
+    },
+    {
+      "number": "5.3.d",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except where "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " terminates pursuant to Section 5.2(a), "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will submit a final invoice for all outstanding "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": " accrued before termination and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " will pay the invoice according to Section 4 (Payment & Taxes)."
+        }
+      ]
+    },
+    {
+      "number": "5.3.e",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except where "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " terminates pursuant to Section 5.2(a), "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will issue a refund for any unearned, prepaid "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "5.4",
+      "depth": 1,
+      "heading": "Survival",
+      "segments": []
+    },
+    {
+      "number": "5.4.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The following sections will survive expiration or termination of the Agreement: Section 2.1 (Deliverables), Section 2.3 (Pre-Existing Materials), Section 2.5 (Feedback and Usage Data), Section 2.6 (Reservation of Rights), Section 4 (Payment & Taxes) for fees accrued or payable before expiration or termination, Section 5.3 (Effect of Termination), Section 5.4 (Survival), Section 6 (Representations & Warranties), Section 7 (Disclaimer of Warranties), Section 8 (Limitation of Liability), Section 9 (Indemnification), Section 10 (Insurance) for the time period specified, Section 11 (Confidentiality), Section 12 (General Terms), Section 13 (Definitions), and the portions of a Cover Page referenced by these sections."
+        }
+      ]
+    },
+    {
+      "number": "5.4.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Each Recipient may retain Discloser’s Confidential Information in accordance with its standard backup or record retention policies maintained in the ordinary course of business or as required by Applicable Laws, in which case Section 3 (Privacy & Security) and Section 11 (Confidentiality) will continue to apply to retained Confidential Information."
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "depth": 0,
+      "heading": "Representations & Warranties",
+      "segments": []
+    },
+    {
+      "number": "6.1",
+      "depth": 1,
+      "heading": "Mutual",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Each party represents and warrants to the other that: (a) it has the legal power and authority to enter into this Agreement; (b) it is duly organized, validly existing, and in good standing under the Applicable Laws of the jurisdiction of its origin; (c) it will comply with all Applicable Laws in performing its obligations or exercising its rights in this Agreement; and (d) it will comply with the "
+        },
+        {
+          "kind": "variable",
+          "text": "Additional Warranties",
+          "key": "additionalWarranties"
+        }
+      ]
+    },
+    {
+      "number": "6.2",
+      "depth": 1,
+      "heading": "From Customer",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " represents and warrants to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " that (a) "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " use of Customer Materials and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": "-procured Third-Party Materials under this Agreement does not and will not infringe or misappropriate anyone else's copyright, trademark, trade secret, or right of publicity; and (b) it has all rights necessary to provide Customer Materials and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": "-procured Third-Party Materials under Section 2."
+        }
+      ]
+    },
+    {
+      "number": "6.3",
+      "depth": 1,
+      "heading": "From Provider",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " represents and warrants to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " that: (a) it will perform the Services in a timely, competent, and professional manner; (b) the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " (if any, however excluding Customer Materials and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": "-procured Third-Party Materials) do not and will not infringe or misappropriate anyone else’s copyright, trademark, trade secret, or right of publicity; (c) the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " (if any) will conform to the requirements in the SOW; and (d) it has all rights necessary to perform the Services and convey the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " (if any, however excluding Customer Materials and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": "-procured Third-Party Materials) under Section 2 (Intellectual Property)."
+        }
+      ]
+    },
+    {
+      "number": "6.4",
+      "depth": 1,
+      "heading": "Warranty Remedy",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " breaches the warranty in Section 6.3(c), "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " must give "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " notice (with enough detail for "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " to understand or replicate the issue) within 45 days of discovering the issue. Within 45 days of receiving sufficient details of the warranty issue, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will reperform the Services. If "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " cannot resolve the issue, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " may terminate the affected SOW and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will pay to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " a prorated refund of prepaid "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": " for the remainder of the "
+        },
+        {
+          "kind": "variable",
+          "text": "SOW Term",
+          "key": "sowTerm"
+        },
+        {
+          "kind": "text",
+          "text": ". "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " reperformance obligations and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " termination right are "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " only remedies if "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " does not meet the warranty in Section 6.3(c)."
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "depth": 0,
+      "heading": "Disclaimer of Warranties",
+      "segments": []
+    },
+    {
+      "number": "7.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except for the warranties in Section 6 (Representations & Warranties), "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " each "
+        },
+        {
+          "kind": "text",
+          "text": "disclaim all other warranties, whether express or implied, including the implied warranties of merchantability, fitness for a particular purpose, title, and non-infringement",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": ". These disclaimers apply to the maximum extent permitted by Applicable Laws."
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "depth": 0,
+      "heading": "Limitation of Liability",
+      "segments": []
+    },
+    {
+      "number": "8.1",
+      "depth": 1,
+      "heading": "Liability Caps",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If there are ",
+          "strong": true
+        },
+        {
+          "kind": "variable",
+          "text": "Increased Claims",
+          "key": "increasedClaims",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": ", each party’s total cumulative liability for the ",
+          "strong": true
+        },
+        {
+          "kind": "variable",
+          "text": "Increased Claims",
+          "key": "increasedClaims",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " arising out of or relating to this Agreement will not be more than the ",
+          "strong": true
+        },
+        {
+          "kind": "variable",
+          "text": "Increased Cap Amount",
+          "key": "increasedCapAmount",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": ". Each party’s total cumulative liability for all other claims arising out of or relating to this Agreement will not be more than the ",
+          "strong": true
+        },
+        {
+          "kind": "variable",
+          "text": "General Cap Amount",
+          "key": "generalCapAmount",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": ".",
+          "strong": true
+        }
+      ]
+    },
+    {
+      "number": "8.2",
+      "depth": 1,
+      "heading": "Damages Waiver",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Each party’s liability for any claim or liability arising out of or relating to this Agreement will be limited to the fullest extent permitted by Applicable Laws. Under no circumstances will either party be liable to the other for lost profits or revenues, or for consequential, special, indirect, exemplary, punitive, or incidental damages relating to this Agreement, even if the party is informed of the possibility of this type of damage in advance.",
+          "strong": true
+        }
+      ]
+    },
+    {
+      "number": "8.3",
+      "depth": 1,
+      "heading": "Exceptions",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The liability caps in Section 8.1 do not apply to any "
+        },
+        {
+          "kind": "variable",
+          "text": "Unlimited Claims",
+          "key": "unlimitedClaims"
+        },
+        {
+          "kind": "text",
+          "text": ". The damages waiver in Section 8.2 does not apply to any "
+        },
+        {
+          "kind": "variable",
+          "text": "Increased Claims",
+          "key": "increasedClaims"
+        },
+        {
+          "kind": "text",
+          "text": " or a breach of Section 11 (Confidentiality)."
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "depth": 0,
+      "heading": "Indemnification",
+      "segments": []
+    },
+    {
+      "number": "9.1",
+      "depth": 1,
+      "heading": "Protection by Provider",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will indemnify, defend, and hold harmless "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " from and against all "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider Covered Claims",
+          "key": "providerCoveredClaim"
+        },
+        {
+          "kind": "text",
+          "text": " made by someone other than "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " or its Affiliates, and all out-of-pocket damages, awards, settlements, costs, and expenses, including reasonable attorneys’ fees and other legal expenses, that arise from the "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider Covered Claim",
+          "key": "providerCoveredClaim"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "9.2",
+      "depth": 1,
+      "heading": "Protection by Customer",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " will indemnify, defend, and hold harmless "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " from and against all "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer Covered Claims",
+          "key": "customerCoveredClaim"
+        },
+        {
+          "kind": "text",
+          "text": " made by someone other than "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " or its Affiliates, and all out-of-pocket damages, awards, settlements, costs, and expenses, including reasonable attorneys’ fees and other legal expenses, that arise from the "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer Covered Claim",
+          "key": "customerCoveredClaim"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "9.3",
+      "depth": 1,
+      "heading": "Procedure",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The Indemnifying Party’s obligations in this section are contingent upon the Protected Party: (a) promptly notifying the Indemnifying Party of each Covered Claim for which it seeks protection; (b) providing reasonable assistance to the Indemnifying Party at the Indemnifying Party’s expense; and (c) giving the Indemnifying Party sole control over the defense and settlement of each Covered Claim. A Protected Party may participate in a Covered Claim for which it seeks protection with its own attorneys only at its own expense. The Indemnifying Party may not agree to any settlement of a Covered Claim that contains an admission of fault or otherwise materially and adversely impacts the Protected Party without the prior written consent of the Protected Party."
+        }
+      ]
+    },
+    {
+      "number": "9.4",
+      "depth": 1,
+      "heading": "Exclusive Remedy",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This Section 9 (Indemnification) describes each Protected Party’s exclusive remedy and each Indemnifying Party’s entire liability for a Covered Claim."
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "depth": 0,
+      "heading": "Insurance",
+      "segments": []
+    },
+    {
+      "number": "10.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "During the term of the Agreement and for six months after, each party will carry commercial insurance policies with coverage limits that meet the relevant "
+        },
+        {
+          "kind": "variable",
+          "text": "Insurance Minimums",
+          "key": "insuranceMinimums"
+        },
+        {
+          "kind": "text",
+          "text": " required in the SOW, if any. Upon request, each party will give the other a certificate of insurance evidencing its insurance policies that meet the required "
+        },
+        {
+          "kind": "variable",
+          "text": "Insurance Minimums",
+          "key": "insuranceMinimums"
+        },
+        {
+          "kind": "text",
+          "text": ". A party's insurance policies will not be considered as evidence of its liability. Insurance coverage will be on a date of occurrence form and waive rights of subrogation or crossclaim."
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "depth": 0,
+      "heading": "Confidentiality",
+      "segments": []
+    },
+    {
+      "number": "11.1",
+      "depth": 1,
+      "heading": "Non-Use and Non-Disclosure",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Unless otherwise authorized in the Agreement, Recipient will (a) only use Discloser’s Confidential Information to fulfill its obligations or exercise its rights under this Agreement; and (b) not disclose Discloser’s Confidential Information to anyone else. In addition, Recipient will protect Discloser’s Confidential Information using at least the same protections Recipient uses for its own similar information but no less than a reasonable standard of care."
+        }
+      ]
+    },
+    {
+      "number": "11.2",
+      "depth": 1,
+      "heading": "Exclusions",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Confidential Information does not include information that (a) Recipient knew without any obligation of confidentiality before disclosure by Discloser; (b) is or becomes publicly known and generally available through no fault of Recipient; (c) Recipient receives under no obligation of confidentiality from someone else who is authorized to make the disclosure; or (d) Recipient independently developed without use of or reference to Discloser’s Confidential Information."
+        }
+      ]
+    },
+    {
+      "number": "11.3",
+      "depth": 1,
+      "heading": "Required Disclosures",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Recipient may disclose Discloser’s Confidential Information to the extent required by Applicable Laws if, unless prohibited by Applicable Laws, Recipient provides the Discloser reasonable advance notice of the required disclosure and reasonably cooperates, at the Discloser’s expense, with the Discloser’s efforts to obtain confidential treatment for the Confidential Information."
+        }
+      ]
+    },
+    {
+      "number": "11.4",
+      "depth": 1,
+      "heading": "Permitted Disclosures",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Recipient may disclose Discloser’s Confidential Information to employees, advisors, contractors, and representatives who each have a need to know the Confidential Information, but only if the person or entity is bound by confidentiality obligations at least as protective as those in this Section 11 and Recipient remains responsible for everyone’s compliance with the terms of this Section 11."
+        }
+      ]
+    },
+    {
+      "number": "12",
+      "depth": 0,
+      "heading": "General Terms",
+      "segments": []
+    },
+    {
+      "number": "12.1",
+      "depth": 1,
+      "heading": "Entire Agreement",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This Agreement is the only agreement between the parties about its subject and this Agreement supersedes all prior or contemporaneous statements (whether in writing or not) about its subject. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " expressly rejects any terms included in "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " purchase order or similar document, which may only be used for accounting or administrative purposes."
+        }
+      ]
+    },
+    {
+      "number": "12.2",
+      "depth": 1,
+      "heading": "Modifications, Severability, and Waiver",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Any waiver, modification, or change to the Agreement must be in writing and signed or electronically accepted by each party. However, this does not limit "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " or "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " ability to update an SOW by following the Change Order procedures. If any term of this Agreement is determined to be invalid or unenforceable by a relevant court or governing body, the remaining terms of this Agreement will remain in full force and effect. The failure of a party to enforce a term or to exercise an option or right in this Agreement will not constitute a waiver by that party of the term, option, or right."
+        }
+      ]
+    },
+    {
+      "number": "12.3",
+      "depth": 1,
+      "heading": "Governing Law and Chosen Courts",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The "
+        },
+        {
+          "kind": "variable",
+          "text": "Governing Law",
+          "key": "governingLaw"
+        },
+        {
+          "kind": "text",
+          "text": " will govern all interpretations and disputes about this Agreement, without regard to its conflict of laws provisions. The parties will bring any legal suit, action, or proceeding about this Agreement or an SOW in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Chosen Courts",
+          "key": "chosenCourts"
+        },
+        {
+          "kind": "text",
+          "text": " and each party irrevocably submits to the exclusive jurisdiction of the "
+        },
+        {
+          "kind": "variable",
+          "text": "Chosen Courts",
+          "key": "chosenCourts"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "12.4",
+      "depth": 1,
+      "heading": "Injunctive Relief",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Despite Section 12.3 (Governing Law and Chosen Courts), a breach of Section 11 (Confidentiality) or the violation of a party’s intellectual property rights may cause irreparable harm for which monetary damages cannot adequately compensate. As a result, upon the actual or threatened breach of Section 11 (Confidentiality) or violation of a party’s intellectual property rights, the non-breaching or non-violating party may seek appropriate equitable relief, including an injunction, in any court of competent jurisdiction without the need to post a bond and without limiting its other rights or remedies."
+        }
+      ]
+    },
+    {
+      "number": "12.5",
+      "depth": 1,
+      "heading": "Non-Exhaustive Remedies",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except where the Agreement provides for an exclusive remedy, seeking or exercising a remedy does not limit the other rights or remedies available to a party."
+        }
+      ]
+    },
+    {
+      "number": "12.6",
+      "depth": 1,
+      "heading": "Assignment",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Neither party may assign any rights or obligations under this Agreement or any SOW without the prior written consent of the other party. However, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " may assign this Agreement upon notice if "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " undergoes a merger, change of control, reorganization, or sale of all or substantially all its equity, business, or assets to which this Agreement relates. Any attempted but non-permitted assignment is void. This Agreement will be binding upon and inure to the benefit of the parties and their permitted successors and assigns."
+        }
+      ]
+    },
+    {
+      "number": "12.7",
+      "depth": 1,
+      "heading": "No Publicity",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Neither party may publicly announce the existence of this Agreement or any SOW without the prior written approval of the other party."
+        }
+      ]
+    },
+    {
+      "number": "12.8",
+      "depth": 1,
+      "heading": "Notices",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Any notice, request, or approval about the Agreement must be in writing and sent to the Notice Address. Notices will be deemed given (a) upon confirmed delivery if by email, registered or certified mail, or personal delivery; or (b) two days after mailing if by overnight commercial delivery."
+        }
+      ]
+    },
+    {
+      "number": "12.9",
+      "depth": 1,
+      "heading": "Independent Contractors",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The parties are independent contractors, not agents, partners, or joint venturers. Neither party is authorized to bind the other to any liability or obligation."
+        }
+      ]
+    },
+    {
+      "number": "12.10",
+      "depth": 1,
+      "heading": "No Third-Party Beneficiary",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "There are no third-party beneficiaries of this Agreement."
+        }
+      ]
+    },
+    {
+      "number": "12.11",
+      "depth": 1,
+      "heading": "Force Majeure",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Neither party will be liable for a delay or failure to perform its obligations of this Agreement if caused by a Force Majeure Event. However, this section does not excuse "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " obligations to pay "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "12.12",
+      "depth": 1,
+      "heading": "Export Controls",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " may not remove or export from the United States or allow the export or re-export of the Service, "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": ", or any related technology or materials in violation of any restrictions, laws, or regulations of the United States Department of Commerce, the United States Department of Treasury Office of Foreign Assets Control, or any other United States or foreign agency or authority."
+        }
+      ]
+    },
+    {
+      "number": "12.13",
+      "depth": 1,
+      "heading": "Anti-Bribery",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Neither party will take any action that would be a violation of any Applicable Laws that prohibit the offering, giving, promising to offer or give, or receiving, directly or indirectly, money or anything of value to any third party to assist "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " or "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " in retaining or obtaining business. Examples of these kinds of laws include the U.S. Foreign Corrupt Practices Act and the UK Bribery Act 2010."
+        }
+      ]
+    },
+    {
+      "number": "12.14",
+      "depth": 1,
+      "heading": "Titles and Interpretation",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Section titles are for convenience and reference only. All uses of \"including\" and similar phrases are non-exhaustive and without limitation."
+        }
+      ]
+    },
+    {
+      "number": "12.15",
+      "depth": 1,
+      "heading": "Signature",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This Agreement may be signed in counterparts, including by electronic copies or acceptance mechanism. Each copy will be deemed an original and all copies, when taken together, will be the same agreement."
+        }
+      ]
+    },
+    {
+      "number": "13",
+      "depth": 0,
+      "heading": "Definitions",
+      "segments": []
+    },
+    {
+      "number": "13.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Affiliate\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means an entity that, directly or indirectly, controls, is under the control of, or is under common control with a party, where control means having more than fifty percent (50%) of the voting stock or other ownership interest."
+        }
+      ]
+    },
+    {
+      "number": "13.2",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Agreement\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means these Standard Terms, the Key Terms between "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": ", and the policies and documents referenced in or attached to the Key Terms."
+        }
+      ]
+    },
+    {
+      "number": "13.3",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Applicable Laws\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the laws, rules, regulations, court orders, and other binding requirements of a relevant government authority."
+        }
+      ]
+    },
+    {
+      "number": "13.4",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Change Order\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a document that identifies the SOW being changed, describes what the parties are changing, and is approved by an authorized representative of each party."
+        }
+      ]
+    },
+    {
+      "number": "13.5",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Confidential Information\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means information in any form disclosed by or on behalf of a Discloser, including before the "
+        },
+        {
+          "kind": "variable",
+          "text": "Effective Date",
+          "key": "effectiveDate"
+        },
+        {
+          "kind": "text",
+          "text": ", to a Recipient in connection with this Agreement that (a) the Discloser identifies as \"confidential\", \"proprietary\", or the like; or (b) should be reasonably understood as confidential or proprietary due to its nature and the circumstances of its disclosure. Confidential Information includes the existence of this Agreement and the information on each Cover Page."
+        }
+      ]
+    },
+    {
+      "number": "13.6",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Cover Page\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a document that is signed or electronically accepted by the parties that incorporates these Standard Terms, identifies "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": ", and may include a SOW, Key Terms, or both."
+        }
+      ]
+    },
+    {
+      "number": "13.7",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Covered Claim\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means either a "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider Covered Claim",
+          "key": "providerCoveredClaim"
+        },
+        {
+          "kind": "text",
+          "text": " or "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer Covered Claim",
+          "key": "customerCoveredClaim"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "13.8",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Customer Materials\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means data, information, or materials owned or provided by or on behalf of "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " for use with the Services, but excludes Feedback and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": "-procured Third-Party Materials."
+        }
+      ]
+    },
+    {
+      "number": "13.9",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Discloser\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a party to this Agreement when the party is providing or disclosing Confidential Information to the other party."
+        }
+      ]
+    },
+    {
+      "number": "13.10",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Feedback\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means suggestions, feedback, or comments about the Services or related offerings."
+        }
+      ]
+    },
+    {
+      "number": "13.11",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Force Majeure Event\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means an unforeseen event outside a party’s reasonable control where the affected party took reasonable measures to avoid or mitigate the impacts of the event. Examples of these kinds of events include unpredicted natural disaster like a major earthquake, war, pandemic, riot, act of terrorism, or public utility or internet failure."
+        }
+      ]
+    },
+    {
+      "number": "13.12",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Indemnifying Party\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a party to this Agreement when the party is providing protection for a particular Covered Claim."
+        }
+      ]
+    },
+    {
+      "number": "13.13",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Key Terms\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a Cover Page that includes the key legal details and definitions for this Agreement that are not defined in the SOW or Standard Terms. The Key Terms may include details about Covered Claims, set the "
+        },
+        {
+          "kind": "variable",
+          "text": "Governing Law",
+          "key": "governingLaw"
+        },
+        {
+          "kind": "text",
+          "text": ", or contain other legal details about this Agreement."
+        }
+      ]
+    },
+    {
+      "number": "13.14",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Pre-Existing Materials\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means any information, tools, materials, or intellectual property that "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " developed or owned before the "
+        },
+        {
+          "kind": "variable",
+          "text": "Effective Date",
+          "key": "effectiveDate"
+        },
+        {
+          "kind": "text",
+          "text": " or developed after the "
+        },
+        {
+          "kind": "variable",
+          "text": "Effective Date",
+          "key": "effectiveDate"
+        },
+        {
+          "kind": "text",
+          "text": " that are independent from or outside the scope of the Agreement, and any derivatives of these items that are not unique to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " or that have generally applicable use and do not incorporate or disclose any "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " Confidential Information."
+        }
+      ]
+    },
+    {
+      "number": "13.15",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Protected Party\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a party to this Agreement when the party is receiving the benefit of protection for a particular Covered Claim."
+        }
+      ]
+    },
+    {
+      "number": "13.16",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Recipient\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a party to this Agreement when the party receives Confidential Information from the other party."
+        }
+      ]
+    },
+    {
+      "number": "13.17",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Services\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the services described in a SOW, including the creation of "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": " (if any)."
+        }
+      ]
+    },
+    {
+      "number": "13.18",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"SOW\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a Cover Page that includes the key business details and definitions for this Agreement that are not defined in the Key Terms or Standard Terms. A SOW may include details about the "
+        },
+        {
+          "kind": "variable",
+          "text": "Deliverables",
+          "key": "deliverable"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": ", or other details about the Services."
+        }
+      ]
+    },
+    {
+      "number": "13.19",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Subcontractors\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means other people or companies engaged by "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " to perform some of the Services, including "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " Affiliates."
+        }
+      ]
+    },
+    {
+      "number": "13.20",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Third-Party Materials\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means any information, tools, materials, or intellectual property owned by anyone other than "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": ", its Affiliates, or "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "13.21",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Usage Data\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means data and information about the provision, use, and performance of the Services based on "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer's",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " use of the Services."
+        }
+      ]
+    }
+  ]
+}

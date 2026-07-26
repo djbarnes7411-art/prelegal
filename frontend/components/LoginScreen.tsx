@@ -7,7 +7,7 @@ import { ApiError, login, signup } from "@/lib/api";
 import { clearSession, storeSession, useSession } from "@/lib/session";
 
 /** Where signing in takes you. The only document in the platform so far. */
-const WORKSPACE_PATH = "/nda/";
+const WORKSPACE_PATH = "/draft/";
 
 type Mode = "signIn" | "createAccount";
 

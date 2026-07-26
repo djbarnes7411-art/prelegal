@@ -6,7 +6,7 @@
  * points `NEXT_PUBLIC_API_BASE_URL` at http://localhost:8000 instead.
  */
 
-import type { CoverPageData } from "@/lib/nda/types";
+import type { DocumentState } from "@/lib/documents/types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
 
@@ -110,35 +110,44 @@ export interface ChatMessage {
 export interface ChatTurn {
   reply: string;
   /**
+   * The document the assistant settled on, if it settled on one this turn.
+   *
+   * Null until the user has chosen. Always one of the catalog's own slugs — the
+   * backend drops anything else rather than naming a document we cannot draft.
+   */
+  documentSlug: string | null;
+  /**
    * The fields the assistant changed, ready to merge.
    *
    * Every value here is complete — a party arrives with all four of its fields
    * whether or not the assistant mentioned them all — because the workspace
-   * merges shallowly. The backend does that assembling, against the same cover
-   * page this request sent, which is why nothing here has to be pieced back
+   * merges shallowly. The backend does that assembling, against the same state
+   * this request sent, which is why nothing here has to be pieced back
    * together. It is also the only place the model's answer is checked, so this
    * type describes what survived rather than what was said.
    */
-  patch: Partial<CoverPageData>;
+  patch: DocumentState;
 }
 
 /**
  * Sends one turn of the conversation.
  *
- * Nothing is remembered between calls, so each one carries both the transcript
- * and the agreement as it currently stands.
+ * Nothing is remembered between calls, so each one carries the whole context:
+ * the transcript, which document is being drafted, and what it currently holds.
+ * A null `documentSlug` is how the caller asks "which document do I need?".
  */
 export async function sendChatTurn(
   messages: ChatMessage[],
-  coverPage: CoverPageData,
+  documentSlug: string | null,
+  fields: DocumentState,
 ): Promise<ChatTurn> {
   let response: Response;
 
   try {
-    response = await fetch(`${BASE_URL}/api/nda/chat`, {
+    response = await fetch(`${BASE_URL}/api/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages, coverPage }),
+      body: JSON.stringify({ messages, documentSlug, fields }),
     });
   } catch {
     throw new ApiError("Could not reach the server. Is the backend running?", 0);
@@ -157,6 +166,14 @@ export async function sendChatTurn(
     );
   }
 
-  const payload = body as { reply?: string; patch?: Partial<CoverPageData> };
-  return { reply: payload.reply ?? "", patch: payload.patch ?? {} };
+  const payload = body as {
+    reply?: string;
+    documentSlug?: string | null;
+    patch?: DocumentState;
+  };
+  return {
+    reply: payload.reply ?? "",
+    documentSlug: payload.documentSlug ?? null,
+    patch: payload.patch ?? {},
+  };
 }

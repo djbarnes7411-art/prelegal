@@ -1,0 +1,102 @@
+# Note on scope: "Approved Subprocessors" is a table in the published DPA — a
+# list of {name, country, processing task} rows. This product has no
+# repeating-group field type yet, so it is gathered as free text and printed as
+# the user wrote it. That is a real limitation of the generated document, not of
+# the underlying standard terms. See CLAUDE.md.
+
+slug = "data-processing-agreement"
+name = "Data Processing Agreement"
+template = "templates/data-processing-agreement.md"
+
+summary = "A GDPR data processing agreement covering how a vendor processes personal data on a customer's behalf, including transfers out of the EEA."
+aliases = [
+  "DPA",
+  "GDPR agreement",
+  "data protection agreement",
+  "personal data",
+  "privacy agreement",
+  "subprocessors",
+  "standard contractual clauses",
+  "SCCs",
+]
+attachment = "A DPA supplements the main agreement between the two companies rather than standing on its own."
+
+[fields.provider]
+type = "party"
+label = "the company processing the data"
+required = true
+
+[fields.customer]
+type = "party"
+label = "the company whose data it is"
+required = true
+
+[fields.agreement]
+type = "text"
+label = "the agreement this DPA attaches to"
+hint = "The name and date of the underlying contract between the two companies."
+required = true
+
+[fields.categoriesOfPersonalData]
+type = "longText"
+label = "what kinds of personal data are processed"
+hint = "Such as names, email addresses, IP addresses, usage records."
+required = true
+
+[fields.categoriesOfDataSubjects]
+type = "longText"
+label = "whose personal data it is"
+hint = "Such as the customer's employees, its end users, or its own customers."
+required = true
+
+[fields.natureAndPurposeOfProcessing]
+type = "longText"
+label = "what the processing is for"
+required = true
+
+[fields.durationOfProcessing]
+type = "text"
+label = "how long the data is processed for"
+hint = "Commonly 'for the term of the Agreement, plus any retention period'."
+required = true
+
+[fields.approvedSubprocessors]
+type = "longText"
+label = "which subprocessors are approved"
+hint = "For each one, its name, the country it operates in, and what it does. List them all in one answer."
+required = false
+
+[fields.providerSecurityContact]
+type = "text"
+label = "who to contact about a security incident"
+hint = "An email address reaches someone quickly enough to matter here."
+required = false
+
+[fields.securityPolicy]
+type = "text"
+label = "the security policy that applies"
+hint = "Name it or link to it."
+required = false
+
+[fields.governingMemberState]
+type = "text"
+label = "the EU member state whose law governs the transfer clauses"
+hint = "Such as Ireland or Germany. Only relevant if personal data leaves the EEA."
+required = false
+
+[fields.frequencyOfTransfer]
+type = "text"
+label = "how often data is transferred"
+hint = "Such as 'continuous' or 'monthly batch export'."
+required = false
+
+[fields.specialCategoryData]
+type = "longText"
+label = "any special category data involved"
+hint = "Health, biometric, racial or ethnic origin, political opinions, and the like. Leave it out if none is processed."
+required = false
+
+[fields.specialCategoryDataRestrictionsOrSafeguards]
+type = "longText"
+label = "the extra safeguards for that special category data"
+required = false

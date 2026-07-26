@@ -77,7 +77,7 @@ describe("signing in", () => {
 
     await submit(user, "Sign in");
 
-    await waitFor(() => expect(push).toHaveBeenCalledWith("/nda/"));
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/draft/"));
     expect(readSession()).toEqual(ADA);
   });
 
@@ -171,7 +171,7 @@ describe("when the server refuses", () => {
     login.mockResolvedValue(ADA);
     await user.click(screen.getByRole("button", { name: "Sign in" }));
 
-    await waitFor(() => expect(push).toHaveBeenCalledWith("/nda/"));
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/draft/"));
   });
 
   it("clears the message when switching form", async () => {
@@ -228,7 +228,7 @@ describe("when already signed in", () => {
 
     await user.click(await screen.findByRole("button", { name: "Continue" }));
 
-    expect(push).toHaveBeenCalledWith("/nda/");
+    expect(push).toHaveBeenCalledWith("/draft/");
   });
 
   it("signing out returns to the form and forgets the account", async () => {
