@@ -16,18 +16,29 @@
   --paper-edge: #ded9cc;
   --ink: #1a1a1e;
   --ink-soft: #55525a;
+  /* An option the user did not choose — still readable, visibly not selected. */
+  --ink-unchosen: #6f6d76;
   /* The second ink */
   --hand: #2246a0;
-  --hand-blank: #9aa4bd;
+  /*
+   * Blanks and unchosen options carry real content — most of the document is
+   * blank on first load — so these clear 4.5:1 against --paper (4.58 and 4.92)
+   * rather than being styled as decoration.
+   */
+  --hand-blank: #6b7290;
 
   /* Machine */
   --desk: #e4e1d8;
   --panel: #191b21;
   --panel-raised: #22252e;
   --panel-line: #31353f;
+  --panel-line-hover: #414653;
   --panel-text: #d9dce3;
   --panel-muted: #8c93a1;
+  --panel-placeholder: #616878;
   --panel-accent: #7fa5f0;
+  --panel-accent-hover: #9dbaf5;
+  --on-accent: #10131a;
   --alert: #f0836a;
 
   --topbar-h: 3.5rem;
@@ -69,6 +80,12 @@ body {
   outline: 2px solid var(--panel-accent);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* The panel accent is tuned for the dark panel and only reaches 2.4:1 on paper,
+   under the 3:1 minimum for a focus indicator. On paper, focus uses the ink. */
+.doc :focus-visible {
+  outline-color: var(--hand);
 }
 
 /* ------------------------------------------------------------------ *
@@ -232,13 +249,20 @@ fieldset.field > legend {
   color: var(--panel-muted);
 }
 
+/* The three inset surfaces on the panel share one treatment. */
+.field-input,
+.field-textarea,
+.choice-years,
+.party {
+  background: var(--panel-raised);
+  border: 1px solid var(--panel-line);
+  border-radius: var(--radius);
+}
+
 .field-input,
 .field-textarea {
   width: 100%;
   padding: 0.5rem 0.625rem;
-  background: var(--panel-raised);
-  border: 1px solid var(--panel-line);
-  border-radius: var(--radius);
   color: var(--panel-text);
   font: inherit;
   transition: border-color 120ms ease;
@@ -252,12 +276,12 @@ fieldset.field > legend {
 
 .field-input:hover,
 .field-textarea:hover {
-  border-color: #414653;
+  border-color: var(--panel-line-hover);
 }
 
 .field-input::placeholder,
 .field-textarea::placeholder {
-  color: #616878;
+  color: var(--panel-placeholder);
 }
 
 .field-input[aria-invalid="true"],
@@ -300,9 +324,6 @@ fieldset.field > legend {
 .choice-years {
   width: 3.75rem;
   padding: 0.1875rem 0.375rem;
-  background: var(--panel-raised);
-  border: 1px solid var(--panel-line);
-  border-radius: var(--radius);
   color: var(--panel-text);
   font: inherit;
   text-align: center;
@@ -315,9 +336,6 @@ fieldset.field > legend {
 .party {
   margin-top: 1.125rem;
   padding: 1rem;
-  background: var(--panel-raised);
-  border: 1px solid var(--panel-line);
-  border-radius: var(--radius);
 }
 
 .party-name {
@@ -360,7 +378,7 @@ fieldset.field > legend {
   background: var(--panel-accent);
   border: 1px solid var(--panel-accent);
   border-radius: var(--radius);
-  color: #10131a;
+  color: var(--on-accent);
   font: inherit;
   font-weight: 600;
   white-space: nowrap;
@@ -369,7 +387,7 @@ fieldset.field > legend {
 }
 
 .download-button:hover:not(:disabled) {
-  background: #9dbaf5;
+  background: var(--panel-accent-hover);
 }
 
 .download-button:disabled {
@@ -485,7 +503,7 @@ fieldset.field > legend {
 }
 
 .choice-line[data-selected="false"] {
-  color: #9c9aa2;
+  color: var(--ink-unchosen);
 }
 
 .choice-box {
@@ -512,7 +530,6 @@ fieldset.field > legend {
   display: flex;
   gap: 0.875rem;
   margin-bottom: 1.125rem;
-  transition: none;
 }
 
 .clause-number {

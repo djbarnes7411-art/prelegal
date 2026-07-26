@@ -10,10 +10,12 @@ import {
   STANDARD_TERMS,
   type Clause,
 } from "./standard-terms";
-import type {
-  ConfidentialityTerm,
-  CoverPageData,
-  MndaTerm,
+import {
+  isConfidentialityTermSpecified,
+  isMndaTermSpecified,
+  type ConfidentialityTerm,
+  type CoverPageData,
+  type MndaTerm,
 } from "./types";
 
 /* ------------------------------------------------------------------ *
@@ -35,7 +37,7 @@ const MONTHS = [
   "December",
 ];
 
-const SMALL_NUMBERS = [
+const ONES = [
   "zero",
   "one",
   "two",
@@ -47,7 +49,46 @@ const SMALL_NUMBERS = [
   "eight",
   "nine",
   "ten",
+  "eleven",
+  "twelve",
+  "thirteen",
+  "fourteen",
+  "fifteen",
+  "sixteen",
+  "seventeen",
+  "eighteen",
+  "nineteen",
 ];
+
+const TENS = [
+  "",
+  "",
+  "twenty",
+  "thirty",
+  "forty",
+  "fifty",
+  "sixty",
+  "seventy",
+  "eighty",
+  "ninety",
+];
+
+/**
+ * Spells a whole number below one hundred.
+ *
+ * Term lengths in practice are single or low double digit years; anything larger
+ * falls back to digits rather than growing a full number-to-words implementation.
+ */
+function spell(count: number): string {
+  if (!Number.isInteger(count) || count < 0 || count >= 100) {
+    return String(count);
+  }
+  if (count < 20) return ONES[count];
+
+  const tens = TENS[Math.floor(count / 10)];
+  const ones = count % 10;
+  return ones === 0 ? tens : `${tens}-${ONES[ones]}`;
+}
 
 /**
  * Formats an ISO `YYYY-MM-DD` string as "July 26, 2026".
@@ -66,11 +107,10 @@ export function formatIsoDate(iso: string): string {
   return `${monthName} ${Number(day)}, ${year}`;
 }
 
-/** Renders a count the way contracts do: "one (1) year", "three (3) years". */
+/** Renders a count the way contracts do: "one (1) year", "twenty-five (25) years". */
 export function countWithNumeral(count: number, noun: string): string {
-  const word = SMALL_NUMBERS[count] ?? String(count);
   const plural = count === 1 ? noun : `${noun}s`;
-  return `${word} (${count}) ${plural}`;
+  return `${spell(count)} (${count}) ${plural}`;
 }
 
 export function mndaTermPhrase(term: MndaTerm): string {
@@ -120,15 +160,26 @@ function referencesFor(data: CoverPageData): Record<string, Reference> {
       value: formatIsoDate(data.effectiveDate),
       placeholder: "date not yet specified",
     },
+    /*
+     * A term with no usable year count is left unfilled rather than described.
+     * Clearing the years field mid-edit leaves 0 in state, and a clause reading
+     * "the MNDA Term (zero (0) years from the Effective Date)" would assert a
+     * term the user never chose — while the Cover Page above it simultaneously
+     * showed the field as unanswered.
+     */
     mndaTerm: {
       term: "MNDA Term",
-      value: mndaTermPhrase(data.mndaTerm),
-      placeholder: "",
+      value: isMndaTermSpecified(data.mndaTerm)
+        ? mndaTermPhrase(data.mndaTerm)
+        : "",
+      placeholder: "length not yet specified",
     },
     confidentialityTerm: {
       term: "Term of Confidentiality",
-      value: confidentialityTermPhrase(data.confidentialityTerm),
-      placeholder: "",
+      value: isConfidentialityTermSpecified(data.confidentialityTerm)
+        ? confidentialityTermPhrase(data.confidentialityTerm)
+        : "",
+      placeholder: "length not yet specified",
     },
     governingLaw: {
       term: null,
@@ -224,7 +275,9 @@ function tokenize(
 export interface DocumentModel {
   /** "July 26, 2026", or "" if the date is unset. */
   effectiveDate: string;
+  /** "" until a usable term length is chosen. */
   mndaTerm: string;
+  /** "" until a usable term length is chosen. */
   confidentialityTerm: string;
   clauses: RenderedClause[];
 }
@@ -235,8 +288,8 @@ export function renderDocument(data: CoverPageData): DocumentModel {
 
   return {
     effectiveDate: formatIsoDate(data.effectiveDate),
-    mndaTerm: mndaTermPhrase(data.mndaTerm),
-    confidentialityTerm: confidentialityTermPhrase(data.confidentialityTerm),
+    mndaTerm: references.mndaTerm.value,
+    confidentialityTerm: references.confidentialityTerm.value,
     clauses: STANDARD_TERMS.map((clause) => ({
       number: clause.number,
       heading: clause.heading,

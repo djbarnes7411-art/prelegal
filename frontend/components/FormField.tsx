@@ -10,6 +10,40 @@ export function fieldId(key: FieldKey): string {
   return `nda-${key.replace(/\./g, "-")}`;
 }
 
+/** Id of the element holding a field's error message, for `aria-describedby`. */
+function errorId(key: FieldKey): string {
+  return `${fieldId(key)}-error`;
+}
+
+/**
+ * The attributes that tie a control to its error message.
+ *
+ * Every control that can be reported by `validateCoverPage` spreads this, so a
+ * screen reader announces the reason alongside the field rather than leaving the
+ * user at a field that is merely marked wrong.
+ */
+function errorAttributes(name: FieldKey, error?: string) {
+  return {
+    "aria-invalid": error ? (true as const) : undefined,
+    "aria-describedby": error ? errorId(name) : undefined,
+  };
+}
+
+export function FieldError({
+  name,
+  error,
+}: {
+  name: FieldKey;
+  error?: string;
+}) {
+  if (!error) return null;
+  return (
+    <span className="field-error" id={errorId(name)}>
+      {error}
+    </span>
+  );
+}
+
 interface FieldProps {
   name: FieldKey;
   label: string;
@@ -32,14 +66,12 @@ export function Field({
   multiline = false,
 }: FieldProps) {
   const id = fieldId(name);
-  const errorId = `${id}-error`;
 
   const shared = {
     id,
     value,
     placeholder,
-    "aria-invalid": error ? (true as const) : undefined,
-    "aria-describedby": error ? errorId : undefined,
+    ...errorAttributes(name, error),
   };
 
   return (
@@ -62,12 +94,45 @@ export function Field({
           onChange={(event) => onChange(event.target.value)}
         />
       )}
-      {error ? (
-        <span className="field-error" id={errorId}>
-          {error}
-        </span>
-      ) : null}
+      <FieldError name={name} error={error} />
     </div>
+  );
+}
+
+interface YearsInputProps {
+  name: Extract<FieldKey, `${string}.years`>;
+  /** Accessible name — the surrounding prose is not a usable label on its own. */
+  label: string;
+  /** False when the sibling radio option is chosen, which disables this input. */
+  active: boolean;
+  years: number;
+  error?: string;
+  onChange: (years: number) => void;
+}
+
+/** The year count that sits inside a term's "Expires N years" radio option. */
+export function YearsInput({
+  name,
+  label,
+  active,
+  years,
+  error,
+  onChange,
+}: YearsInputProps) {
+  return (
+    <input
+      id={fieldId(name)}
+      className="choice-years"
+      type="number"
+      min={1}
+      step={1}
+      aria-label={label}
+      {...errorAttributes(name, error)}
+      disabled={!active}
+      // A cleared field holds 0; showing it as empty keeps editing natural.
+      value={active && years ? years : ""}
+      onChange={(event) => onChange(Number(event.target.value))}
+    />
   );
 }
 

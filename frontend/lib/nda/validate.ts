@@ -6,7 +6,7 @@
  * would be the thing that actually causes harm.
  */
 
-import type { CoverPageData } from "./types";
+import { isWholeYearCount, type CoverPageData } from "./types";
 
 export type FieldKey =
   | "purpose"
@@ -34,13 +34,13 @@ export function validateCoverPage(data: CoverPageData): FieldErrors {
   if (!data.governingLaw.trim()) errors.governingLaw = REQUIRED;
   if (!data.jurisdiction.trim()) errors.jurisdiction = REQUIRED;
 
-  if (data.mndaTerm.kind === "expires" && !isWholeYear(data.mndaTerm.years)) {
+  if (data.mndaTerm.kind === "expires" && !isWholeYearCount(data.mndaTerm.years)) {
     errors["mndaTerm.years"] = "Enter a whole number of years";
   }
 
   if (
     data.confidentialityTerm.kind === "years" &&
-    !isWholeYear(data.confidentialityTerm.years)
+    !isWholeYearCount(data.confidentialityTerm.years)
   ) {
     errors["confidentialityTerm.years"] = "Enter a whole number of years";
   }
@@ -61,10 +61,6 @@ export function validateCoverPage(data: CoverPageData): FieldErrors {
   }
 
   return errors;
-}
-
-function isWholeYear(years: number): boolean {
-  return Number.isInteger(years) && years >= 1;
 }
 
 export function countErrors(errors: FieldErrors): number {

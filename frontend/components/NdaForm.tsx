@@ -1,4 +1,4 @@
-import { Field, fieldId, Group } from "./FormField";
+import { Field, FieldError, Group, YearsInput } from "./FormField";
 import type { CoverPageData, Party } from "@/lib/nda/types";
 import type { FieldErrors } from "@/lib/nda/validate";
 
@@ -63,27 +63,13 @@ export function NdaForm({
               onChange={() => onChange({ mndaTerm: { kind: "expires", years: 1 } })}
             />
             <span>Expires</span>
-            <input
-              id={fieldId("mndaTerm.years")}
-              className="choice-years"
-              type="number"
-              min={1}
-              step={1}
-              aria-label="Years until the NDA expires"
-              disabled={data.mndaTerm.kind !== "expires"}
-              value={
-                data.mndaTerm.kind === "expires" && data.mndaTerm.years
-                  ? data.mndaTerm.years
-                  : ""
-              }
-              onChange={(event) =>
-                onChange({
-                  mndaTerm: {
-                    kind: "expires",
-                    years: Number(event.target.value),
-                  },
-                })
-              }
+            <YearsInput
+              name="mndaTerm.years"
+              label="Years until the NDA expires"
+              active={data.mndaTerm.kind === "expires"}
+              years={data.mndaTerm.kind === "expires" ? data.mndaTerm.years : 0}
+              error={errors["mndaTerm.years"]}
+              onChange={(years) => onChange({ mndaTerm: { kind: "expires", years } })}
             />
             <span>years after the effective date</span>
           </label>
@@ -96,9 +82,7 @@ export function NdaForm({
             />
             <span>Runs until either party terminates it</span>
           </label>
-          {errors["mndaTerm.years"] ? (
-            <span className="field-error">{errors["mndaTerm.years"]}</span>
-          ) : null}
+          <FieldError name="mndaTerm.years" error={errors["mndaTerm.years"]} />
         </fieldset>
 
         <fieldset className="field">
@@ -112,27 +96,18 @@ export function NdaForm({
                 onChange({ confidentialityTerm: { kind: "years", years: 1 } })
               }
             />
-            <input
-              id={fieldId("confidentialityTerm.years")}
-              className="choice-years"
-              type="number"
-              min={1}
-              step={1}
-              aria-label="Years information stays protected"
-              disabled={data.confidentialityTerm.kind !== "years"}
-              value={
-                data.confidentialityTerm.kind === "years" &&
-                data.confidentialityTerm.years
+            <YearsInput
+              name="confidentialityTerm.years"
+              label="Years information stays protected"
+              active={data.confidentialityTerm.kind === "years"}
+              years={
+                data.confidentialityTerm.kind === "years"
                   ? data.confidentialityTerm.years
-                  : ""
+                  : 0
               }
-              onChange={(event) =>
-                onChange({
-                  confidentialityTerm: {
-                    kind: "years",
-                    years: Number(event.target.value),
-                  },
-                })
+              error={errors["confidentialityTerm.years"]}
+              onChange={(years) =>
+                onChange({ confidentialityTerm: { kind: "years", years } })
               }
             />
             <span>years after the effective date</span>
@@ -148,11 +123,10 @@ export function NdaForm({
             />
             <span>Forever</span>
           </label>
-          {errors["confidentialityTerm.years"] ? (
-            <span className="field-error">
-              {errors["confidentialityTerm.years"]}
-            </span>
-          ) : null}
+          <FieldError
+            name="confidentialityTerm.years"
+            error={errors["confidentialityTerm.years"]}
+          />
         </fieldset>
       </Group>
 

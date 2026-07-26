@@ -40,6 +40,29 @@ export interface CoverPageData {
   partyTwo: Party;
 }
 
+/**
+ * Whether a year count is a usable term length.
+ *
+ * Shared by validation and rendering so the two never disagree: a number input
+ * mid-edit holds 0 (cleared), and can hold negatives or decimals despite `min`
+ * and `step`, none of which may be described in the agreement as a real term.
+ */
+export function isWholeYearCount(years: number): boolean {
+  return Number.isInteger(years) && years >= 1;
+}
+
+/** True once the MNDA term describes a definite length. */
+export function isMndaTermSpecified(term: MndaTerm): boolean {
+  return term.kind === "untilTerminated" || isWholeYearCount(term.years);
+}
+
+/** True once the confidentiality term describes a definite length. */
+export function isConfidentialityTermSpecified(
+  term: ConfidentialityTerm,
+): boolean {
+  return term.kind === "perpetuity" || isWholeYearCount(term.years);
+}
+
 /** The cover page's own suggested Purpose, used as the starting value. */
 export const DEFAULT_PURPOSE =
   "Evaluating whether to enter into a business relationship with the other party.";

@@ -26,29 +26,37 @@ export function NdaDocument({ data, activeClauses }: NdaDocumentProps) {
       <p className="doc-eyebrow">Cover Page</p>
       <h1 className="doc-title">Mutual Non-Disclosure Agreement</h1>
 
+      {/* Reproduces the "USING THIS MUTUAL NON-DISCLOSURE AGREEMENT" paragraph
+          from templates/mutual-nda-coverpage.md, including the parentheticals
+          that define "Cover Page" and "Standard Terms". */}
       <p className="doc-preamble">
         This Mutual Non-Disclosure Agreement (the “MNDA”) consists of: (1) this
-        Cover Page and (2) the Common Paper Mutual NDA Standard Terms Version{" "}
-        {STANDARD_TERMS_VERSION}, identical to those posted at{" "}
+        Cover Page (“<strong>Cover Page</strong>”) and (2) the Common Paper Mutual
+        NDA Standard Terms Version {STANDARD_TERMS_VERSION} (“
+        <strong>Standard Terms</strong>”) identical to those posted at{" "}
         <a href={STANDARD_TERMS_URL}>
           commonpaper.com/standards/mutual-nda/{STANDARD_TERMS_VERSION}
         </a>
-        . Any modifications of the Standard Terms are made on this Cover Page,
-        which will control over conflicts with the Standard Terms.
+        . Any modifications of the Standard Terms should be made on the Cover
+        Page, which will control over conflicts with the Standard Terms.
       </p>
 
       <section className="doc-section">
         <h2 className="doc-heading">Purpose</h2>
         <p className="doc-caption">How confidential information may be used</p>
         <p className="doc-body">
-          <Value text={data.purpose} placeholder="not yet specified" field />
+          <Value text={data.purpose} placeholder="not yet specified" underline />
         </p>
       </section>
 
       <section className="doc-section">
         <h2 className="doc-heading">Effective Date</h2>
         <p className="doc-body">
-          <Value text={model.effectiveDate} placeholder="not yet specified" field />
+          <Value
+            text={model.effectiveDate}
+            placeholder="not yet specified"
+            underline
+          />
         </p>
       </section>
 
@@ -64,7 +72,7 @@ export function NdaDocument({ data, activeClauses }: NdaDocumentProps) {
           ) : (
             "a set number of years"
           )}{" "}
-          from the Effective Date.
+          from Effective Date.
         </Choice>
         <Choice selected={!expires}>
           Continues until terminated in accordance with the terms of the MNDA.
@@ -83,8 +91,8 @@ export function NdaDocument({ data, activeClauses }: NdaDocumentProps) {
           ) : (
             "A set number of years"
           )}{" "}
-          from the Effective Date, but in the case of trade secrets until the
-          confidential information is no longer considered a trade secret under
+          from Effective Date, but in the case of trade secrets until
+          Confidential Information is no longer considered a trade secret under
           applicable laws.
         </Choice>
         <Choice selected={!yearsOfConfidentiality}>In perpetuity.</Choice>
@@ -94,11 +102,17 @@ export function NdaDocument({ data, activeClauses }: NdaDocumentProps) {
         <h2 className="doc-heading">Governing Law &amp; Jurisdiction</h2>
         <p className="doc-body">
           Governing law:{" "}
-          <Value text={data.governingLaw} placeholder="state" field />
+          <Value text={data.governingLaw} placeholder="state" underline />
         </p>
+        {/* The source Cover Page prints the bare value here; "courts located in"
+            belongs to clause 9, which supplies it around the same value. */}
         <p className="doc-body">
-          Jurisdiction: courts located in{" "}
-          <Value text={data.jurisdiction} placeholder="city or county and state" field />
+          Jurisdiction:{" "}
+          <Value
+            text={data.jurisdiction}
+            placeholder="city or county and state"
+            underline
+          />
         </p>
       </section>
 
@@ -155,21 +169,21 @@ export function NdaDocument({ data, activeClauses }: NdaDocumentProps) {
 /**
  * A value the user supplied, or a ruled blank where one is still missing.
  *
- * `field` adds the underline that belongs on a Cover Page form. Inside the
+ * `underline` draws the rule that belongs on a Cover Page form. Inside the
  * Standard Terms the ink alone marks the value, so the prose stays readable.
  */
 function Value({
   text,
   placeholder,
-  field = false,
+  underline = false,
 }: {
   text: string;
   placeholder: string;
-  field?: boolean;
+  underline?: boolean;
 }) {
   const trimmed = text.trim();
   if (!trimmed) return <span className="blank">{placeholder}</span>;
-  return <span className={field ? "ink-field" : "ink"}>{trimmed}</span>;
+  return <span className={underline ? "ink-field" : "ink"}>{trimmed}</span>;
 }
 
 function Choice({
