@@ -193,7 +193,7 @@ describe("NdaDocument", () => {
       expect(container.textContent).not.toMatch(/\{\{|\}\}|\*\*/);
     });
 
-    it("marks only the clauses linked to the focused form group", () => {
+    it("marks only the clauses it was asked to mark", () => {
       const { container } = renderDoc(completeCoverPage(), [1, 2]);
       const linked = [...container.querySelectorAll('.clause[data-linked="true"]')].map(
         (node) => node.querySelector(".clause-number")?.textContent,
@@ -201,7 +201,7 @@ describe("NdaDocument", () => {
       expect(linked).toEqual(["§1", "§2"]);
     });
 
-    it("marks nothing when no group has focus", () => {
+    it("marks nothing when nothing has just changed", () => {
       const { container } = renderDoc(completeCoverPage(), []);
       expect(container.querySelectorAll('.clause[data-linked="true"]')).toHaveLength(0);
     });

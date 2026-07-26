@@ -13,6 +13,19 @@ from app.db import connect, reset_database
 from app.main import create_app
 
 
+@pytest.fixture(autouse=True)
+def no_real_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
+    """
+    Keeps the developer's real key out of the test run.
+
+    Importing `app.config` loads the repo-root `.env`, which on a working
+    checkout holds a live OpenRouter key. Every test here substitutes the model,
+    but a mistake in one of those substitutions should cost a failed assertion,
+    not a real request and a real bill. Tests that need a key set their own.
+    """
+    monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
+
+
 @pytest.fixture
 def database_path(tmp_path: Path) -> Path:
     return tmp_path / "prelegal.db"

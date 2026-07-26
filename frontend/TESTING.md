@@ -7,18 +7,26 @@ npm test          # once
 npm run test:watch
 ```
 
-197 tests across eight files. What they cover:
+235 tests across eleven files. What they cover:
 
 | File | Covers |
 | --- | --- |
 | `lib/nda/render.test.ts` | Date formatting and timezone safety, number-to-words, term phrasing, the clause tokenizer, first-use expansion of defined terms, unusable term lengths, document title |
-| `lib/nda/validate.test.ts` | Every required field, whitespace-only answers, year-count rules, error ordering (which decides where focus lands) |
+| `lib/nda/validate.test.ts` | Every required field, whitespace-only answers, year-count rules, error ordering |
 | `lib/nda/standard-terms.test.ts` | **Diffs the transcribed legal text against `templates/mutual-nda.md`**, clause by clause |
+| `lib/nda/chat-support.test.ts` | Which clauses a change marks in the document |
+| `lib/nda/chat-copy.test.ts` | That every field validation can report has a name a person would recognise, and how the "still missing" sentence reads |
 | `components/NdaDocument.test.tsx` | Rendered cover page and clauses, blanks, checkbox states, signature block, CC BY attribution, cover-page fidelity |
-| `components/NdaWorkspace.test.tsx` | The whole journey through the real UI: typing, live document updates, clause linking, download gating, focus management, PDF filename |
+| `components/NdaChat.test.tsx` | The panel alone: the transcript, who-said-what for screen readers, Enter and Shift+Enter, the pending and failed states |
+| `components/NdaWorkspace.test.tsx` | The whole journey with the assistant substituted: a turn, live document updates, clause marking, download gating, the completion message, retrying a failed turn, PDF filename |
 | `components/LoginScreen.test.tsx` | Signing in, creating an account, switching between the two, server refusals, the already-signed-in state, and the notice about there being no authentication |
-| `lib/api.test.ts` | Request shape, snake_case to camelCase, which server errors are shown verbatim and which are replaced, an unreachable server |
+| `lib/api.test.ts` | Request shape, snake_case to camelCase, the chat turn's request and reply, which server errors are shown verbatim and which are replaced, an unreachable server |
 | `lib/session.test.ts` | Round trip through storage, and every way a stored value can be unusable |
+
+**No test calls a real model.** `NdaWorkspace.test.tsx` mocks `sendChatTurn`, and
+the backend suite substitutes the completion function. What the assistant would
+actually say is not something these tests have an opinion about; what the app does
+with what it says is all of it.
 
 The backend has its own suite — see the root [README](../README.md).
 
@@ -47,17 +55,18 @@ npm run dev    # http://localhost:3000
 ```
 
 Sign in first — the workspace is at `/nda/` and sends you back to `/` without a
-session. `npm run dev` needs the backend running on port 8000 for that; the root
-[README](../README.md) covers starting it.
+session. `npm run dev` needs the backend running on port 8000 for that, and the
+backend needs `OPENROUTER_API_KEY` for the chat to answer at all; the root
+[README](../README.md) covers both.
 
 ### 1. Print and PDF output — highest priority
 
 The print stylesheet is the least testable and most fragile part of the app.
 `@media print` rules do not run under jsdom, and pagination cannot be simulated.
 
-- [ ] Fill in every field, click **Download PDF**, choose **Save as PDF**
+- [ ] Fill the agreement in through the chat, click **Download PDF**, choose **Save as PDF**
 - [ ] Suggested filename is `Mutual NDA - <Party 1> and <Party 2>`
-- [ ] The app chrome (top bar, form panel) does not appear anywhere in the PDF
+- [ ] The app chrome (top bar, chat panel) does not appear anywhere in the PDF
 - [ ] Standard Terms start on a fresh page
 - [ ] **No clause is split across a page break**, and no heading is stranded at the foot of a page
 - [ ] The signature table is not split across a page break
@@ -65,13 +74,14 @@ The print stylesheet is the least testable and most fragile part of the app.
 - [ ] The CC BY 4.0 attribution is present in the PDF
 - [ ] Blue values are legible when printed in greyscale
 - [ ] Repeat with a long Purpose and long modifications text, which changes where pages break
-- [ ] Repeat with the perpetual and open-ended term options selected
+- [ ] Repeat with the perpetual and open-ended term options chosen
 
 ### 2. Narrow screens
 
 Never exercised. Verify at 375px, 768px, and either side of the 960px breakpoint.
 
-- [ ] Below ~960px the form stacks above the document
+- [ ] Below ~960px the chat panel stacks above the document
+- [ ] Stacked, the panel keeps a height of its own and the composer stays reachable — it must not stretch to the length of the conversation
 - [ ] The page scrolls normally when stacked — the two-column layout pins the shell to the viewport height, and that must not leak into the stacked layout
 - [ ] Nothing overflows horizontally
 - [ ] The top bar wraps without overlapping the Download button
@@ -79,16 +89,35 @@ Never exercised. Verify at 375px, 768px, and either side of the 960px breakpoint
 
 ### 3. Keyboard and screen reader
 
-Automated tests assert the ARIA attributes exist; they cannot confirm the
-experience.
+This is where the chat costs the most. It replaced a form of labelled fields —
+which screen readers navigate very well — with a log and one text box, and only
+manual testing will say whether that trade landed. Automated tests assert the ARIA
+attributes exist; they cannot confirm the experience.
 
-- [ ] Tab through the whole form — order is sensible, nothing is skipped or trapped
-- [ ] The focus ring is clearly visible on every control, on both the dark panel and the paper
-- [ ] Click Download with fields empty: focus lands on the first missing field and the screen reader announces "Required"
-- [ ] Clear the years field and Download: the reason is announced, not just an invalid state
-- [ ] The radio groups announce their legends
-- [ ] The document does not chatter on every keystroke (it is deliberately not a live region)
-- [ ] Run axe DevTools on the page in both empty and complete states
+- [ ] Tab order runs chat box → Send → Download, and nothing is skipped or trapped
+- [ ] The focus ring is clearly visible on the box, Send, and Try again
+- [ ] A new reply is announced once, as one message — not the whole conversation re-read
+- [ ] The waiting state is announced ("Assistant is replying…"), not just shown as dots
+- [ ] Each message is attributed — you can tell who said what without seeing the layout
+- [ ] Click Download with the agreement incomplete: the missing fields are announced and focus lands in the chat box
+- [ ] Stop the backend and send: the failure is announced as an alert and **Try again** is reachable by keyboard
+- [ ] Long replies do not scroll the log out from under the reader
+- [ ] The document does not chatter as it fills in (it is deliberately not a live region)
+- [ ] Run axe DevTools on the page in the empty, mid-conversation, and complete states
+
+### 3a. The assistant
+
+None of this is covered automatically — every test substitutes the model.
+
+- [ ] The greeting appears instantly, with the backend stopped
+- [ ] Say everything at once ("Acme and Beta, I sign as CEO, Delaware law…") — it fills in what you gave and asks only for the rest
+- [ ] Correct something already answered ("no, make it New York") — the document changes and it confirms
+- [ ] Ask it for advice ("what term should I pick?") — it declines rather than recommending
+- [ ] Ask it something off-topic — it does not wander off the document
+- [ ] Watch the Standard Terms as an answer lands: the clauses it feeds are marked, then unmark
+- [ ] Unset `OPENROUTER_API_KEY` and restart: sending says the assistant is not configured, and the app is otherwise intact
+- [ ] Go offline mid-conversation: the failure names an unreachable server, your message is still there, and **Try again** resends it
+- [ ] Reload the page: the conversation is gone and the document is blank again — nothing persists, by design
 
 ### 4. Browsers
 

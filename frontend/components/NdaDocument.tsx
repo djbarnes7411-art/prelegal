@@ -12,7 +12,7 @@ import type { CoverPageData, Party } from "@/lib/nda/types";
 
 interface NdaDocumentProps {
   data: CoverPageData;
-  /** Clauses to mark while the form group that feeds them has focus. */
+  /** Clauses to mark, briefly, after a change lands in the fields they quote. */
   activeClauses: number[];
 }
 

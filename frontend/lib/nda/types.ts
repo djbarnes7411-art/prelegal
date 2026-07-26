@@ -1,9 +1,10 @@
 /**
  * Data model for the Common Paper Mutual NDA (Version 1.0) Cover Page.
  *
- * Field names mirror the headings on the published cover page so the form, the
- * rendered document, and the source template in `templates/mutual-nda-coverpage.md`
- * stay easy to line up against one another.
+ * Field names mirror the headings on the published cover page so this schema,
+ * the rendered document, and the source template in
+ * `templates/mutual-nda-coverpage.md` stay easy to line up against one another.
+ * The assistant is told these same names, so they reach the model too.
  */
 
 /** How long the MNDA itself lasts. Mirrors the cover page's checkbox pair. */

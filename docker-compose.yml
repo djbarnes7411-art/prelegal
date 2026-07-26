@@ -7,6 +7,11 @@ services:
     container_name: prelegal
     ports:
       - "8000:8000"
+    # Read from the repo-root .env at `up` time, never baked into the image.
+    # Left unset the container still starts and serves — the chat is the only
+    # thing that needs it, and it says so itself when it is missing.
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY:-}
     # Deliberately no volumes. The SQLite database lives inside the container's
     # writable layer, so `down` discards it and the next `up` builds a new one
     # from schema.sql — see backend/app/db.py.
