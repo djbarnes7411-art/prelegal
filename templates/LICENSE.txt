@@ -1,0 +1,50 @@
+Licensing of the templates in this directory
+============================================
+
+Every file in this "templates" directory is a legal agreement template
+published by Common Paper (https://commonpaper.com) and retrieved from the
+Common Paper GitHub organization at https://github.com/CommonPaper.
+
+All of these templates are licensed under the Creative Commons Attribution
+4.0 International License (CC BY 4.0).
+
+    License:  Creative Commons Attribution 4.0 International (CC BY 4.0)
+    Summary:  https://creativecommons.org/licenses/by/4.0/
+    Legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Under this license you are free to:
+
+  * Share  — copy and redistribute the material in any medium or format
+  * Adapt  — remix, transform, and build upon the material for any purpose,
+             even commercially
+
+Under the following terms:
+
+  * Attribution — You must give appropriate credit to Common Paper, provide a
+    link to the license, and indicate if changes were made. You may do so in
+    any reasonable manner, but not in any way that suggests Common Paper
+    endorses you or your use.
+
+  * No additional restrictions — You may not apply legal terms or
+    technological measures that legally restrict others from doing anything
+    the license permits.
+
+Attribution
+-----------
+
+When distributing these templates, or works derived from them, credit
+Common Paper. For example:
+
+    Based on the Common Paper <agreement name>
+    (https://github.com/CommonPaper), licensed under CC BY 4.0
+    (https://creativecommons.org/licenses/by/4.0/). Modified.
+
+Source repositories for each file in this directory are recorded in
+catalog.json in the project root.
+
+Note
+----
+
+These templates are provided for informational purposes and are not legal
+advice. Consult a qualified attorney before using any of them in an actual
+transaction.

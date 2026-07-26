@@ -1,0 +1,80 @@
+{
+  "source": "https://github.com/CommonPaper",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "retrieved": "2026-07-26",
+  "templates": [
+    {
+      "name": "AI Addendum",
+      "description": "Addendum that layers AI-specific terms onto an existing product agreement. Sections cover AI Services (use of the services via Input, generation of Output, and restrictions such as no unsupervised decision-making in regulated industries and no passing Output off as human-created), Intellectual Property and Privacy, Disclaimers, and Definitions.",
+      "filename": "templates/ai-addendum.md",
+      "source_repo": "https://github.com/CommonPaper/AI-Addendum"
+    },
+    {
+      "name": "Business Associate Agreement",
+      "description": "HIPAA business associate agreement between a company and its business associate. Sections cover Business Associate Obligations, Company Obligations, Data Rights & Restrictions, Breach Notification, Term & Termination, and Definitions, including flow-down of obligations to subcontractors.",
+      "filename": "templates/business-associate-agreement.md",
+      "source_repo": "https://github.com/CommonPaper/BAA"
+    },
+    {
+      "name": "Cloud Service Agreement",
+      "description": "Standard terms for a cloud or SaaS product subscription. Sections cover Service, Restrictions & Obligations, Privacy & Security, Payment & Taxes, Term & Termination, Representations & Warranties, Disclaimer of Warranties, Limitation of Liability, Indemnification, Confidentiality, Reservation of Rights, General Terms, and Definitions.",
+      "filename": "templates/cloud-service-agreement.md",
+      "source_repo": "https://github.com/CommonPaper/CSA"
+    },
+    {
+      "name": "Data Processing Agreement",
+      "description": "GDPR-oriented data processing agreement, also addressing UK and Swiss data protection law. Sections cover Processor and Subprocessor Relationships, Processing, Restricted Transfers, Security Incident Response, Audit & Reports, Coordination & Cooperation, Deletion of Customer Personal Data, Limitation of Liability, Conflicts Between Documents, Term of Agreement, and Definitions.",
+      "filename": "templates/data-processing-agreement.md",
+      "source_repo": "https://github.com/CommonPaper/DPA"
+    },
+    {
+      "name": "Design Partner Agreement",
+      "description": "Agreement for an early-stage design partner collaboration in which a partner works with a provider and supplies feedback. Sections cover Design Partner Overview, Fees and Costs, Term & Termination, Disclaimer of Warranties, Confidentiality, Intellectual Property, General Terms, and Definitions, including treatment of Feedback given \"AS IS\".",
+      "filename": "templates/design-partner-agreement.md",
+      "source_repo": "https://github.com/CommonPaper/Design-Partner-Agreement"
+    },
+    {
+      "name": "Mutual NDA Standard Terms",
+      "description": "Standard terms of the mutual non-disclosure agreement, incorporated by reference from the MNDA cover page. Sections cover Introduction, Use and Protection of Confidential Information, Exceptions, Disclosures Required by Law, Term and Termination, Return or Destruction of Confidential Information, Proprietary Rights, Disclaimer, Governing Law and Jurisdiction, Equitable Relief, and General.",
+      "filename": "templates/mutual-nda.md",
+      "source_repo": "https://github.com/CommonPaper/Mutual-NDA"
+    },
+    {
+      "name": "Mutual NDA Cover Page",
+      "description": "Fill-in cover page for the mutual non-disclosure agreement, capturing Purpose, Effective Date, MNDA Term, Term of Confidentiality, Governing Law & Jurisdiction, and MNDA Modifications, plus party details and signature blocks. It incorporates the MNDA standard terms by reference.",
+      "filename": "templates/mutual-nda-coverpage.md",
+      "source_repo": "https://github.com/CommonPaper/Mutual-NDA"
+    },
+    {
+      "name": "Partnership Agreement",
+      "description": "Agreement for a commercial partnership in which each party performs obligations detailed in a cover page. Sections cover Cooperation (including obligations and feedback), Payment & Taxes, Trademark License, Privacy, Escalation Procedure, Term & Termination, Representations & Warranties, Disclaimer of Warranties, Limitation of Liability, Indemnification, Confidentiality, General Terms, and Definitions.",
+      "filename": "templates/partnership-agreement.md",
+      "source_repo": "https://github.com/CommonPaper/Partnership-Agreement"
+    },
+    {
+      "name": "Pilot Agreement",
+      "description": "Agreement for a time-boxed pilot of a product over a defined Pilot Period. Sections cover Pilot Access, Term & Termination, Representations, Disclaimer of Warranties, Limitation of Liability, Confidentiality, General Terms, and Definitions.",
+      "filename": "templates/pilot-agreement.md",
+      "source_repo": "https://github.com/CommonPaper/Pilot-Agreement"
+    },
+    {
+      "name": "Professional Services Agreement",
+      "description": "Master agreement for professional services delivered under SOWs referenced by a cover page. Sections cover Services (including deliverables and acceptance), Intellectual Property, Privacy & Security, Payment & Taxes, Term & Termination, Representations & Warranties, Disclaimer of Warranties, Limitation of Liability, Indemnification, Insurance, Confidentiality, General Terms, and Definitions.",
+      "filename": "templates/professional-services-agreement.md",
+      "source_repo": "https://github.com/CommonPaper/PSA"
+    },
+    {
+      "name": "Service Level Agreement",
+      "description": "Service level agreement attachment defining the provider's service commitments. Sections cover Uptime, Response Time, Remedies (service credits), and Definitions.",
+      "filename": "templates/service-level-agreement.md",
+      "source_repo": "https://github.com/CommonPaper/SLA"
+    },
+    {
+      "name": "Software License Agreement",
+      "description": "Agreement for licensing software to a customer for a subscription period. Sections cover Software (license grant, user accounts, feedback and usage data, machine learning use of usage data, open source software, and updates), Restrictions & Obligations, Payment & Taxes, Term & Termination, Representations & Warranties, Disclaimer of Warranties, Limitation of Liability, Indemnification, Confidentiality, and General Terms.",
+      "filename": "templates/software-license-agreement.md",
+      "source_repo": "https://github.com/CommonPaper/Software-License-Agreement"
+    }
+  ]
+}
