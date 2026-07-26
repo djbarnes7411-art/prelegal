@@ -1,0 +1,2267 @@
+{
+  "generator": "backend/app/documents/build.py",
+  "note": "Generated file. Edit definitions/*.toml or templates/*.md instead.",
+  "documents": [
+    {
+      "slug": "ai-addendum",
+      "name": "AI Addendum",
+      "title": "AI Addendum",
+      "summary": "AI-specific terms to add to a product agreement: who owns the input and output, and whether the provider may train on them.",
+      "aliases": [
+        "AI terms",
+        "AI addendum",
+        "machine learning terms",
+        "LLM terms",
+        "can they train on our data",
+        "generative AI agreement",
+        "AI features"
+      ],
+      "attachment": "An AI Addendum layers onto a product agreement you already have; it adds AI terms rather than replacing that agreement.",
+      "renderer": "generic",
+      "version": "1.0",
+      "sourceUrl": "https://commonpaper.com/standards/ai-addendum/1.0",
+      "fields": [
+        {
+          "key": "provider",
+          "name": "Provider",
+          "type": "party",
+          "label": "the company providing the AI features",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.3",
+            "1.4",
+            "2.1",
+            "2.2",
+            "3.2"
+          ]
+        },
+        {
+          "key": "customer",
+          "name": "Customer",
+          "type": "party",
+          "label": "the company using them",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "2.1",
+            "2.3",
+            "4.4"
+          ]
+        },
+        {
+          "key": "trainingData",
+          "name": "Training Data",
+          "type": "longText",
+          "label": "what data, if any, the provider may train on",
+          "required": false,
+          "clauses": [
+            "1.3",
+            "1.4"
+          ],
+          "hint": "Leave this out and the provider may not train on your input or output at all, which is the standard terms' default."
+        },
+        {
+          "key": "trainingPurposes",
+          "name": "Training Purposes",
+          "type": "longText",
+          "label": "what the provider may train for",
+          "required": false,
+          "clauses": [
+            "1.3",
+            "1.4"
+          ],
+          "hint": "Only meaningful if training is permitted above."
+        },
+        {
+          "key": "trainingRestrictions",
+          "name": "Training Restrictions",
+          "type": "longText",
+          "label": "any limits on that training",
+          "required": false,
+          "clauses": [
+            "1.3"
+          ]
+        },
+        {
+          "key": "improvementRestrictions",
+          "name": "Improvement Restrictions",
+          "type": "longText",
+          "label": "any limits on using input and output to improve the service",
+          "required": false,
+          "clauses": [
+            "1.4"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "business-associate-agreement",
+      "name": "Business Associate Agreement",
+      "title": "Business Associate Agreement",
+      "summary": "A HIPAA agreement covering how a vendor may handle protected health information on a covered entity's behalf.",
+      "aliases": [
+        "BAA",
+        "HIPAA agreement",
+        "protected health information",
+        "PHI",
+        "health data agreement",
+        "healthcare compliance agreement"
+      ],
+      "attachment": "A BAA supplements an existing agreement between the two companies rather than standing on its own.",
+      "renderer": "generic",
+      "version": "1.0",
+      "sourceUrl": "https://commonpaper.com/standards/business-associate-agreement/1.0",
+      "fields": [
+        {
+          "key": "provider",
+          "name": "Provider",
+          "type": "party",
+          "label": "the business associate handling the health information",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "1.4",
+            "1.5",
+            "1.6",
+            "1.7",
+            "1.8",
+            "1.9",
+            "1.10",
+            "1.11",
+            "2.1",
+            "2.2",
+            "2.3",
+            "2.4",
+            "3.1",
+            "3.2",
+            "3.3",
+            "4.1",
+            "4.2",
+            "4.3",
+            "4.4",
+            "5.3.a",
+            "5.3.b",
+            "6.2",
+            "6.7",
+            "6.16",
+            "6.17"
+          ]
+        },
+        {
+          "key": "company",
+          "name": "Company",
+          "type": "party",
+          "label": "the covered entity whose health information it is",
+          "required": true,
+          "clauses": [
+            "1.4",
+            "1.5",
+            "1.6",
+            "1.8",
+            "1.9",
+            "1.10",
+            "1.11",
+            "2.1",
+            "2.2",
+            "2.3",
+            "2.4",
+            "4.1",
+            "4.2",
+            "4.3",
+            "5.3.a",
+            "5.3.b",
+            "6.2",
+            "6.7"
+          ]
+        },
+        {
+          "key": "baaEffectiveDate",
+          "name": "BAA Effective Date",
+          "type": "date",
+          "label": "the date this BAA starts",
+          "required": true,
+          "clauses": [
+            "5.1"
+          ],
+          "default": "today"
+        },
+        {
+          "key": "breachNotificationPeriod",
+          "name": "Breach Notification Period",
+          "type": "text",
+          "label": "how quickly a breach must be reported",
+          "required": true,
+          "clauses": [
+            "4.1"
+          ],
+          "hint": "A period, such as '5 business days' or '72 hours'."
+        },
+        {
+          "key": "agreement",
+          "name": "Agreement",
+          "type": "text",
+          "label": "the agreement this BAA attaches to",
+          "required": true,
+          "clauses": [
+            "5.1",
+            "5.2",
+            "6.16"
+          ],
+          "hint": "The name and date of the underlying contract between the two companies."
+        },
+        {
+          "key": "limitations",
+          "name": "Limitations",
+          "type": "longText",
+          "label": "any limits on how the health information may be used",
+          "required": false,
+          "clauses": [
+            "1.7",
+            "3.1",
+            "3.2",
+            "3.3",
+            "6.18"
+          ],
+          "hint": "Leave this out and no extra limits apply beyond the standard terms."
+        }
+      ]
+    },
+    {
+      "slug": "cloud-service-agreement",
+      "name": "Cloud Service Agreement",
+      "title": "Cloud Service Agreement",
+      "summary": "Terms for selling a SaaS or cloud product on a subscription: access, payment, liability, and what happens at renewal.",
+      "aliases": [
+        "SaaS agreement",
+        "cloud agreement",
+        "subscription agreement",
+        "terms of service",
+        "customer agreement",
+        "sell our software",
+        "MSA",
+        "master services agreement"
+      ],
+      "attachment": null,
+      "renderer": "generic",
+      "version": "2.1",
+      "sourceUrl": "https://commonpaper.com/standards/cloud-service-agreement/2.1",
+      "fields": [
+        {
+          "key": "provider",
+          "name": "Provider",
+          "type": "party",
+          "label": "the company providing the service",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "1.4",
+            "1.5",
+            "1.6",
+            "2.2",
+            "3.1",
+            "4.2",
+            "4.3",
+            "4.4",
+            "4.5",
+            "4.6",
+            "5.4",
+            "5.5.b",
+            "6.3",
+            "6.4",
+            "7.1",
+            "9.1",
+            "9.2",
+            "9.4",
+            "9.5.a",
+            "11.1",
+            "12.1",
+            "12.7",
+            "12.8",
+            "12.13",
+            "12.15",
+            "13.3",
+            "13.5",
+            "13.8",
+            "13.9",
+            "13.13",
+            "13.18",
+            "13.30"
+          ]
+        },
+        {
+          "key": "customer",
+          "name": "Customer",
+          "type": "party",
+          "label": "the customer subscribing to it",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.3",
+            "1.4",
+            "1.5",
+            "1.6",
+            "2.1.a",
+            "2.2",
+            "3.1",
+            "3.2",
+            "4.3",
+            "4.4",
+            "4.5",
+            "4.6",
+            "5.4",
+            "5.5.d",
+            "6.2",
+            "6.3",
+            "6.4",
+            "7.1",
+            "9.1",
+            "9.2",
+            "9.4",
+            "9.5.a",
+            "11.1",
+            "12.1",
+            "12.7",
+            "12.8",
+            "12.12",
+            "12.13",
+            "12.15",
+            "13.3",
+            "13.5",
+            "13.8",
+            "13.9",
+            "13.11",
+            "13.18",
+            "13.30",
+            "13.32",
+            "13.33"
+          ]
+        },
+        {
+          "key": "subscriptionPeriod",
+          "name": "Subscription Period",
+          "type": "text",
+          "label": "how long the subscription runs",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "5.1",
+            "5.4",
+            "6.3",
+            "6.4",
+            "9.4",
+            "13.24",
+            "13.34"
+          ],
+          "hint": "Such as '12 months from the Order Date'."
+        },
+        {
+          "key": "orderDate",
+          "name": "Order Date",
+          "type": "date",
+          "label": "the date of the order",
+          "required": true,
+          "clauses": [
+            "5.1"
+          ]
+        },
+        {
+          "key": "effectiveDate",
+          "name": "Effective Date",
+          "type": "date",
+          "label": "the date the agreement starts",
+          "required": true,
+          "clauses": [
+            "5.2",
+            "11.1",
+            "13.8"
+          ],
+          "default": "today"
+        },
+        {
+          "key": "governingLaw",
+          "name": "Governing Law",
+          "type": "text",
+          "label": "the law that governs the agreement",
+          "required": true,
+          "clauses": [
+            "12.3",
+            "13.22",
+            "13.34"
+          ],
+          "hint": "Usually a US state, such as 'the laws of the State of Delaware'."
+        },
+        {
+          "key": "chosenCourts",
+          "name": "Chosen Courts",
+          "type": "text",
+          "label": "the courts that would hear a dispute",
+          "required": true,
+          "clauses": [
+            "12.3"
+          ],
+          "hint": "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+        },
+        {
+          "key": "paymentProcess",
+          "name": "Payment Process",
+          "type": "longText",
+          "label": "how the customer pays",
+          "required": true,
+          "clauses": [
+            "4.2",
+            "4.3",
+            "4.5"
+          ],
+          "hint": "The standard terms read differently for invoicing than for automatic card payment, so say which it is."
+        },
+        {
+          "key": "generalCapAmount",
+          "name": "General Cap Amount",
+          "type": "money",
+          "label": "the cap on each party's total liability",
+          "required": false,
+          "clauses": [
+            "8.1.a"
+          ],
+          "hint": "An amount, or a formula such as 'the fees paid in the 12 months before the claim'."
+        },
+        {
+          "key": "nonRenewalNoticeDate",
+          "name": "Non-Renewal Notice Date",
+          "type": "text",
+          "label": "the deadline for saying you do not want to renew",
+          "required": false,
+          "clauses": [
+            "5.1"
+          ],
+          "hint": "Such as '30 days before the end of the current Subscription Period'."
+        },
+        {
+          "key": "technicalSupport",
+          "name": "Technical Support",
+          "type": "longText",
+          "label": "what technical support is included",
+          "required": false,
+          "clauses": [
+            "1.2"
+          ]
+        },
+        {
+          "key": "useLimitations",
+          "name": "Use Limitations",
+          "type": "longText",
+          "label": "any limits on how the service may be used",
+          "required": false,
+          "clauses": [
+            "2.1.b"
+          ],
+          "hint": "Such as seat counts, API rate limits, or environments."
+        },
+        {
+          "key": "dpa",
+          "name": "DPA",
+          "type": "text",
+          "label": "the data processing agreement, if one applies",
+          "required": false,
+          "clauses": [
+            "3.1"
+          ],
+          "hint": "Name the DPA and its date, or leave it out if there is none."
+        },
+        {
+          "key": "additionalWarranties",
+          "name": "Additional Warranties",
+          "type": "longText",
+          "label": "any warranties beyond the standard ones",
+          "required": false,
+          "clauses": [
+            "6.1"
+          ]
+        },
+        {
+          "key": "increasedCapAmount",
+          "name": "Increased Cap Amount",
+          "type": "money",
+          "label": "a higher liability cap for certain claims",
+          "required": false,
+          "clauses": [
+            "8.1.b"
+          ]
+        },
+        {
+          "key": "increasedClaims",
+          "name": "Increased Claims",
+          "type": "longText",
+          "label": "which claims that higher cap applies to",
+          "required": false,
+          "clauses": [
+            "8.1.b",
+            "8.4"
+          ]
+        },
+        {
+          "key": "unlimitedClaims",
+          "name": "Unlimited Claims",
+          "type": "longText",
+          "label": "any claims that are not capped at all",
+          "required": false,
+          "clauses": [
+            "8.4"
+          ]
+        },
+        {
+          "key": "providerCoveredClaim",
+          "name": "Provider Covered Claim",
+          "type": "longText",
+          "label": "what the provider indemnifies the customer against",
+          "required": false,
+          "clauses": [
+            "9.1",
+            "9.4",
+            "9.5.a",
+            "13.10"
+          ]
+        },
+        {
+          "key": "customerCoveredClaim",
+          "name": "Customer Covered Claim",
+          "type": "longText",
+          "label": "what the customer indemnifies the provider against",
+          "required": false,
+          "clauses": [
+            "9.2",
+            "9.5.b",
+            "13.10"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "data-processing-agreement",
+      "name": "Data Processing Agreement",
+      "title": "Data Processing Agreement",
+      "summary": "A GDPR data processing agreement covering how a vendor processes personal data on a customer's behalf, including transfers out of the EEA.",
+      "aliases": [
+        "DPA",
+        "GDPR agreement",
+        "data protection agreement",
+        "personal data",
+        "privacy agreement",
+        "subprocessors",
+        "standard contractual clauses",
+        "SCCs"
+      ],
+      "attachment": "A DPA supplements the main agreement between the two companies rather than standing on its own.",
+      "renderer": "generic",
+      "version": null,
+      "sourceUrl": null,
+      "fields": [
+        {
+          "key": "provider",
+          "name": "Provider",
+          "type": "party",
+          "label": "the company processing the data",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "2.2",
+            "2.3",
+            "2.4",
+            "2.5",
+            "2.6.a",
+            "2.6.b",
+            "2.6.c",
+            "2.6.d",
+            "3.1",
+            "3.2",
+            "3.2.a",
+            "3.2.b",
+            "3.3",
+            "4.1",
+            "5.1",
+            "5.2",
+            "5.3",
+            "6.1",
+            "6.2",
+            "7.1",
+            "7.2.a",
+            "7.2.b",
+            "8.2",
+            "10.1",
+            "11.4",
+            "11.5",
+            "11.6"
+          ]
+        },
+        {
+          "key": "customer",
+          "name": "Customer",
+          "type": "party",
+          "label": "the company whose data it is",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "2.2",
+            "2.3",
+            "2.4",
+            "2.5",
+            "2.6.a",
+            "2.6.c",
+            "3.1",
+            "3.2",
+            "3.2.a",
+            "3.2.b",
+            "3.3",
+            "4.1",
+            "5.1",
+            "5.2",
+            "5.3",
+            "6.1",
+            "6.2",
+            "7.1",
+            "7.2.a",
+            "7.2.b",
+            "8.2",
+            "10.1",
+            "11.4",
+            "11.5",
+            "11.6"
+          ]
+        },
+        {
+          "key": "agreement",
+          "name": "Agreement",
+          "type": "text",
+          "label": "the agreement this DPA attaches to",
+          "required": true,
+          "clauses": [
+            "2.2",
+            "2.6.b",
+            "8.1",
+            "8.2",
+            "9.1",
+            "10.1",
+            "11.16"
+          ],
+          "hint": "The name and date of the underlying contract between the two companies."
+        },
+        {
+          "key": "categoriesOfPersonalData",
+          "name": "Categories of Personal Data",
+          "type": "longText",
+          "label": "what kinds of personal data are processed",
+          "required": true,
+          "clauses": [
+            "2.1",
+            "2.3"
+          ],
+          "hint": "Such as names, email addresses, IP addresses, usage records."
+        },
+        {
+          "key": "categoriesOfDataSubjects",
+          "name": "Categories of Data Subjects",
+          "type": "longText",
+          "label": "whose personal data it is",
+          "required": true,
+          "clauses": [
+            "2.1",
+            "2.3"
+          ],
+          "hint": "Such as the customer's employees, its end users, or its own customers."
+        },
+        {
+          "key": "natureAndPurposeOfProcessing",
+          "name": "Nature and Purpose of Processing",
+          "type": "longText",
+          "label": "what the processing is for",
+          "required": true,
+          "clauses": [
+            "2.3"
+          ]
+        },
+        {
+          "key": "durationOfProcessing",
+          "name": "Duration of Processing",
+          "type": "text",
+          "label": "how long the data is processed for",
+          "required": true,
+          "clauses": [
+            "2.3"
+          ],
+          "hint": "Commonly 'for the term of the Agreement, plus any retention period'."
+        },
+        {
+          "key": "approvedSubprocessors",
+          "name": "Approved Subprocessors",
+          "type": "longText",
+          "label": "which subprocessors are approved",
+          "required": false,
+          "clauses": [
+            "2.6.a"
+          ],
+          "hint": "For each one, its name, the country it operates in, and what it does. List them all in one answer."
+        },
+        {
+          "key": "providerSecurityContact",
+          "name": "Provider Security Contact",
+          "type": "text",
+          "label": "who to contact about a security incident",
+          "required": false,
+          "clauses": [
+            "5.3"
+          ],
+          "hint": "An email address reaches someone quickly enough to matter here."
+        },
+        {
+          "key": "securityPolicy",
+          "name": "Security Policy",
+          "type": "text",
+          "label": "the security policy that applies",
+          "required": false,
+          "clauses": [
+            "5.2"
+          ],
+          "hint": "Name it or link to it."
+        },
+        {
+          "key": "governingMemberState",
+          "name": "Governing Member State",
+          "type": "text",
+          "label": "the EU member state whose law governs the transfer clauses",
+          "required": false,
+          "clauses": [
+            "3.2.c.v",
+            "3.2.c.vi"
+          ],
+          "hint": "Such as Ireland or Germany. Only relevant if personal data leaves the EEA."
+        },
+        {
+          "key": "frequencyOfTransfer",
+          "name": "Frequency of Transfer",
+          "type": "text",
+          "label": "how often data is transferred",
+          "required": false,
+          "clauses": [
+            "2.3"
+          ],
+          "hint": "Such as 'continuous' or 'monthly batch export'."
+        },
+        {
+          "key": "specialCategoryData",
+          "name": "Special Category Data",
+          "type": "longText",
+          "label": "any special category data involved",
+          "required": false,
+          "clauses": [
+            "2.3"
+          ],
+          "hint": "Health, biometric, racial or ethnic origin, political opinions, and the like. Leave it out if none is processed."
+        },
+        {
+          "key": "specialCategoryDataRestrictionsOrSafeguards",
+          "name": "Special Category Data Restrictions or Safeguards",
+          "type": "longText",
+          "label": "the extra safeguards for that special category data",
+          "required": false,
+          "clauses": [
+            "2.3"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "design-partner-agreement",
+      "name": "Design Partner Agreement",
+      "title": "Design Partner Agreement",
+      "summary": "An early-stage collaboration in which a partner works with you on a product and gives feedback, which you are free to use.",
+      "aliases": [
+        "design partner",
+        "early access program",
+        "beta program",
+        "co-development",
+        "build it with a customer",
+        "feedback agreement",
+        "founding customer"
+      ],
+      "attachment": null,
+      "renderer": "generic",
+      "version": null,
+      "sourceUrl": null,
+      "fields": [
+        {
+          "key": "provider",
+          "name": "Provider",
+          "type": "party",
+          "label": "the company running the program",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "2.1",
+            "3.1",
+            "4.1",
+            "5.2",
+            "6.1",
+            "6.2",
+            "8.1",
+            "8.2",
+            "8.3",
+            "8.4"
+          ]
+        },
+        {
+          "key": "partner",
+          "name": "Partner",
+          "type": "party",
+          "label": "the design partner",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "2.1",
+            "3.1",
+            "3.3.a",
+            "4.1",
+            "5.2",
+            "6.1",
+            "6.2",
+            "7.5",
+            "8.1",
+            "8.2",
+            "8.4"
+          ]
+        },
+        {
+          "key": "program",
+          "name": "Program",
+          "type": "longText",
+          "label": "what the design partner program involves",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "3.3.a",
+            "6.1"
+          ],
+          "hint": "What each side will actually do together."
+        },
+        {
+          "key": "term",
+          "name": "Term",
+          "type": "text",
+          "label": "how long the collaboration runs",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "3.1"
+          ],
+          "hint": "A length or an end date, such as '6 months from the Effective Date'."
+        },
+        {
+          "key": "effectiveDate",
+          "name": "Effective Date",
+          "type": "date",
+          "label": "the date the agreement starts",
+          "required": true,
+          "clauses": [
+            "3.1",
+            "6.1",
+            "8.3"
+          ],
+          "default": "today"
+        },
+        {
+          "key": "governingLaw",
+          "name": "Governing Law",
+          "type": "text",
+          "label": "the law that governs the agreement",
+          "required": true,
+          "clauses": [
+            "7.3"
+          ],
+          "hint": "Usually a US state, such as 'the laws of the State of Delaware'."
+        },
+        {
+          "key": "chosenCourts",
+          "name": "Chosen Courts",
+          "type": "text",
+          "label": "the courts that would hear a dispute",
+          "required": true,
+          "clauses": [
+            "7.3"
+          ],
+          "hint": "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+        },
+        {
+          "key": "fees",
+          "name": "Fees",
+          "type": "money",
+          "label": "anything the partner pays",
+          "required": false,
+          "clauses": [
+            "2.1"
+          ],
+          "hint": "Often nothing at all in a design partnership. Leave it out and no fees apply."
+        },
+        {
+          "key": "noticeAddress",
+          "name": "Notice Address",
+          "type": "text",
+          "label": "where legal notices should be sent",
+          "required": false,
+          "clauses": [
+            "7.8"
+          ],
+          "hint": "Leave this out and notices go to the addresses in the signature block."
+        }
+      ]
+    },
+    {
+      "slug": "mutual-nda",
+      "name": "Mutual NDA",
+      "title": "Mutual NDA",
+      "summary": "A two-way confidentiality agreement, for sharing information while you work out whether to do business together.",
+      "aliases": [
+        "NDA",
+        "non-disclosure agreement",
+        "confidentiality agreement",
+        "mutual NDA",
+        "secrecy agreement",
+        "keep things confidential",
+        "protect confidential information"
+      ],
+      "attachment": null,
+      "renderer": "mutual-nda",
+      "version": "1.0",
+      "sourceUrl": "https://commonpaper.com/standards/mutual-nda/1.0",
+      "fields": [
+        {
+          "key": "partyOne",
+          "name": "Party 1",
+          "type": "party",
+          "label": "the first company",
+          "required": true,
+          "clauses": []
+        },
+        {
+          "key": "partyTwo",
+          "name": "Party 2",
+          "type": "party",
+          "label": "the second company",
+          "required": true,
+          "clauses": []
+        },
+        {
+          "key": "purpose",
+          "name": "Purpose",
+          "type": "longText",
+          "label": "what the confidential information may be used for",
+          "required": true,
+          "clauses": [],
+          "default": "Evaluating whether to enter into a business relationship with the other party."
+        },
+        {
+          "key": "effectiveDate",
+          "name": "Effective Date",
+          "type": "date",
+          "label": "the date the agreement starts",
+          "required": true,
+          "clauses": [],
+          "default": "today"
+        },
+        {
+          "key": "mndaTerm",
+          "name": "MNDA Term",
+          "type": "term",
+          "label": "how long the NDA itself runs",
+          "required": true,
+          "clauses": [],
+          "counted": "expires",
+          "openEnded": "untilTerminated",
+          "noun": "year",
+          "defaultYears": 1
+        },
+        {
+          "key": "confidentialityTerm",
+          "name": "Term of Confidentiality",
+          "type": "term",
+          "label": "how long the information stays protected",
+          "required": true,
+          "clauses": [],
+          "counted": "years",
+          "openEnded": "perpetuity",
+          "noun": "year",
+          "defaultYears": 1
+        },
+        {
+          "key": "governingLaw",
+          "name": "Governing Law",
+          "type": "text",
+          "label": "the US state whose law governs",
+          "required": true,
+          "clauses": [],
+          "hint": "A state, such as Delaware."
+        },
+        {
+          "key": "jurisdiction",
+          "name": "Jurisdiction",
+          "type": "text",
+          "label": "where disputes would be heard",
+          "required": true,
+          "clauses": [],
+          "hint": "A city or county and state, such as New Castle, DE."
+        },
+        {
+          "key": "modifications",
+          "name": "MNDA Modifications",
+          "type": "longText",
+          "label": "any changes to the standard terms",
+          "required": false,
+          "clauses": []
+        }
+      ]
+    },
+    {
+      "slug": "partnership-agreement",
+      "name": "Partnership Agreement",
+      "title": "Partnership Agreement",
+      "summary": "A commercial partnership in which each side takes on obligations, with a trademark licence for using each other's brand.",
+      "aliases": [
+        "partnership",
+        "reseller agreement",
+        "referral agreement",
+        "channel partner",
+        "co-marketing",
+        "joint venture",
+        "work together commercially",
+        "affiliate agreement"
+      ],
+      "attachment": null,
+      "renderer": "generic",
+      "version": "1.0",
+      "sourceUrl": "https://commonpaper.com/standards/partnership-agreement/1.0",
+      "fields": [
+        {
+          "key": "company",
+          "name": "Company",
+          "type": "party",
+          "label": "the first company",
+          "required": true,
+          "clauses": [
+            "8.1",
+            "10.1",
+            "10.2",
+            "13.3",
+            "13.7",
+            "13.14",
+            "13.15"
+          ]
+        },
+        {
+          "key": "partner",
+          "name": "Partner",
+          "type": "party",
+          "label": "the partner",
+          "required": true,
+          "clauses": [
+            "8.1",
+            "10.1",
+            "10.2",
+            "13.3",
+            "13.7",
+            "13.14",
+            "13.15"
+          ]
+        },
+        {
+          "key": "obligations",
+          "name": "Obligations",
+          "type": "longText",
+          "label": "what each side has agreed to do",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "2.1",
+            "3.1",
+            "3.3",
+            "6.3",
+            "7.1",
+            "13.15",
+            "13.20"
+          ],
+          "hint": "Describe both sides' obligations; this is the heart of the partnership."
+        },
+        {
+          "key": "effectiveDate",
+          "name": "Effective Date",
+          "type": "date",
+          "label": "the date the partnership starts",
+          "required": true,
+          "clauses": [
+            "6.1",
+            "13.6"
+          ],
+          "default": "today"
+        },
+        {
+          "key": "endDate",
+          "name": "End Date",
+          "type": "text",
+          "label": "when the partnership ends",
+          "required": true,
+          "clauses": [
+            "6.1"
+          ],
+          "hint": "A date, or a length such as '2 years from the Effective Date'."
+        },
+        {
+          "key": "governingLaw",
+          "name": "Governing Law",
+          "type": "text",
+          "label": "the law that governs the agreement",
+          "required": true,
+          "clauses": [
+            "12.3",
+            "13.20"
+          ],
+          "hint": "Usually a US state, such as 'the laws of the State of Delaware'."
+        },
+        {
+          "key": "chosenCourts",
+          "name": "Chosen Courts",
+          "type": "text",
+          "label": "the courts that would hear a dispute",
+          "required": true,
+          "clauses": [
+            "12.3"
+          ],
+          "hint": "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+        },
+        {
+          "key": "paymentProcess",
+          "name": "Payment Process",
+          "type": "longText",
+          "label": "how money changes hands, if it does",
+          "required": false,
+          "clauses": [
+            "2.1.a"
+          ]
+        },
+        {
+          "key": "paymentSchedule",
+          "name": "Payment Schedule",
+          "type": "longText",
+          "label": "when payments are due",
+          "required": false,
+          "clauses": [
+            "2.1.b"
+          ],
+          "hint": "Such as 'quarterly in arrears, net 30'."
+        },
+        {
+          "key": "territory",
+          "name": "Territory",
+          "type": "text",
+          "label": "where the trademark licence applies",
+          "required": false,
+          "clauses": [
+            "3.1"
+          ],
+          "hint": "Such as 'worldwide' or 'the United States and Canada'."
+        },
+        {
+          "key": "brandGuidelines",
+          "name": "Brand Guidelines",
+          "type": "longText",
+          "label": "any rules for using each other's brand",
+          "required": false,
+          "clauses": [
+            "3.1"
+          ]
+        },
+        {
+          "key": "generalCapAmount",
+          "name": "General Cap Amount",
+          "type": "money",
+          "label": "the cap on each party's total liability",
+          "required": false,
+          "clauses": [
+            "9.1.a"
+          ]
+        },
+        {
+          "key": "increasedCapAmount",
+          "name": "Increased Cap Amount",
+          "type": "money",
+          "label": "a higher liability cap for certain claims",
+          "required": false,
+          "clauses": [
+            "9.1.b"
+          ]
+        },
+        {
+          "key": "increasedClaims",
+          "name": "Increased Claims",
+          "type": "longText",
+          "label": "which claims that higher cap applies to",
+          "required": false,
+          "clauses": [
+            "9.1.b",
+            "9.3"
+          ]
+        },
+        {
+          "key": "unlimitedClaims",
+          "name": "Unlimited Claims",
+          "type": "longText",
+          "label": "any claims that are not capped at all",
+          "required": false,
+          "clauses": [
+            "9.3"
+          ]
+        },
+        {
+          "key": "companyCoveredClaim",
+          "name": "Company Covered Claim",
+          "type": "longText",
+          "label": "what the company indemnifies the partner against",
+          "required": false,
+          "clauses": [
+            "10.1",
+            "13.8"
+          ]
+        },
+        {
+          "key": "partnerCoveredClaim",
+          "name": "Partner Covered Claim",
+          "type": "longText",
+          "label": "what the partner indemnifies the company against",
+          "required": false,
+          "clauses": [
+            "10.2",
+            "13.8"
+          ]
+        },
+        {
+          "key": "additionalWarranties",
+          "name": "Additional Warranties",
+          "type": "longText",
+          "label": "any warranties beyond the standard ones",
+          "required": false,
+          "clauses": [
+            "7.1"
+          ]
+        },
+        {
+          "key": "dpa",
+          "name": "DPA",
+          "type": "text",
+          "label": "the data processing agreement, if one applies",
+          "required": false,
+          "clauses": [
+            "4.1"
+          ],
+          "hint": "Name the DPA and its date, or leave it out if there is none."
+        }
+      ]
+    },
+    {
+      "slug": "pilot-agreement",
+      "name": "Pilot Agreement",
+      "title": "Pilot Agreement",
+      "summary": "A time-boxed trial of a product, so a customer can evaluate it before committing to a full agreement.",
+      "aliases": [
+        "trial agreement",
+        "proof of concept",
+        "POC",
+        "evaluation agreement",
+        "free trial",
+        "try before we buy",
+        "test the product",
+        "30 day trial"
+      ],
+      "attachment": null,
+      "renderer": "generic",
+      "version": "1.1",
+      "sourceUrl": "https://commonpaper.com/standards/pilot-agreement/1.1",
+      "fields": [
+        {
+          "key": "provider",
+          "name": "Provider",
+          "type": "party",
+          "label": "the company providing the product",
+          "required": true,
+          "clauses": [
+            "1.2",
+            "1.3",
+            "1.4",
+            "1.5",
+            "1.7",
+            "2.3.a",
+            "2.3.b",
+            "4.1",
+            "7.1",
+            "7.6",
+            "7.8",
+            "8.2",
+            "8.3",
+            "8.4",
+            "8.6",
+            "8.8",
+            "8.13",
+            "8.16"
+          ]
+        },
+        {
+          "key": "customer",
+          "name": "Customer",
+          "type": "party",
+          "label": "the company trying the product",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "1.4",
+            "1.5",
+            "1.6",
+            "1.7",
+            "2.3.a",
+            "2.3.b",
+            "7.1",
+            "7.8",
+            "7.11",
+            "8.2",
+            "8.3",
+            "8.4",
+            "8.5",
+            "8.6",
+            "8.13",
+            "8.16",
+            "8.18"
+          ]
+        },
+        {
+          "key": "pilotPeriod",
+          "name": "Pilot Period",
+          "type": "text",
+          "label": "how long the pilot runs",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "2.1"
+          ],
+          "hint": "A length or an end date, such as '60 days from the Effective Date'."
+        },
+        {
+          "key": "effectiveDate",
+          "name": "Effective Date",
+          "type": "date",
+          "label": "the date the agreement starts",
+          "required": true,
+          "clauses": [
+            "1.7",
+            "2.1",
+            "8.4"
+          ],
+          "default": "today"
+        },
+        {
+          "key": "governingLaw",
+          "name": "Governing Law",
+          "type": "text",
+          "label": "the law that governs the agreement",
+          "required": true,
+          "clauses": [
+            "7.3"
+          ],
+          "hint": "Usually a US state, such as 'the laws of the State of Delaware'."
+        },
+        {
+          "key": "chosenCourts",
+          "name": "Chosen Courts",
+          "type": "text",
+          "label": "the courts that would hear a dispute",
+          "required": true,
+          "clauses": [
+            "7.3"
+          ],
+          "hint": "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+        },
+        {
+          "key": "generalCapAmount",
+          "name": "General Cap Amount",
+          "type": "money",
+          "label": "the cap on each party's total liability",
+          "required": false,
+          "clauses": [
+            "5.1"
+          ],
+          "hint": "An amount, such as '$50,000', or a formula such as 'the fees paid in the last 12 months'."
+        },
+        {
+          "key": "noticeAddress",
+          "name": "Notice Address",
+          "type": "text",
+          "label": "where legal notices should be sent",
+          "required": false,
+          "clauses": [
+            "7.7"
+          ],
+          "hint": "Leave this out and notices go to the addresses in the signature block."
+        }
+      ]
+    },
+    {
+      "slug": "professional-services-agreement",
+      "name": "Professional Services Agreement",
+      "title": "Professional Services Agreement",
+      "summary": "A framework for delivering professional services against a statement of work, covering deliverables, acceptance and payment.",
+      "aliases": [
+        "PSA",
+        "services agreement",
+        "consulting agreement",
+        "statement of work",
+        "SOW",
+        "implementation services",
+        "contractor agreement",
+        "professional services"
+      ],
+      "attachment": null,
+      "renderer": "generic",
+      "version": null,
+      "sourceUrl": null,
+      "fields": [
+        {
+          "key": "provider",
+          "name": "Provider",
+          "type": "party",
+          "label": "the company providing the services",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "1.4",
+            "1.5",
+            "2.1",
+            "2.2",
+            "2.3",
+            "2.4.a",
+            "2.4.b",
+            "2.4.c",
+            "2.5",
+            "2.6",
+            "3.2",
+            "4.1",
+            "4.2",
+            "4.3",
+            "4.4",
+            "5.2.b",
+            "5.3.b",
+            "5.3.d",
+            "5.3.e",
+            "6.2",
+            "6.3",
+            "6.4",
+            "7.1",
+            "9.1",
+            "9.2",
+            "12.1",
+            "12.2",
+            "12.13",
+            "13.2",
+            "13.6",
+            "13.14",
+            "13.19",
+            "13.20"
+          ]
+        },
+        {
+          "key": "customer",
+          "name": "Customer",
+          "type": "party",
+          "label": "the customer receiving them",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "1.4",
+            "1.5",
+            "1.6",
+            "2.1",
+            "2.2",
+            "2.3",
+            "2.4.a",
+            "2.4.b",
+            "2.4.c",
+            "2.5",
+            "2.6",
+            "4.2",
+            "4.3",
+            "4.4",
+            "5.3.d",
+            "6.2",
+            "6.3",
+            "6.4",
+            "7.1",
+            "9.1",
+            "9.2",
+            "12.1",
+            "12.2",
+            "12.6",
+            "12.11",
+            "12.12",
+            "12.13",
+            "13.2",
+            "13.6",
+            "13.8",
+            "13.14",
+            "13.20",
+            "13.21"
+          ]
+        },
+        {
+          "key": "deliverable",
+          "name": "Deliverable",
+          "type": "longText",
+          "label": "what will be delivered",
+          "required": true,
+          "clauses": [
+            "1.4",
+            "2.1",
+            "2.3",
+            "2.4.a",
+            "2.4.b",
+            "2.4.c",
+            "2.6",
+            "6.3",
+            "12.12",
+            "13.17",
+            "13.18"
+          ],
+          "hint": "Describe the deliverables for this engagement. Several can be listed in one answer."
+        },
+        {
+          "key": "sowTerm",
+          "name": "SOW Term",
+          "type": "text",
+          "label": "how long the engagement runs",
+          "required": true,
+          "clauses": [
+            "5.1",
+            "6.4"
+          ],
+          "hint": "A length or an end date, such as '6 months from the Effective Date'."
+        },
+        {
+          "key": "fees",
+          "name": "Fees",
+          "type": "money",
+          "label": "what the services cost",
+          "required": true,
+          "clauses": [
+            "4.1",
+            "4.2",
+            "4.3",
+            "5.3.d",
+            "5.3.e",
+            "6.4",
+            "12.11",
+            "13.18"
+          ],
+          "hint": "An amount, a rate, or a schedule such as '$15,000 per month'."
+        },
+        {
+          "key": "effectiveDate",
+          "name": "Effective Date",
+          "type": "date",
+          "label": "the date the agreement starts",
+          "required": true,
+          "clauses": [
+            "5.1",
+            "13.5",
+            "13.14"
+          ],
+          "default": "today"
+        },
+        {
+          "key": "governingLaw",
+          "name": "Governing Law",
+          "type": "text",
+          "label": "the law that governs the agreement",
+          "required": true,
+          "clauses": [
+            "12.3",
+            "13.13"
+          ],
+          "hint": "Usually a US state, such as 'the laws of the State of Delaware'."
+        },
+        {
+          "key": "chosenCourts",
+          "name": "Chosen Courts",
+          "type": "text",
+          "label": "the courts that would hear a dispute",
+          "required": true,
+          "clauses": [
+            "12.3"
+          ],
+          "hint": "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+        },
+        {
+          "key": "paymentPeriod",
+          "name": "Payment Period",
+          "type": "text",
+          "label": "how long the customer has to pay an invoice",
+          "required": false,
+          "clauses": [
+            "4.2",
+            "4.4"
+          ],
+          "hint": "Such as '30 days from the invoice date'."
+        },
+        {
+          "key": "rejectionPeriod",
+          "name": "Rejection Period",
+          "type": "text",
+          "label": "how long the customer has to reject a deliverable",
+          "required": false,
+          "clauses": [
+            "1.4"
+          ],
+          "hint": "Such as '10 business days after delivery'."
+        },
+        {
+          "key": "resubmissionPeriod",
+          "name": "Resubmission Period",
+          "type": "text",
+          "label": "how long the provider has to fix a rejected deliverable",
+          "required": false,
+          "clauses": [
+            "1.4"
+          ]
+        },
+        {
+          "key": "timeOfAssignment",
+          "name": "Time of Assignment",
+          "type": "longText",
+          "label": "when intellectual property in the deliverables transfers",
+          "required": false,
+          "clauses": [
+            "2.1"
+          ],
+          "hint": "Commonly on full payment, or on acceptance."
+        },
+        {
+          "key": "customerObligations",
+          "name": "Customer Obligations",
+          "type": "longText",
+          "label": "what the customer has to provide",
+          "required": false,
+          "clauses": [
+            "1.6"
+          ],
+          "hint": "Such as access, environments, data, or staff time."
+        },
+        {
+          "key": "customerPolicies",
+          "name": "Customer Policies",
+          "type": "longText",
+          "label": "any customer policies the provider must follow",
+          "required": false,
+          "clauses": [
+            "1.1"
+          ]
+        },
+        {
+          "key": "generalCapAmount",
+          "name": "General Cap Amount",
+          "type": "money",
+          "label": "the cap on each party's total liability",
+          "required": false,
+          "clauses": [
+            "8.1"
+          ]
+        },
+        {
+          "key": "insuranceMinimums",
+          "name": "Insurance Minimums",
+          "type": "longText",
+          "label": "any insurance the provider must carry",
+          "required": false,
+          "clauses": [
+            "10.1"
+          ]
+        },
+        {
+          "key": "securityPolicy",
+          "name": "Security Policy",
+          "type": "text",
+          "label": "the security policy that applies",
+          "required": false,
+          "clauses": [
+            "3.2"
+          ]
+        },
+        {
+          "key": "dpa",
+          "name": "DPA",
+          "type": "text",
+          "label": "the data processing agreement, if one applies",
+          "required": false,
+          "clauses": [
+            "3.1"
+          ],
+          "hint": "Name the DPA and its date, or leave it out if there is none."
+        },
+        {
+          "key": "increasedCapAmount",
+          "name": "Increased Cap Amount",
+          "type": "money",
+          "label": "a higher liability cap for certain claims",
+          "required": false,
+          "clauses": [
+            "8.1"
+          ]
+        },
+        {
+          "key": "increasedClaims",
+          "name": "Increased Claims",
+          "type": "longText",
+          "label": "which claims that higher cap applies to",
+          "required": false,
+          "clauses": [
+            "8.1",
+            "8.3"
+          ]
+        },
+        {
+          "key": "unlimitedClaims",
+          "name": "Unlimited Claims",
+          "type": "longText",
+          "label": "any claims that are not capped at all",
+          "required": false,
+          "clauses": [
+            "8.3"
+          ]
+        },
+        {
+          "key": "providerCoveredClaim",
+          "name": "Provider Covered Claim",
+          "type": "longText",
+          "label": "what the provider indemnifies the customer against",
+          "required": false,
+          "clauses": [
+            "9.1",
+            "13.7"
+          ]
+        },
+        {
+          "key": "customerCoveredClaim",
+          "name": "Customer Covered Claim",
+          "type": "longText",
+          "label": "what the customer indemnifies the provider against",
+          "required": false,
+          "clauses": [
+            "9.2",
+            "13.7"
+          ]
+        },
+        {
+          "key": "additionalWarranties",
+          "name": "Additional Warranties",
+          "type": "longText",
+          "label": "any warranties beyond the standard ones",
+          "required": false,
+          "clauses": [
+            "6.1"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "service-level-agreement",
+      "name": "Service Level Agreement",
+      "title": "Service Level Agreement",
+      "summary": "Uptime and response-time commitments for a cloud service, and the service credits owed when they are missed.",
+      "aliases": [
+        "SLA",
+        "uptime guarantee",
+        "service levels",
+        "availability commitment",
+        "support response times",
+        "service credits",
+        "99.9%"
+      ],
+      "attachment": "An SLA attaches to a Cloud Service Agreement. The customer, provider and subscription period are defined by that agreement, and are repeated here so the document reads on its own.",
+      "renderer": "generic",
+      "version": "2.0",
+      "sourceUrl": "https://commonpaper.com/standards/service-level-agreement/2.0",
+      "fields": [
+        {
+          "key": "provider",
+          "name": "Provider",
+          "type": "party",
+          "label": "the company providing the service",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "2.1",
+            "2.2",
+            "3.1",
+            "3.2",
+            "3.2.a",
+            "3.2.b",
+            "3.4",
+            "3.5",
+            "4.2",
+            "4.3"
+          ]
+        },
+        {
+          "key": "customer",
+          "name": "Customer",
+          "type": "party",
+          "label": "the customer it is promised to",
+          "required": true,
+          "clauses": [
+            "1.2",
+            "2.2",
+            "3.1",
+            "3.2",
+            "3.2.a",
+            "3.2.b",
+            "3.4",
+            "3.5",
+            "4.2",
+            "4.3"
+          ]
+        },
+        {
+          "key": "targetUptime",
+          "name": "Target Uptime",
+          "type": "text",
+          "label": "the uptime you are committing to",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "3.1",
+            "3.4",
+            "3.5"
+          ],
+          "hint": "A percentage, such as '99.9%'."
+        },
+        {
+          "key": "subscriptionPeriod",
+          "name": "Subscription Period",
+          "type": "text",
+          "label": "the subscription period these levels are measured over",
+          "required": true,
+          "clauses": [
+            "1.2",
+            "3.3",
+            "3.4"
+          ],
+          "hint": "This comes from the Cloud Service Agreement, such as '12 months from the Order Date'."
+        },
+        {
+          "key": "targetResponseTime",
+          "name": "Target Response Time",
+          "type": "text",
+          "label": "how quickly support will respond",
+          "required": false,
+          "clauses": [
+            "2.1",
+            "3.1",
+            "3.2.b",
+            "3.5"
+          ],
+          "hint": "A time, such as '4 business hours'."
+        },
+        {
+          "key": "supportChannel",
+          "name": "Support Channel",
+          "type": "text",
+          "label": "how customers reach support",
+          "required": false,
+          "clauses": [
+            "2.1",
+            "2.2",
+            "3.1"
+          ],
+          "hint": "An email address, portal, or phone number."
+        },
+        {
+          "key": "uptimeCredit",
+          "name": "Uptime Credit",
+          "type": "longText",
+          "label": "the credit owed when uptime is missed",
+          "required": false,
+          "clauses": [
+            "3.1",
+            "3.2.a",
+            "4.4"
+          ],
+          "hint": "Often a tier list, such as '10% of monthly fees below 99.9%, 25% below 99%'. Describe it in your own words."
+        },
+        {
+          "key": "responseTimeCredit",
+          "name": "Response Time Credit",
+          "type": "longText",
+          "label": "the credit owed when response times are missed",
+          "required": false,
+          "clauses": [
+            "3.1",
+            "3.2.b",
+            "4.4"
+          ]
+        },
+        {
+          "key": "scheduledDowntime",
+          "name": "Scheduled Downtime",
+          "type": "longText",
+          "label": "maintenance windows that do not count against uptime",
+          "required": false,
+          "clauses": [
+            "3.2.a",
+            "4.1",
+            "4.2"
+          ],
+          "hint": "Such as 'Sundays 02:00-06:00 UTC, with 48 hours notice'."
+        }
+      ]
+    },
+    {
+      "slug": "software-license-agreement",
+      "name": "Software License Agreement",
+      "title": "Software License Agreement",
+      "summary": "Terms for licensing software a customer installs and runs themselves, for a subscription period.",
+      "aliases": [
+        "software license",
+        "license agreement",
+        "on-premise software",
+        "self-hosted software",
+        "EULA",
+        "end user license agreement",
+        "install our software"
+      ],
+      "attachment": null,
+      "renderer": "generic",
+      "version": "1.1",
+      "sourceUrl": "https://commonpaper.com/standards/software-license-agreement/1.1",
+      "fields": [
+        {
+          "key": "provider",
+          "name": "Provider",
+          "type": "party",
+          "label": "the company licensing the software",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "1.4",
+            "1.5",
+            "1.6",
+            "1.7",
+            "2.1.a",
+            "2.2",
+            "3.2",
+            "3.3",
+            "3.4",
+            "3.5",
+            "3.6",
+            "4.4",
+            "4.5.c",
+            "5.2",
+            "5.3",
+            "5.4",
+            "6.1",
+            "8.1",
+            "8.2",
+            "8.4",
+            "8.5",
+            "9.4",
+            "10.1",
+            "10.7",
+            "10.8",
+            "10.12",
+            "10.14",
+            "11.3",
+            "11.5",
+            "11.7",
+            "11.8",
+            "11.11",
+            "11.16",
+            "11.31"
+          ]
+        },
+        {
+          "key": "customer",
+          "name": "Customer",
+          "type": "party",
+          "label": "the customer licensing it",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.2",
+            "1.3",
+            "1.5",
+            "1.6",
+            "2.1.a",
+            "2.2",
+            "3.3",
+            "3.4",
+            "3.5",
+            "3.6",
+            "4.4",
+            "4.5.c",
+            "5.3",
+            "5.4",
+            "6.1",
+            "7.4",
+            "8.1",
+            "8.2",
+            "8.4",
+            "8.5",
+            "9.4",
+            "10.1",
+            "10.7",
+            "10.8",
+            "10.12",
+            "10.14",
+            "11.3",
+            "11.5",
+            "11.8",
+            "11.16",
+            "11.31",
+            "11.32",
+            "11.33"
+          ]
+        },
+        {
+          "key": "permittedUses",
+          "name": "Permitted Uses",
+          "type": "longText",
+          "label": "what the customer may use the software for",
+          "required": true,
+          "clauses": [
+            "1.1"
+          ]
+        },
+        {
+          "key": "subscriptionPeriod",
+          "name": "Subscription Period",
+          "type": "text",
+          "label": "how long the licence runs",
+          "required": true,
+          "clauses": [
+            "1.1",
+            "1.6",
+            "4.1",
+            "4.4",
+            "8.4",
+            "11.23",
+            "11.34"
+          ],
+          "hint": "Such as '12 months from the Order Date'."
+        },
+        {
+          "key": "orderDate",
+          "name": "Order Date",
+          "type": "date",
+          "label": "the date of the order",
+          "required": true,
+          "clauses": [
+            "4.1"
+          ]
+        },
+        {
+          "key": "effectiveDate",
+          "name": "Effective Date",
+          "type": "date",
+          "label": "the date the agreement starts",
+          "required": true,
+          "clauses": [
+            "1.7",
+            "4.2",
+            "11.7"
+          ],
+          "default": "today"
+        },
+        {
+          "key": "governingLaw",
+          "name": "Governing Law",
+          "type": "text",
+          "label": "the law that governs the agreement",
+          "required": true,
+          "clauses": [
+            "10.3",
+            "11.20",
+            "11.34"
+          ],
+          "hint": "Usually a US state, such as 'the laws of the State of Delaware'."
+        },
+        {
+          "key": "chosenCourts",
+          "name": "Chosen Courts",
+          "type": "text",
+          "label": "the courts that would hear a dispute",
+          "required": true,
+          "clauses": [
+            "10.3"
+          ],
+          "hint": "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+        },
+        {
+          "key": "paymentProcess",
+          "name": "Payment Process",
+          "type": "longText",
+          "label": "how the customer pays",
+          "required": true,
+          "clauses": [
+            "3.2",
+            "3.3",
+            "3.5"
+          ],
+          "hint": "The standard terms read differently for invoicing than for automatic card payment, so say which it is."
+        },
+        {
+          "key": "licenseLimits",
+          "name": "License Limits",
+          "type": "longText",
+          "label": "any limits on the licence",
+          "required": false,
+          "clauses": [
+            "2.1.b"
+          ],
+          "hint": "Such as seat counts, installations, CPUs, or environments."
+        },
+        {
+          "key": "generalCapAmount",
+          "name": "General Cap Amount",
+          "type": "money",
+          "label": "the cap on each party's total liability",
+          "required": false,
+          "clauses": [
+            "7.1.a"
+          ],
+          "hint": "An amount, or a formula such as 'the fees paid in the 12 months before the claim'."
+        },
+        {
+          "key": "warrantyPeriod",
+          "name": "Warranty Period",
+          "type": "text",
+          "label": "how long the software is warranted to work as documented",
+          "required": false,
+          "clauses": [
+            "5.2"
+          ],
+          "hint": "Such as '90 days from delivery'."
+        },
+        {
+          "key": "nonRenewalNoticeDate",
+          "name": "Non-Renewal Notice Date",
+          "type": "text",
+          "label": "the deadline for saying you do not want to renew",
+          "required": false,
+          "clauses": [
+            "4.1"
+          ],
+          "hint": "Such as '30 days before the end of the current Subscription Period'."
+        },
+        {
+          "key": "deletionProcedure",
+          "name": "Deletion Procedure",
+          "type": "longText",
+          "label": "what the customer must do with the software when the licence ends",
+          "required": false,
+          "clauses": [
+            "4.5.a"
+          ]
+        },
+        {
+          "key": "additionalWarranties",
+          "name": "Additional Warranties",
+          "type": "longText",
+          "label": "any warranties beyond the standard ones",
+          "required": false,
+          "clauses": [
+            "5.1"
+          ]
+        },
+        {
+          "key": "increasedCapAmount",
+          "name": "Increased Cap Amount",
+          "type": "money",
+          "label": "a higher liability cap for certain claims",
+          "required": false,
+          "clauses": [
+            "7.1.b"
+          ]
+        },
+        {
+          "key": "increasedClaims",
+          "name": "Increased Claims",
+          "type": "longText",
+          "label": "which claims that higher cap applies to",
+          "required": false,
+          "clauses": [
+            "7.1.b",
+            "7.4"
+          ]
+        },
+        {
+          "key": "unlimitedClaims",
+          "name": "Unlimited Claims",
+          "type": "longText",
+          "label": "any claims that are not capped at all",
+          "required": false,
+          "clauses": [
+            "7.4"
+          ]
+        },
+        {
+          "key": "providerCoveredClaim",
+          "name": "Provider Covered Claim",
+          "type": "longText",
+          "label": "what the provider indemnifies the customer against",
+          "required": false,
+          "clauses": [
+            "8.1",
+            "8.4",
+            "8.5",
+            "11.9"
+          ]
+        },
+        {
+          "key": "customerCoveredClaim",
+          "name": "Customer Covered Claim",
+          "type": "longText",
+          "label": "what the customer indemnifies the provider against",
+          "required": false,
+          "clauses": [
+            "8.2",
+            "11.9"
+          ]
+        }
+      ]
+    }
+  ]
+}

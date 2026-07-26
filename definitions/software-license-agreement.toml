@@ -1,0 +1,125 @@
+slug = "software-license-agreement"
+name = "Software License Agreement"
+template = "templates/software-license-agreement.md"
+version = "1.1"
+sourceUrl = "https://commonpaper.com/standards/software-license-agreement/1.1"
+
+summary = "Terms for licensing software a customer installs and runs themselves, for a subscription period."
+aliases = [
+  "software license",
+  "license agreement",
+  "on-premise software",
+  "self-hosted software",
+  "EULA",
+  "end user license agreement",
+  "install our software",
+]
+
+[fields.provider]
+type = "party"
+label = "the company licensing the software"
+required = true
+
+[fields.customer]
+type = "party"
+label = "the customer licensing it"
+required = true
+
+[fields.permittedUses]
+type = "longText"
+label = "what the customer may use the software for"
+required = true
+
+[fields.subscriptionPeriod]
+type = "text"
+label = "how long the licence runs"
+hint = "Such as '12 months from the Order Date'."
+required = true
+
+[fields.orderDate]
+type = "date"
+label = "the date of the order"
+required = true
+
+[fields.effectiveDate]
+type = "date"
+label = "the date the agreement starts"
+required = true
+default = "today"
+
+[fields.governingLaw]
+type = "text"
+label = "the law that governs the agreement"
+hint = "Usually a US state, such as 'the laws of the State of Delaware'."
+required = true
+
+[fields.chosenCourts]
+type = "text"
+label = "the courts that would hear a dispute"
+hint = "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+required = true
+
+[fields.paymentProcess]
+type = "longText"
+label = "how the customer pays"
+hint = "The standard terms read differently for invoicing than for automatic card payment, so say which it is."
+required = true
+
+[fields.licenseLimits]
+type = "longText"
+label = "any limits on the licence"
+hint = "Such as seat counts, installations, CPUs, or environments."
+required = false
+
+[fields.generalCapAmount]
+type = "money"
+label = "the cap on each party's total liability"
+hint = "An amount, or a formula such as 'the fees paid in the 12 months before the claim'."
+required = false
+
+[fields.warrantyPeriod]
+type = "text"
+label = "how long the software is warranted to work as documented"
+hint = "Such as '90 days from delivery'."
+required = false
+
+[fields.nonRenewalNoticeDate]
+type = "text"
+label = "the deadline for saying you do not want to renew"
+hint = "Such as '30 days before the end of the current Subscription Period'."
+required = false
+
+[fields.deletionProcedure]
+type = "longText"
+label = "what the customer must do with the software when the licence ends"
+required = false
+
+[fields.additionalWarranties]
+type = "longText"
+label = "any warranties beyond the standard ones"
+required = false
+
+[fields.increasedCapAmount]
+type = "money"
+label = "a higher liability cap for certain claims"
+required = false
+
+[fields.increasedClaims]
+type = "longText"
+label = "which claims that higher cap applies to"
+required = false
+
+[fields.unlimitedClaims]
+type = "longText"
+label = "any claims that are not capped at all"
+required = false
+
+[fields.providerCoveredClaim]
+type = "longText"
+label = "what the provider indemnifies the customer against"
+required = false
+
+[fields.customerCoveredClaim]
+type = "longText"
+label = "what the customer indemnifies the provider against"
+required = false

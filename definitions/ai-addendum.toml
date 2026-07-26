@@ -1,0 +1,49 @@
+slug = "ai-addendum"
+name = "AI Addendum"
+template = "templates/ai-addendum.md"
+version = "1.0"
+sourceUrl = "https://commonpaper.com/standards/ai-addendum/1.0"
+
+summary = "AI-specific terms to add to a product agreement: who owns the input and output, and whether the provider may train on them."
+aliases = [
+  "AI terms",
+  "AI addendum",
+  "machine learning terms",
+  "LLM terms",
+  "can they train on our data",
+  "generative AI agreement",
+  "AI features",
+]
+attachment = "An AI Addendum layers onto a product agreement you already have; it adds AI terms rather than replacing that agreement."
+
+[fields.provider]
+type = "party"
+label = "the company providing the AI features"
+required = true
+
+[fields.customer]
+type = "party"
+label = "the company using them"
+required = true
+
+[fields.trainingData]
+type = "longText"
+label = "what data, if any, the provider may train on"
+hint = "Leave this out and the provider may not train on your input or output at all, which is the standard terms' default."
+required = false
+
+[fields.trainingPurposes]
+type = "longText"
+label = "what the provider may train for"
+hint = "Only meaningful if training is permitted above."
+required = false
+
+[fields.trainingRestrictions]
+type = "longText"
+label = "any limits on that training"
+required = false
+
+[fields.improvementRestrictions]
+type = "longText"
+label = "any limits on using input and output to improve the service"
+required = false

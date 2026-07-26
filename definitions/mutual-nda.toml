@@ -1,0 +1,95 @@
+# The Mutual NDA, alone among these documents, is not compiled from a template.
+#
+# It shipped in PL-3 with a fill-in cover page (`templates/mutual-nda-coverpage.md`)
+# and a verbatim transcription of its standard terms in
+# `frontend/lib/nda/standard-terms.ts`, whose own test diffs it against
+# `templates/mutual-nda.md`. That transcription and its bespoke renderer stay;
+# this file only tells the chat engine what the document's fields are, so one
+# engine can drive every document.
+#
+# The keys below are load-bearing: they are exactly the field names in
+# `frontend/lib/nda/types.ts`, so the values the engine produces drop straight
+# into the workspace the NDA already had.
+
+slug = "mutual-nda"
+name = "Mutual NDA"
+renderer = "mutual-nda"
+version = "1.0"
+sourceUrl = "https://commonpaper.com/standards/mutual-nda/1.0"
+
+summary = "A two-way confidentiality agreement, for sharing information while you work out whether to do business together."
+aliases = [
+  "NDA",
+  "non-disclosure agreement",
+  "confidentiality agreement",
+  "mutual NDA",
+  "secrecy agreement",
+  "keep things confidential",
+  "protect confidential information",
+]
+
+[fields.partyOne]
+variable = "Party 1"
+type = "party"
+label = "the first company"
+required = true
+
+[fields.partyTwo]
+variable = "Party 2"
+type = "party"
+label = "the second company"
+required = true
+
+[fields.purpose]
+variable = "Purpose"
+type = "longText"
+label = "what the confidential information may be used for"
+required = true
+default = "Evaluating whether to enter into a business relationship with the other party."
+
+[fields.effectiveDate]
+variable = "Effective Date"
+type = "date"
+label = "the date the agreement starts"
+required = true
+default = "today"
+
+[fields.mndaTerm]
+variable = "MNDA Term"
+type = "term"
+counted = "expires"
+openEnded = "untilTerminated"
+noun = "year"
+label = "how long the NDA itself runs"
+required = true
+defaultYears = 1
+
+[fields.confidentialityTerm]
+variable = "Term of Confidentiality"
+type = "term"
+counted = "years"
+openEnded = "perpetuity"
+noun = "year"
+label = "how long the information stays protected"
+required = true
+defaultYears = 1
+
+[fields.governingLaw]
+variable = "Governing Law"
+type = "text"
+label = "the US state whose law governs"
+hint = "A state, such as Delaware."
+required = true
+
+[fields.jurisdiction]
+variable = "Jurisdiction"
+type = "text"
+label = "where disputes would be heard"
+hint = "A city or county and state, such as New Castle, DE."
+required = true
+
+[fields.modifications]
+variable = "MNDA Modifications"
+type = "longText"
+label = "any changes to the standard terms"
+required = false

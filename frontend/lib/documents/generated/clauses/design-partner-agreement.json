@@ -1,0 +1,988 @@
+{
+  "slug": "design-partner-agreement",
+  "clauses": [
+    {
+      "number": "1",
+      "depth": 0,
+      "heading": "Design Partner Overview",
+      "segments": []
+    },
+    {
+      "number": "1.1",
+      "depth": 1,
+      "heading": "Product Access",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " would like to be one of the first users of the Product. During the "
+        },
+        {
+          "kind": "variable",
+          "text": "Term",
+          "key": "term"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " will have early access to the Product for its internal business purposes and to give Feedback to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and participate in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Program",
+          "key": "program"
+        },
+        {
+          "kind": "text",
+          "text": ", so long as "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " complies with the terms of this Agreement."
+        }
+      ]
+    },
+    {
+      "number": "1.2",
+      "depth": 1,
+      "heading": "Program and Feedback",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The purpose of the "
+        },
+        {
+          "kind": "variable",
+          "text": "Program",
+          "key": "program"
+        },
+        {
+          "kind": "text",
+          "text": " is for "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " to develop, build, and improve the Product for general use by all of "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " customers or users. "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " will give Feedback to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " on a mutually agreed schedule and will participate in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Program",
+          "key": "program"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "1.3",
+      "depth": 1,
+      "heading": "Product Improvement",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will develop and improve the Product and may use all Feedback and insight about the Product from the "
+        },
+        {
+          "kind": "variable",
+          "text": "Program",
+          "key": "program"
+        },
+        {
+          "kind": "text",
+          "text": " freely without any restriction or obligation. "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " will not give any Feedback that "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " cannot use in this manner or for the purpose."
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "depth": 0,
+      "heading": "Fees and Costs",
+      "segments": []
+    },
+    {
+      "number": "2.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " will pay "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " the "
+        },
+        {
+          "kind": "variable",
+          "text": "Fees",
+          "key": "fees"
+        },
+        {
+          "kind": "text",
+          "text": ", if any."
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "depth": 0,
+      "heading": "Term & Termination",
+      "segments": []
+    },
+    {
+      "number": "3.1",
+      "depth": 1,
+      "heading": "Agreement Term",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This Agreement will start on the "
+        },
+        {
+          "kind": "variable",
+          "text": "Effective Date",
+          "key": "effectiveDate"
+        },
+        {
+          "kind": "text",
+          "text": " and continue for the "
+        },
+        {
+          "kind": "variable",
+          "text": "Term",
+          "key": "term"
+        },
+        {
+          "kind": "text",
+          "text": ". "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " may mutually agree to extend the "
+        },
+        {
+          "kind": "variable",
+          "text": "Term",
+          "key": "term"
+        },
+        {
+          "kind": "text",
+          "text": ", including by email communication."
+        }
+      ]
+    },
+    {
+      "number": "3.2",
+      "depth": 1,
+      "heading": "Termination",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Either party may terminate this Agreement for any or no reason. To terminate this Agreement, the terminating party must notify the other party about termination by giving the other party 30 days advance notice."
+        }
+      ]
+    },
+    {
+      "number": "3.3",
+      "depth": 1,
+      "heading": "Effect of Termination",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Upon expiration or termination of the Agreement:"
+        }
+      ]
+    },
+    {
+      "number": "3.3.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " will no longer have any right to access or use the Product. "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " will no longer be required to provide Feedback or participate in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Program",
+          "key": "program"
+        },
+        {
+          "kind": "text",
+          "text": " under the Agreement."
+        }
+      ]
+    },
+    {
+      "number": "3.3.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Each Recipient will return or destroy Discloser’s Confidential Information in its possession or control."
+        }
+      ]
+    },
+    {
+      "number": "3.4",
+      "depth": 1,
+      "heading": "Survival",
+      "segments": []
+    },
+    {
+      "number": "3.4.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The following sections will survive expiration or termination of the Agreement: Section 1.3 (Product Improvement), Section 3.3 (Effect of Termination), Section 3.4 (Survival), Section 4 (Disclaimer of Warranties), Section 5 (Confidentiality), Section 6 (Intellectual Property), Section 7 (General Terms), Section 8 (Definitions), and the portions of a Cover Page referenced by these sections."
+        }
+      ]
+    },
+    {
+      "number": "3.4.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Each Recipient may retain Discloser’s Confidential Information in accordance with its standard backup or record retention policies maintained in the ordinary course of business or as required by Applicable Laws, in which case Section 5 (Confidentiality) will continue to apply to retained Confidential Information."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "depth": 0,
+      "heading": "Disclaimer of Warranties",
+      "segments": []
+    },
+    {
+      "number": "4.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " each disclaim all warranties, whether express or implied, including the implied warranties of merchantability, fitness for a particular purpose, title, and non-infringement. These disclaimers apply to the maximum extent permitted by Applicable Laws."
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "depth": 0,
+      "heading": "Confidentiality",
+      "segments": []
+    },
+    {
+      "number": "5.1",
+      "depth": 1,
+      "heading": "Non-Use and Non-Disclosure",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Unless otherwise authorized in the Agreement, Recipient will (a) only use Discloser’s Confidential Information to fulfill its obligations or exercise its rights under this Agreement; and (b) not disclose Discloser’s Confidential Information to anyone else. In addition, Recipient will protect Discloser’s Confidential Information using at least the same protections Recipient uses for its own similar information but no less than a reasonable standard of care."
+        }
+      ]
+    },
+    {
+      "number": "5.2",
+      "depth": 1,
+      "heading": "Exclusions",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Confidential Information does not include information that (a) Recipient knew without any obligation of confidentiality before disclosure by Discloser; (b) is or becomes publicly known and generally available through no fault of Recipient; (c) Recipient receives under no obligation of confidentiality from someone else who is authorized to make the disclosure; or (d) Recipient independently developed without use of or reference to Discloser’s Confidential Information. In addition, Feedback does not constitute "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner's",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " Confidential Information and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may use "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner's",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " Confidential Information to provide the Product."
+        }
+      ]
+    },
+    {
+      "number": "5.3",
+      "depth": 1,
+      "heading": "Required Disclosures",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Recipient may disclose Discloser’s Confidential Information to the extent required by Applicable Laws if, unless prohibited by Applicable Laws, Recipient provides the Discloser reasonable advance notice of the required disclosure and reasonably cooperates, at the Discloser’s expense, with the Discloser’s efforts to obtain confidential treatment for the Confidential Information."
+        }
+      ]
+    },
+    {
+      "number": "5.4",
+      "depth": 1,
+      "heading": "Permitted Disclosures",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Recipient may disclose Discloser’s Confidential Information to Users, employees, advisors, contractors, and representatives who each have a need to know the Confidential Information, but only if the person or entity is bound by confidentiality obligations at least as protective as those in this Section 5 and Recipient remains responsible for everyone’s compliance with the terms of this Section 5."
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "depth": 0,
+      "heading": "Intellectual Property",
+      "segments": []
+    },
+    {
+      "number": "6.1",
+      "depth": 1,
+      "heading": "Reservation of Rights",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except for the limited license to access the Product in Section 1.1 (Product Access), "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " retains all right, title, and interest in and to the Product, including any aspects, features, or functionality created in response to Feedback or "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner's",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " participation in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Program",
+          "key": "program"
+        },
+        {
+          "kind": "text",
+          "text": ", whether developed before or after the "
+        },
+        {
+          "kind": "variable",
+          "text": "Effective Date",
+          "key": "effectiveDate"
+        },
+        {
+          "kind": "text",
+          "text": ". Each Discloser retains all right, title, and interest in and to its Confidential Information."
+        }
+      ]
+    },
+    {
+      "number": "6.2",
+      "depth": 1,
+      "heading": "Ownership",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " owns all Feedback. "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " hereby assigns to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " all its right, title, and interest in and to Feedback and will reasonably cooperate with Provider as needed to establish, prove, or defend "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " ownership of Feedback."
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "depth": 0,
+      "heading": "General Terms",
+      "segments": []
+    },
+    {
+      "number": "7.1",
+      "depth": 1,
+      "heading": "Entire Agreement",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This Agreement is the only agreement between the parties about its subject and this Agreement supersedes all prior or contemporaneous statements (whether in writing or not) about its subject."
+        }
+      ]
+    },
+    {
+      "number": "7.2",
+      "depth": 1,
+      "heading": "Modifications, Severability, and Waiver",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Any waiver, modification, or change to the Agreement must be in writing and signed or electronically accepted by each party. If any term of this Agreement is determined to be invalid or unenforceable by a relevant court or governing body, the remaining terms of this Agreement will remain in full force and effect. The failure of a party to enforce a term or to exercise an option or right in this Agreement will not constitute a waiver by that party of the term, option, or right."
+        }
+      ]
+    },
+    {
+      "number": "7.3",
+      "depth": 1,
+      "heading": "Governing Law and Chosen Courts",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The "
+        },
+        {
+          "kind": "variable",
+          "text": "Governing Law",
+          "key": "governingLaw"
+        },
+        {
+          "kind": "text",
+          "text": " will govern all interpretations and disputes about this Agreement, without regard to its conflict of laws provisions. The parties will bring any legal suit, action, or proceeding about this Agreement in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Chosen Courts",
+          "key": "chosenCourts"
+        },
+        {
+          "kind": "text",
+          "text": " and each party irrevocably submits to the exclusive jurisdiction of the "
+        },
+        {
+          "kind": "variable",
+          "text": "Chosen Courts",
+          "key": "chosenCourts"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "7.4",
+      "depth": 1,
+      "heading": "Injunctive Relief",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Despite Section 7.3 (Governing Law and Chosen Courts), a breach of Section 5 (Confidentiality) or the violation of a party’s intellectual property rights may cause irreparable harm for which monetary damages cannot adequately compensate. As a result, upon the actual or threatened breach of Section 5 (Confidentiality) or violation of a party’s intellectual property rights, the non-breaching or non-violating party may seek appropriate equitable relief, including an injunction, in any court of competent jurisdiction without the need to post a bond and without limiting its other rights or remedies."
+        }
+      ]
+    },
+    {
+      "number": "7.5",
+      "depth": 1,
+      "heading": "Restrictions",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except as expressly permitted by this Agreement, "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " will not (and will not allow anyone else to): (a) reverse engineer, decompile, or attempt to discover any source code or underlying ideas or algorithms of the Product (except to the extent Applicable Laws prohibit this restriction); (b) provide, sell, transfer, sublicense, lend, distribute, rent, or otherwise allow others to access or use the Product; (c) remove any proprietary notices or labels; (d) copy, modify, or create derivative works of the Product; (e) conduct security or vulnerability tests on, interfere with the operation of, cause performance degradation of, or circumvent access restrictions of the Product; (f) access accounts, information, data, or portions of the Product to which "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " does not have explicit authorization; (g) use the Product to develop a competing service or product; (h) use the Product with activity prohibited by Applicable Laws; (i) use the Product to obtain unauthorized access to anyone else’s networks or equipment; or (j) upload, submit, or otherwise make available to the Product any information or content to which "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": " does not have the proper rights."
+        }
+      ]
+    },
+    {
+      "number": "7.6",
+      "depth": 1,
+      "heading": "Non-Exhaustive Remedies",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except where the Agreement provides for an exclusive remedy, seeking or exercising a remedy does not limit the other rights or remedies available to a party."
+        }
+      ]
+    },
+    {
+      "number": "7.7",
+      "depth": 1,
+      "heading": "Assignment",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Neither party may assign any rights or obligations under this Agreement without the prior written consent of the other party. However, either party may assign this Agreement upon notice if the assigning party undergoes a merger, change of control, reorganization, or sale of all or substantially all its equity, business, or assets to which this Agreement relates. Any attempted but non-permitted assignment is void. This Agreement will be binding upon and inure to the benefit of the parties and their permitted successors and assigns."
+        }
+      ]
+    },
+    {
+      "number": "7.8",
+      "depth": 1,
+      "heading": "Notices",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Any notice, request, or approval about the Agreement must be in writing and sent to the "
+        },
+        {
+          "kind": "variable",
+          "text": "Notice Address",
+          "key": "noticeAddress"
+        },
+        {
+          "kind": "text",
+          "text": ". Notices will be deemed given (a) upon confirmed delivery if by email, registered or certified mail, or personal delivery; or (b) two days after mailing if by overnight commercial delivery."
+        }
+      ]
+    },
+    {
+      "number": "7.9",
+      "depth": 1,
+      "heading": "Independent Contractors",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The parties are independent contractors, not agents, partners, or joint venturers. Neither party is authorized to bind the other to any liability or obligation."
+        }
+      ]
+    },
+    {
+      "number": "7.10",
+      "depth": 1,
+      "heading": "No Third-Party Beneficiary",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "There are no third-party beneficiaries of this Agreement."
+        }
+      ]
+    },
+    {
+      "number": "7.11",
+      "depth": 1,
+      "heading": "Titles and Interpretation",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Section titles are for convenience and reference only. All uses of \"including\" and similar phrases are non-exhaustive and without limitation. The United Nations Convention for the International Sale of Goods and the Uniform Computer Information Transaction Act do not apply to this Agreement."
+        }
+      ]
+    },
+    {
+      "number": "7.12",
+      "depth": 1,
+      "heading": "Signature",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This Agreement may be signed in counterparts, including by electronic copies or acceptance mechanism. Each copy will be deemed an original and all copies, when taken together, will be the same agreement."
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "depth": 0,
+      "heading": "Definitions",
+      "segments": []
+    },
+    {
+      "number": "8.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Agreement\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means these Standard Terms, the Cover Page between "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": ", and the policies and documents referenced in or attached to the Cover Page."
+        }
+      ]
+    },
+    {
+      "number": "8.2",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Applicable Laws\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the laws, rules, regulations, court orders, and other binding requirements of a relevant government authority that apply to or govern "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " or "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "8.3",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Confidential Information\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means information in any form disclosed by or on behalf of a Discloser, including before the "
+        },
+        {
+          "kind": "variable",
+          "text": "Effective Date",
+          "key": "effectiveDate"
+        },
+        {
+          "kind": "text",
+          "text": ", to a Recipient in connection with this Agreement that (a) the Discloser identifies as \"confidential\", \"proprietary\", or the like; or (b) should be reasonably understood as confidential or proprietary due to its nature and the circumstances of its disclosure. Confidential Information includes the existence of this Agreement and the information on each Cover Page. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " Confidential Information includes non-public information about the Product."
+        }
+      ]
+    },
+    {
+      "number": "8.4",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Cover Page\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a document that is signed or electronically accepted by the parties that incorporates these Standard Terms and identifies "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Partner",
+          "key": "partner"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "8.5",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Discloser\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a party to this Agreement when the party is providing or disclosing Confidential Information to the other party."
+        }
+      ]
+    },
+    {
+      "number": "8.6",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Feedback\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means suggestions, feedback, or comments about the Product or related offerings."
+        }
+      ]
+    },
+    {
+      "number": "8.7",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Product\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the product or services described in the Cover Page."
+        }
+      ]
+    },
+    {
+      "number": "8.8",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Recipient\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a party to this Agreement when the party receives Confidential Information from the other party."
+        }
+      ]
+    }
+  ]
+}

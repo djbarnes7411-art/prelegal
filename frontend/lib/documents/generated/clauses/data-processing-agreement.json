@@ -1,0 +1,2415 @@
+{
+  "slug": "data-processing-agreement",
+  "clauses": [
+    {
+      "number": "1",
+      "depth": 0,
+      "heading": "Processor and Subprocessor Relationships",
+      "segments": []
+    },
+    {
+      "number": "1.1",
+      "depth": 1,
+      "heading": "Provider as Processor",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "In situations where "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is a Controller of the Customer Personal Data, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will be deemed a Processor that is Processing Personal Data on behalf of "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "1.2",
+      "depth": 1,
+      "heading": "Provider as Subprocessor",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "In situations where "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is a Processor of the Customer Personal Data, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will be deemed a Subprocessor of the Customer Personal Data."
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "depth": 0,
+      "heading": "Processing",
+      "segments": []
+    },
+    {
+      "number": "2.1",
+      "depth": 1,
+      "heading": "Processing Details",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Annex I(B) on the Cover Page describes the subject matter, nature, purpose, and duration of this Processing, as well as the "
+        },
+        {
+          "kind": "variable",
+          "text": "Categories of Personal Data",
+          "key": "categoriesOfPersonalData"
+        },
+        {
+          "kind": "text",
+          "text": " collected and "
+        },
+        {
+          "kind": "variable",
+          "text": "Categories of Data Subjects",
+          "key": "categoriesOfDataSubjects"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "2.2",
+      "depth": 1,
+      "heading": "Processing Instructions",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " instructs "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " to Process Customer Personal Data: (a) to provide and maintain the Service; (b) as may be further specified through "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " use of the Service; (c) as documented in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement"
+        },
+        {
+          "kind": "text",
+          "text": "; and (d) as documented in any other written instructions given by "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " and acknowledged by "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " about Processing Customer Personal Data under this DPA. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will abide by these instructions unless prohibited from doing so by Applicable Laws. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will immediately inform "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " if it is unable to follow the Processing instructions. "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " has given and will only give instructions that comply with Applicable Laws."
+        }
+      ]
+    },
+    {
+      "number": "2.3",
+      "depth": 1,
+      "heading": "Processing by Provider",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will only Process Customer Personal Data in accordance with this DPA, including the details in the Cover Page. If "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " updates the Service to update existing or include new products, features, or functionality, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may change the "
+        },
+        {
+          "kind": "variable",
+          "text": "Categories of Data Subjects",
+          "key": "categoriesOfDataSubjects"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Categories of Personal Data",
+          "key": "categoriesOfPersonalData"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Special Category Data",
+          "key": "specialCategoryData"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Special Category Data Restrictions or Safeguards",
+          "key": "specialCategoryDataRestrictionsOrSafeguards"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Frequency of Transfer",
+          "key": "frequencyOfTransfer"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Nature and Purpose of Processing",
+          "key": "natureAndPurposeOfProcessing"
+        },
+        {
+          "kind": "text",
+          "text": ", and "
+        },
+        {
+          "kind": "variable",
+          "text": "Duration of Processing",
+          "key": "durationOfProcessing"
+        },
+        {
+          "kind": "text",
+          "text": " as needed to reflect the updates by notifying "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " of the updates and changes."
+        }
+      ]
+    },
+    {
+      "number": "2.4",
+      "depth": 1,
+      "heading": "Customer Processing",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Where "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is a Processor and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " is a Subprocessor, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " will comply with all Applicable Laws that apply to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " Processing of Customer Personal Data. "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " agreement with its Controller will similarly require "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " to comply with all Applicable Laws that apply to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " as a Processor. In addition, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " will comply with the Subprocessor requirements in "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " agreement with its Controller."
+        }
+      ]
+    },
+    {
+      "number": "2.5",
+      "depth": 1,
+      "heading": "Consent to Processing",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " has complied with and will continue to comply with all Applicable Data Protection Laws concerning its provision of Customer Personal Data to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and/or the Service, including making all disclosures, obtaining all consents, providing adequate choice, and implementing relevant safeguards required under Applicable Data Protection Laws."
+        }
+      ]
+    },
+    {
+      "number": "2.6",
+      "depth": 1,
+      "heading": "Subprocessors",
+      "segments": []
+    },
+    {
+      "number": "2.6.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will not provide, transfer, or hand over any Customer Personal Data to a Subprocessor unless "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " has approved the Subprocessor. The current list of "
+        },
+        {
+          "kind": "variable",
+          "text": "Approved Subprocessors",
+          "key": "approvedSubprocessors"
+        },
+        {
+          "kind": "text",
+          "text": " includes the identities of the Subprocessors, their country of location, and their anticipated Processing tasks. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will inform "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " at least 10 business days in advance and in writing of any intended changes to the "
+        },
+        {
+          "kind": "variable",
+          "text": "Approved Subprocessors",
+          "key": "approvedSubprocessors"
+        },
+        {
+          "kind": "text",
+          "text": " whether by addition or replacement of a Subprocessor, which allows "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " to have enough time to object to the changes before the "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " begins using the new Subprocessor(s). "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will give "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " the information necessary to allow "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " to exercise its right to object to the change to "
+        },
+        {
+          "kind": "variable",
+          "text": "Approved Subprocessors",
+          "key": "approvedSubprocessors"
+        },
+        {
+          "kind": "text",
+          "text": ". "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " has 30 days after notice of a change to the "
+        },
+        {
+          "kind": "variable",
+          "text": "Approved Subprocessors",
+          "key": "approvedSubprocessors"
+        },
+        {
+          "kind": "text",
+          "text": " to object, otherwise "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " will be deemed to accept the changes. If "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " objects to the change within 30 days of notice, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will cooperate in good faith to resolve "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " objection or concern."
+        }
+      ]
+    },
+    {
+      "number": "2.6.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "When engaging a Subprocessor, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will have a written agreement with the Subprocessor that ensures the Subprocessor only accesses and uses Customer Personal Data (i) to the extent required to perform the obligations subcontracted to it, and (ii) consistent with the terms of "
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "2.6.c",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If the GDPR applies to the Processing of Customer Personal Data, (i) the data protection obligations described in this DPA (as referred to in Article 28(3) of the GDPR, if applicable) are also imposed on the Subprocessor, and (ii) "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " agreement with the Subprocessor will incorporate these obligations, including details about how "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and its Subprocessor will coordinate to respond to inquiries or requests about the Processing of Customer Personal Data. In addition, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will share, at "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " request, a copy of its agreements (including any amendments) with its Subprocessors. To the extent necessary to protect business secrets or other confidential information, including personal data, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may redact the text of its agreement with its Subprocessor prior to sharing a copy."
+        }
+      ]
+    },
+    {
+      "number": "2.6.d",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " remains fully liable for all obligations subcontracted to its Subprocessors, including the acts and omissions of its Subprocessors in Processing Customer Personal Data. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will notify Customer of any failure by its Subprocessors to fulfill a material obligation about Customer Personal Data under the agreement between "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and the Subprocessor."
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "depth": 0,
+      "heading": "Restricted Transfers",
+      "segments": []
+    },
+    {
+      "number": "3.1",
+      "depth": 1,
+      "heading": "Authorization",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " agrees that "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may transfer Customer Personal Data outside the EEA, the United Kingdom, or other relevant geographic territory as necessary to provide the Service. If "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " transfers Customer Personal Data to a territory for which the European Commission or other relevant supervisory authority has not issued an adequacy decision, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will implement appropriate safeguards for the transfer of Customer Personal Data to that territory consistent with Applicable Data Protection Laws."
+        }
+      ]
+    },
+    {
+      "number": "3.2",
+      "depth": 1,
+      "heading": "Ex-EEA Transfers",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " agree that if the GDPR protects the transfer of Customer Personal Data, the transfer is from "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " from within the EEA to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " outside of the EEA, and the transfer is not governed by an adequacy decision made by the European Commission, then by entering into this DPA, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " are deemed to have signed the EEA SCCs and their Annexes, which are incorporated by reference. Any such transfer is made pursuant to the EEA SCCs, which are completed as follows:"
+        }
+      ]
+    },
+    {
+      "number": "3.2.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Module Two (Controller to Processor) of the EEA SCCs apply when "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is a Controller and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " is Processing Customer Personal Data for "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " as a Processor."
+        }
+      ]
+    },
+    {
+      "number": "3.2.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Module Three (Processor to Sub-Processor) of the EEA SCCs apply when "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is a Processor and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " is Processing Customer Personal Data on behalf of "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " as a Subprocessor."
+        }
+      ]
+    },
+    {
+      "number": "3.2.c",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "For each module, the following applies (when applicable):"
+        }
+      ]
+    },
+    {
+      "number": "3.2.c.i",
+      "depth": 3,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The optional docking clause in Clause 7 does not apply;"
+        }
+      ]
+    },
+    {
+      "number": "3.2.c.ii",
+      "depth": 3,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "In Clause 9, Option 2 (general written authorization) applies, and the minimum time period for prior notice of Subprocessor changes is 10 business days;"
+        }
+      ]
+    },
+    {
+      "number": "3.2.c.iii",
+      "depth": 3,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "In Clause 11, the optional language does not apply;"
+        }
+      ]
+    },
+    {
+      "number": "3.2.c.iv",
+      "depth": 3,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "All square brackets in Clause 13 are removed;"
+        }
+      ]
+    },
+    {
+      "number": "3.2.c.v",
+      "depth": 3,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "In Clause 17 (Option 1), the EEA SCCs will be governed by the laws of "
+        },
+        {
+          "kind": "variable",
+          "text": "Governing Member State",
+          "key": "governingMemberState"
+        },
+        {
+          "kind": "text",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "number": "3.2.c.vi",
+      "depth": 3,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "In Clause 18(b), disputes will be resolved in the courts of the "
+        },
+        {
+          "kind": "variable",
+          "text": "Governing Member State",
+          "key": "governingMemberState"
+        },
+        {
+          "kind": "text",
+          "text": "; and"
+        }
+      ]
+    },
+    {
+      "number": "3.2.c.vii",
+      "depth": 3,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The Cover Page to this DPA contains the information required in Annex I, Annex II, and Annex III of the EEA SCCs."
+        }
+      ]
+    },
+    {
+      "number": "3.3",
+      "depth": 1,
+      "heading": "Ex-UK Transfers",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " agree that if the UK GDPR protects the transfer of Customer Personal Data, the transfer is from "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " from within the United Kingdom to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " outside of the United Kingdom, and the transfer is not governed by an adequacy decision made by the United Kingdom Secretary of State, then by entering into this DPA, "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " are deemed to have signed the UK Addendum and their Annexes, which are incorporated by reference. Any such transfer is made pursuant to the UK Addendum, which is completed as follows:"
+        }
+      ]
+    },
+    {
+      "number": "3.3.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Section 3.2 of this DPA contains the information required in Table 2 of the UK Addendum."
+        }
+      ]
+    },
+    {
+      "number": "3.3.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Table 4 of the UK Addendum is modified as follows: Neither party may end the UK Addendum as set out in Section 19 of the UK Addendum; to the extent ICO issues a revised Approved Addendum under Section ‎18 of the UK Addendum, the parties will work in good faith to revise this DPA accordingly."
+        }
+      ]
+    },
+    {
+      "number": "3.3.c",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "The Cover Page contains the information required by Annex 1A, Annex 1B, Annex II, and Annex III of the UK Addendum."
+        }
+      ]
+    },
+    {
+      "number": "3.4",
+      "depth": 1,
+      "heading": "Other International Transfers",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "For Personal Data transfers where Swiss law (and not the law in any EEA member state or the United Kingdom) applies to the international nature of the transfer, references to the GDPR in Clause 4 of the EEA SCCs are, to the extent legally required, amended to refer to the Swiss Federal Data Protection Act or its successor instead, and the concept of supervisory authority will include the Swiss Federal Data Protection and Information Commissioner."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "depth": 0,
+      "heading": "Security Incident Response",
+      "segments": []
+    },
+    {
+      "number": "4.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Upon becoming aware of any Security Incident, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will: (a) notify "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " without undue delay when feasible, but no later than 72 hours after becoming aware of the Security Incident; (b) provide timely information about the Security Incident as it becomes known or as is reasonably requested by "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": "; and (c) promptly take reasonable steps to contain and investigate the Security Incident. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " notification of or response to a Security Incident as required by this DPA will not be construed as an acknowledgment by "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " of any fault or liability for the Security Incident."
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "depth": 0,
+      "heading": "Audit & Reports",
+      "segments": []
+    },
+    {
+      "number": "5.1",
+      "depth": 1,
+      "heading": "Audit Rights",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will give "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " all information reasonably necessary to demonstrate its compliance with this DPA and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will allow for and contribute to audits, including inspections by "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": ", to assess "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " compliance with this DPA. However, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may restrict access to data or information if "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " access to the information would negatively impact "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " intellectual property rights, confidentiality obligations, or other obligations under Applicable Laws. "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " acknowledges and agrees that it will only exercise its audit rights under this DPA and any audit rights granted by Applicable Data Protection Laws by instructing "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " to comply with the reporting and due diligence requirements below. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will maintain records of its compliance with this DPA for 3 years after the DPA ends."
+        }
+      ]
+    },
+    {
+      "number": "5.2",
+      "depth": 1,
+      "heading": "Security Reports",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " acknowledges that "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " is regularly audited against the standards defined in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Security Policy",
+          "key": "securityPolicy"
+        },
+        {
+          "kind": "text",
+          "text": " by independent third-party auditors. Upon written request, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will give "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": ", on a confidential basis, a summary copy of its then-current Report so that "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " can verify "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " compliance with the standards defined in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Security Policy",
+          "key": "securityPolicy"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "5.3",
+      "depth": 1,
+      "heading": "Security Due Diligence",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "In addition to the Report, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will respond to reasonable requests for information made by "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " to confirm "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " compliance with this DPA, including responses to information security, due diligence, and audit questionnaires, or by giving additional information about its information security program. All such requests must be in writing and made to the "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider Security Contact",
+          "key": "providerSecurityContact"
+        },
+        {
+          "kind": "text",
+          "text": " and may only be made once a year."
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "depth": 0,
+      "heading": "Coordination & Cooperation",
+      "segments": []
+    },
+    {
+      "number": "6.1",
+      "depth": 1,
+      "heading": "Response to Inquiries",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " receives any inquiry or request from anyone else about the Processing of Customer Personal Data, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will notify "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " about the request and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will not respond to the request without "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " prior consent. Examples of these kinds of inquiries and requests include a judicial or administrative or regulatory agency order about Customer Personal Data where notifying "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " is not prohibited by Applicable Law, or a request from a data subject. If allowed by Applicable Law, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will follow "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " reasonable instructions about these requests, including providing status updates and other information reasonably requested by "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": ". If a data subject makes a valid request under Applicable Data Protection Laws to delete or opt out of "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " giving of Customer Personal Data to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will assist "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " in fulfilling the request according to the Applicable Data Protection Law. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will cooperate with and provide reasonable assistance to "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": ", at "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " expense, in any legal response or other procedural action taken by "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " in response to a third-party request about "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider’s",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " Processing of Customer Personal Data under this DPA."
+        }
+      ]
+    },
+    {
+      "number": "6.2",
+      "depth": 1,
+      "heading": "DPIAs and DTIAs",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If required by Applicable Data Protection Laws, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will reasonably assist "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " in conducting any mandated data protection impact assessments or data transfer impact assessments and consultations with relevant data protection authorities, taking into consideration the nature of the Processing and Customer Personal Data."
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "depth": 0,
+      "heading": "Deletion of Customer Personal Data",
+      "segments": []
+    },
+    {
+      "number": "7.1",
+      "depth": 1,
+      "heading": "Deletion by Customer",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will enable "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " to delete Customer Personal Data in a manner consistent with the functionality of the Services. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will comply with this instruction as soon as reasonably practicable except where further storage of Customer Personal Data is required by Applicable Law."
+        }
+      ]
+    },
+    {
+      "number": "7.2",
+      "depth": 1,
+      "heading": "Deletion at DPA Expiration",
+      "segments": []
+    },
+    {
+      "number": "7.2.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "After the DPA expires, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will return or delete Customer Personal Data at "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer’s",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " instruction unless further storage of Customer Personal Data is required or authorized by Applicable Law. If return or destruction is impracticable or prohibited by Applicable Laws, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will make reasonable efforts to prevent additional Processing of Customer Personal Data and will continue to protect the Customer Personal Data remaining in its possession, custody, or control. For example, Applicable Laws may require "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " to continue hosting or Processing Customer Personal Data."
+        }
+      ]
+    },
+    {
+      "number": "7.2.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "If "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " have entered the EEA SCCs or the UK Addendum as part of this DPA, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will only give "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " the certification of deletion of Personal Data described in Clause 8.1(d) and Clause 8.5 of the EEA SCCs if "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " asks for one."
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "depth": 0,
+      "heading": "Limitation of Liability",
+      "segments": []
+    },
+    {
+      "number": "8.1",
+      "depth": 1,
+      "heading": "Liability Caps and Damages Waiver",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "To the maximum extent permitted under Applicable Data Protection Laws, each party’s total cumulative liability to the other party arising out of or related to this DPA will be subject to the waivers, exclusions, and limitations of liability stated in the ",
+          "strong": true
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": ".",
+          "strong": true
+        }
+      ]
+    },
+    {
+      "number": "8.2",
+      "depth": 1,
+      "heading": "Related-Party Claims",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Any claims made against ",
+          "strong": true
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " or its Affiliates arising out of or related to this DPA may only be brought by the ",
+          "strong": true
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " entity that is a party to the ",
+          "strong": true
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": ".",
+          "strong": true
+        }
+      ]
+    },
+    {
+      "number": "8.3",
+      "depth": 1,
+      "heading": "Exceptions",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This DPA does not limit any liability to an individual about the individual’s data protection rights under Applicable Data Protection Laws. In addition, this DPA does not limit any liability between the parties for violations of the EEA SCCs or UK Addendum."
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "depth": 0,
+      "heading": "Conflicts Between Documents",
+      "segments": []
+    },
+    {
+      "number": "9.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This DPA forms part of and supplements the Agreement. If there is any inconsistency between this DPA, the "
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement"
+        },
+        {
+          "kind": "text",
+          "text": ", or any of their parts, the part listed earlier will control over the part listed later for that inconsistency: (1) the EEA SCCs or the UK Addendum, (2) this DPA, and then (3) the "
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "depth": 0,
+      "heading": "Term of Agreement",
+      "segments": []
+    },
+    {
+      "number": "10.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This DPA will start when "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " agree to a Cover Page for the DPA and sign or electronically accept the "
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement"
+        },
+        {
+          "kind": "text",
+          "text": " and will continue until the "
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement"
+        },
+        {
+          "kind": "text",
+          "text": " expires or is terminated. However, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " will each remain subject to the obligations in this DPA and Applicable Data Protection Laws until "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " stops transferring Customer Personal Data to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " stops Processing Customer Personal Data."
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "depth": 0,
+      "heading": "Definitions",
+      "segments": []
+    },
+    {
+      "number": "11.1",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Applicable Laws\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the laws, rules, regulations, court orders, and other binding requirements of a relevant government authority that apply to or govern a party."
+        }
+      ]
+    },
+    {
+      "number": "11.2",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Applicable Data Protection Laws\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the Applicable Laws that govern how the Service may process or use an individual’s personal information, personal data, personally identifiable information, or other similar term."
+        }
+      ]
+    },
+    {
+      "number": "11.3",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Controller\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " will have the meaning(s) given in the Applicable Data Protection Laws for the company that determines the purpose and extent of Processing Personal Data."
+        }
+      ]
+    },
+    {
+      "number": "11.4",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Cover Page\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a document that is signed or electronically accepted by the parties that incorporates these DPA Standard Terms and identifies "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": ", and the subject matter and details of the data processing."
+        }
+      ]
+    },
+    {
+      "number": "11.5",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Customer Personal Data\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means Personal Data that "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": " uploads or provides to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " as part of the Service and that is governed by this DPA."
+        }
+      ]
+    },
+    {
+      "number": "11.6",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"DPA\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means these DPA Standard Terms, the Cover Page between "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Customer",
+          "key": "customer"
+        },
+        {
+          "kind": "text",
+          "text": ", and the policies and documents referenced in or attached to the Cover Page."
+        }
+      ]
+    },
+    {
+      "number": "11.7",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"EEA SCCs\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the standard contractual clauses annexed to the European Commission's Implementing Decision 2021/914 of 4 June 2021 on standard contractual clauses for the transfer of personal data to third countries pursuant to Regulation (EU) 2016/679 of the European Parliament and of the European Council."
+        }
+      ]
+    },
+    {
+      "number": "11.8",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"European Economic Area\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " or "
+        },
+        {
+          "kind": "text",
+          "text": "\"EEA\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the member states of the European Union, Norway, Iceland, and Liechtenstein."
+        }
+      ]
+    },
+    {
+      "number": "11.9",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"GDPR\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means European Union Regulation 2016/679 as implemented by local law in the relevant EEA member nation."
+        }
+      ]
+    },
+    {
+      "number": "11.10",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Personal Data\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " will have the meaning(s) given in the Applicable Data Protection Laws for personal information, personal data, or other similar term."
+        }
+      ]
+    },
+    {
+      "number": "11.11",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Processing\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " or "
+        },
+        {
+          "kind": "text",
+          "text": "\"Process\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " will have the meaning(s) given in the Applicable Data Protection Laws for any use of, or performance of a computer operation on, Personal Data, including by automatic methods."
+        }
+      ]
+    },
+    {
+      "number": "11.12",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Processor\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " will have the meaning(s) given in the Applicable Data Protection Laws for the company that Processes Personal Data on behalf of the Controller."
+        }
+      ]
+    },
+    {
+      "number": "11.13",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Report\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means audit reports prepared by another company according to the standards defined in the Security Policy on behalf of Provider."
+        }
+      ]
+    },
+    {
+      "number": "11.14",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Restricted Transfer\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means (a) where the GDPR applies, a transfer of personal data from the EEA to a country outside of the EEA which is not subject to an adequacy determination by the European Commission; and (b) where the UK GDPR applies, a transfer of personal data from the United Kingdom to any other country which is not subject to adequacy regulations adopted pursuant to Section 17A of the United Kingdom Data Protection Act 2018."
+        }
+      ]
+    },
+    {
+      "number": "11.15",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Security Incident\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a Personal Data Breach as defined in Article 4 of the GDPR."
+        }
+      ]
+    },
+    {
+      "number": "11.16",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Service\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the product and/or services described in the "
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "11.17",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Special Category Data\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " will have the meaning given in Article 9 of the GDPR."
+        }
+      ]
+    },
+    {
+      "number": "11.18",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Subprocessor\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " will have the meaning(s) given in the Applicable Data Protection Laws for a company that, with the approval and acceptance of Controller, assists the Processor in Processing Personal Data on behalf of the Controller."
+        }
+      ]
+    },
+    {
+      "number": "11.19",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"UK GDPR\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means European Union Regulation 2016/679 as implemented by section 3 of the United Kingdom’s European Union (Withdrawal) Act of 2018 in the United Kingdom."
+        }
+      ]
+    },
+    {
+      "number": "11.20",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"UK Addendum\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the international data transfer addendum to the EEA SCCs issued by the Information Commissioner for Parties making Restricted Transfers under S119A(1) Data Protection Act 2018."
+        }
+      ]
+    }
+  ]
+}

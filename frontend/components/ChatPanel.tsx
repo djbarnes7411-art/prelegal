@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type RefObject } from "react";
 
-import { PRIVACY_NOTICE } from "@/lib/nda/chat-copy";
+import { PRIVACY_NOTICE } from "@/lib/documents/chat-copy";
 
 /** One line of the conversation as it is shown. */
 export interface ChatEntry {
@@ -11,7 +11,7 @@ export interface ChatEntry {
   content: string;
 }
 
-interface NdaChatProps {
+interface ChatPanelProps {
   messages: ChatEntry[];
   /** A turn is in flight. */
   sending: boolean;
@@ -19,18 +19,18 @@ interface NdaChatProps {
   error: string | null;
   onSend: (text: string) => void;
   onRetry: () => void;
-  /** Held by the workspace, which moves focus here when a download is blocked. */
+  /** Held by the workspace, which moves focus here after each turn. */
   inputRef: RefObject<HTMLTextAreaElement | null>;
 }
 
-export function NdaChat({
+export function ChatPanel({
   messages,
   sending,
   error,
   onSend,
   onRetry,
   inputRef,
-}: NdaChatProps) {
+}: ChatPanelProps) {
   const [draft, setDraft] = useState("");
   const logRef = useRef<HTMLDivElement>(null);
 

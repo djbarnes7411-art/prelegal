@@ -1,0 +1,121 @@
+slug = "cloud-service-agreement"
+name = "Cloud Service Agreement"
+template = "templates/cloud-service-agreement.md"
+version = "2.1"
+sourceUrl = "https://commonpaper.com/standards/cloud-service-agreement/2.1"
+
+summary = "Terms for selling a SaaS or cloud product on a subscription: access, payment, liability, and what happens at renewal."
+aliases = [
+  "SaaS agreement",
+  "cloud agreement",
+  "subscription agreement",
+  "terms of service",
+  "customer agreement",
+  "sell our software",
+  "MSA",
+  "master services agreement",
+]
+
+[fields.provider]
+type = "party"
+label = "the company providing the service"
+required = true
+
+[fields.customer]
+type = "party"
+label = "the customer subscribing to it"
+required = true
+
+[fields.subscriptionPeriod]
+type = "text"
+label = "how long the subscription runs"
+hint = "Such as '12 months from the Order Date'."
+required = true
+
+[fields.orderDate]
+type = "date"
+label = "the date of the order"
+required = true
+
+[fields.effectiveDate]
+type = "date"
+label = "the date the agreement starts"
+required = true
+default = "today"
+
+[fields.governingLaw]
+type = "text"
+label = "the law that governs the agreement"
+hint = "Usually a US state, such as 'the laws of the State of Delaware'."
+required = true
+
+[fields.chosenCourts]
+type = "text"
+label = "the courts that would hear a dispute"
+hint = "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+required = true
+
+[fields.paymentProcess]
+type = "longText"
+label = "how the customer pays"
+hint = "The standard terms read differently for invoicing than for automatic card payment, so say which it is."
+required = true
+
+[fields.generalCapAmount]
+type = "money"
+label = "the cap on each party's total liability"
+hint = "An amount, or a formula such as 'the fees paid in the 12 months before the claim'."
+required = false
+
+[fields.nonRenewalNoticeDate]
+type = "text"
+label = "the deadline for saying you do not want to renew"
+hint = "Such as '30 days before the end of the current Subscription Period'."
+required = false
+
+[fields.technicalSupport]
+type = "longText"
+label = "what technical support is included"
+required = false
+
+[fields.useLimitations]
+type = "longText"
+label = "any limits on how the service may be used"
+hint = "Such as seat counts, API rate limits, or environments."
+required = false
+
+[fields.dpa]
+type = "text"
+label = "the data processing agreement, if one applies"
+hint = "Name the DPA and its date, or leave it out if there is none."
+required = false
+
+[fields.additionalWarranties]
+type = "longText"
+label = "any warranties beyond the standard ones"
+required = false
+
+[fields.increasedCapAmount]
+type = "money"
+label = "a higher liability cap for certain claims"
+required = false
+
+[fields.increasedClaims]
+type = "longText"
+label = "which claims that higher cap applies to"
+required = false
+
+[fields.unlimitedClaims]
+type = "longText"
+label = "any claims that are not capped at all"
+required = false
+
+[fields.providerCoveredClaim]
+type = "longText"
+label = "what the provider indemnifies the customer against"
+required = false
+
+[fields.customerCoveredClaim]
+type = "longText"
+label = "what the customer indemnifies the provider against"
+required = false

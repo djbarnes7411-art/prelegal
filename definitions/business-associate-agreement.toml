@@ -1,0 +1,50 @@
+slug = "business-associate-agreement"
+name = "Business Associate Agreement"
+template = "templates/business-associate-agreement.md"
+version = "1.0"
+sourceUrl = "https://commonpaper.com/standards/business-associate-agreement/1.0"
+
+summary = "A HIPAA agreement covering how a vendor may handle protected health information on a covered entity's behalf."
+aliases = [
+  "BAA",
+  "HIPAA agreement",
+  "protected health information",
+  "PHI",
+  "health data agreement",
+  "healthcare compliance agreement",
+]
+attachment = "A BAA supplements an existing agreement between the two companies rather than standing on its own."
+
+[fields.provider]
+type = "party"
+label = "the business associate handling the health information"
+required = true
+
+[fields.company]
+type = "party"
+label = "the covered entity whose health information it is"
+required = true
+
+[fields.baaEffectiveDate]
+type = "date"
+label = "the date this BAA starts"
+required = true
+default = "today"
+
+[fields.breachNotificationPeriod]
+type = "text"
+label = "how quickly a breach must be reported"
+hint = "A period, such as '5 business days' or '72 hours'."
+required = true
+
+[fields.agreement]
+type = "text"
+label = "the agreement this BAA attaches to"
+hint = "The name and date of the underlying contract between the two companies."
+required = true
+
+[fields.limitations]
+type = "longText"
+label = "any limits on how the health information may be used"
+hint = "Leave this out and no extra limits apply beyond the standard terms."
+required = false

@@ -1,0 +1,120 @@
+slug = "partnership-agreement"
+name = "Partnership Agreement"
+template = "templates/partnership-agreement.md"
+version = "1.0"
+sourceUrl = "https://commonpaper.com/standards/partnership-agreement/1.0"
+
+summary = "A commercial partnership in which each side takes on obligations, with a trademark licence for using each other's brand."
+aliases = [
+  "partnership",
+  "reseller agreement",
+  "referral agreement",
+  "channel partner",
+  "co-marketing",
+  "joint venture",
+  "work together commercially",
+  "affiliate agreement",
+]
+
+[fields.company]
+type = "party"
+label = "the first company"
+required = true
+
+[fields.partner]
+type = "party"
+label = "the partner"
+required = true
+
+[fields.obligations]
+type = "longText"
+label = "what each side has agreed to do"
+hint = "Describe both sides' obligations; this is the heart of the partnership."
+required = true
+
+[fields.effectiveDate]
+type = "date"
+label = "the date the partnership starts"
+required = true
+default = "today"
+
+[fields.endDate]
+type = "text"
+label = "when the partnership ends"
+hint = "A date, or a length such as '2 years from the Effective Date'."
+required = true
+
+[fields.governingLaw]
+type = "text"
+label = "the law that governs the agreement"
+hint = "Usually a US state, such as 'the laws of the State of Delaware'."
+required = true
+
+[fields.chosenCourts]
+type = "text"
+label = "the courts that would hear a dispute"
+hint = "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+required = true
+
+[fields.paymentProcess]
+type = "longText"
+label = "how money changes hands, if it does"
+required = false
+
+[fields.paymentSchedule]
+type = "longText"
+label = "when payments are due"
+hint = "Such as 'quarterly in arrears, net 30'."
+required = false
+
+[fields.territory]
+type = "text"
+label = "where the trademark licence applies"
+hint = "Such as 'worldwide' or 'the United States and Canada'."
+required = false
+
+[fields.brandGuidelines]
+type = "longText"
+label = "any rules for using each other's brand"
+required = false
+
+[fields.generalCapAmount]
+type = "money"
+label = "the cap on each party's total liability"
+required = false
+
+[fields.increasedCapAmount]
+type = "money"
+label = "a higher liability cap for certain claims"
+required = false
+
+[fields.increasedClaims]
+type = "longText"
+label = "which claims that higher cap applies to"
+required = false
+
+[fields.unlimitedClaims]
+type = "longText"
+label = "any claims that are not capped at all"
+required = false
+
+[fields.companyCoveredClaim]
+type = "longText"
+label = "what the company indemnifies the partner against"
+required = false
+
+[fields.partnerCoveredClaim]
+type = "longText"
+label = "what the partner indemnifies the company against"
+required = false
+
+[fields.additionalWarranties]
+type = "longText"
+label = "any warranties beyond the standard ones"
+required = false
+
+[fields.dpa]
+type = "text"
+label = "the data processing agreement, if one applies"
+hint = "Name the DPA and its date, or leave it out if there is none."
+required = false

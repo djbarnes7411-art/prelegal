@@ -7,23 +7,24 @@ npm test          # once
 npm run test:watch
 ```
 
-235 tests across eleven files. What they cover:
+249 tests across twelve files. What they cover:
 
 | File | Covers |
 | --- | --- |
-| `lib/nda/render.test.ts` | Date formatting and timezone safety, number-to-words, term phrasing, the clause tokenizer, first-use expansion of defined terms, unusable term lengths, document title |
-| `lib/nda/validate.test.ts` | Every required field, whitespace-only answers, year-count rules, error ordering |
+| `lib/documents/values.test.ts` | Starting values and defaults, what counts as answered, required-field counting, date and number formatting, how a value reads in the agreement |
+| `lib/documents/render.test.ts` | First-use expansion of defined terms, keeping the template's own inflection, emphasis across a value, unknown keys, document title, lazy clause loading |
+| `lib/documents/chat-copy.test.ts` | The greeting, the privacy notice, and how the "still missing" sentence reads |
+| `lib/nda/render.test.ts` | Date formatting and timezone safety, number-to-words, term phrasing, the clause tokenizer, first-use expansion, unusable term lengths, document title |
 | `lib/nda/standard-terms.test.ts` | **Diffs the transcribed legal text against `templates/mutual-nda.md`**, clause by clause |
-| `lib/nda/chat-support.test.ts` | Which clauses a change marks in the document |
-| `lib/nda/chat-copy.test.ts` | That every field validation can report has a name a person would recognise, and how the "still missing" sentence reads |
+| `lib/nda/chat-support.test.ts` | Which clauses a change marks in the Mutual NDA |
 | `components/NdaDocument.test.tsx` | Rendered cover page and clauses, blanks, checkbox states, signature block, CC BY attribution, cover-page fidelity |
-| `components/NdaChat.test.tsx` | The panel alone: the transcript, who-said-what for screen readers, Enter and Shift+Enter, the pending and failed states |
-| `components/NdaWorkspace.test.tsx` | The whole journey with the assistant substituted: a turn, live document updates, clause marking, download gating, the completion message, retrying a failed turn, PDF filename |
+| `components/ChatPanel.test.tsx` | The panel alone: the transcript, who-said-what for screen readers, Enter and Shift+Enter, the pending and failed states |
+| `components/DocumentWorkspace.test.tsx` | The whole journey with the assistant substituted: choosing a document, a request we cannot meet, generic and Mutual NDA rendering, clause marking, download gating, focus, the completion message, retrying a failed turn, PDF filename |
 | `components/LoginScreen.test.tsx` | Signing in, creating an account, switching between the two, server refusals, the already-signed-in state, and the notice about there being no authentication |
 | `lib/api.test.ts` | Request shape, snake_case to camelCase, the chat turn's request and reply, which server errors are shown verbatim and which are replaced, an unreachable server |
 | `lib/session.test.ts` | Round trip through storage, and every way a stored value can be unusable |
 
-**No test calls a real model.** `NdaWorkspace.test.tsx` mocks `sendChatTurn`, and
+**No test calls a real model.** `DocumentWorkspace.test.tsx` mocks `sendChatTurn`, and
 the backend suite substitutes the completion function. What the assistant would
 actually say is not something these tests have an opinion about; what the app does
 with what it says is all of it.
@@ -54,7 +55,7 @@ Automation cannot reach these. Run them before releasing, and after any change t
 npm run dev    # http://localhost:3000
 ```
 
-Sign in first — the workspace is at `/nda/` and sends you back to `/` without a
+Sign in first — the workspace is at `/draft/` and sends you back to `/` without a
 session. `npm run dev` needs the backend running on port 8000 for that, and the
 backend needs `OPENROUTER_API_KEY` for the chat to answer at all; the root
 [README](../README.md) covers both.
@@ -65,7 +66,9 @@ The print stylesheet is the least testable and most fragile part of the app.
 `@media print` rules do not run under jsdom, and pagination cannot be simulated.
 
 - [ ] Fill the agreement in through the chat, click **Download PDF**, choose **Save as PDF**
-- [ ] Suggested filename is `Mutual NDA - <Party 1> and <Party 2>`
+- [ ] Suggested filename is `<Document> - <Party 1> and <Party 2>`
+- [ ] Repeat for a generically rendered document (a Pilot Agreement, say): nested
+      clause numbering stays aligned and indented in print
 - [ ] The app chrome (top bar, chat panel) does not appear anywhere in the PDF
 - [ ] Standard Terms start on a fresh page
 - [ ] **No clause is split across a page break**, and no heading is stranded at the foot of a page
@@ -109,7 +112,30 @@ attributes exist; they cannot confirm the experience.
 
 None of this is covered automatically — every test substitutes the model.
 
+**Choosing a document** (new in PL-6):
+
+- [ ] Ask for something we have no template for ("a residential lease", "an
+      employment contract") — it says plainly that it cannot draft it, names the
+      closest thing it can, and asks whether to start that. It must never imply
+      it can produce something outside the catalog
+- [ ] Ask vaguely ("I need some paperwork") — it asks what you are trying to
+      achieve rather than guessing
+- [ ] Ask in your own words ("let a customer try our product for a month") — it
+      picks the Pilot Agreement and asks the first question in the same reply
+- [ ] Draft each of the eleven documents at least once: the Key Terms page fills
+      in, the standard terms resolve, and nothing renders as raw markup
+- [ ] On an attachment (SLA, AI Addendum, BAA, DPA), it says the document
+      accompanies another agreement rather than standing alone
+
+**Filling one in:**
+
 - [ ] The greeting appears instantly, with the backend stopped
+- [ ] **Every reply ends with a question** while anything required is still
+      missing — the one thing a conversation-only product cannot get wrong
+- [ ] After a reply lands, the cursor is back in the composer: you can type the
+      next answer without reaching for the mouse
+- [ ] It does not march through optional fields one at a time — it offers them
+      together once the required ones are done
 - [ ] Say everything at once ("Acme and Beta, I sign as CEO, Delaware law…") — it fills in what you gave and asks only for the rest
 - [ ] Correct something already answered ("no, make it New York") — the document changes and it confirms
 - [ ] Ask it for advice ("what term should I pick?") — it declines rather than recommending
@@ -147,7 +173,7 @@ round trip and the layout still need eyes.
       why. If that ever stops being true, this file is out of date
 - [ ] Stop the backend and submit: the message names an unreachable server rather
       than showing a raw fetch error
-- [ ] Visit `/nda/` in a fresh profile: it redirects to `/` without flashing the
+- [ ] Visit `/draft/` in a fresh profile: it redirects to `/` without flashing the
       workspace
 - [ ] Already signed in, visit `/`: "Welcome back" appears without flashing the form
 - [ ] The card is usable at 375px

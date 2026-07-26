@@ -1,0 +1,63 @@
+slug = "pilot-agreement"
+name = "Pilot Agreement"
+template = "templates/pilot-agreement.md"
+version = "1.1"
+sourceUrl = "https://commonpaper.com/standards/pilot-agreement/1.1"
+
+summary = "A time-boxed trial of a product, so a customer can evaluate it before committing to a full agreement."
+aliases = [
+  "trial agreement",
+  "proof of concept",
+  "POC",
+  "evaluation agreement",
+  "free trial",
+  "try before we buy",
+  "test the product",
+  "30 day trial",
+]
+
+[fields.provider]
+type = "party"
+label = "the company providing the product"
+required = true
+
+[fields.customer]
+type = "party"
+label = "the company trying the product"
+required = true
+
+[fields.pilotPeriod]
+type = "text"
+label = "how long the pilot runs"
+hint = "A length or an end date, such as '60 days from the Effective Date'."
+required = true
+
+[fields.effectiveDate]
+type = "date"
+label = "the date the agreement starts"
+required = true
+default = "today"
+
+[fields.governingLaw]
+type = "text"
+label = "the law that governs the agreement"
+hint = "Usually a US state, such as 'the laws of the State of Delaware'."
+required = true
+
+[fields.chosenCourts]
+type = "text"
+label = "the courts that would hear a dispute"
+hint = "A city or county and state, such as 'the state and federal courts in New Castle County, Delaware'."
+required = true
+
+[fields.generalCapAmount]
+type = "money"
+label = "the cap on each party's total liability"
+hint = "An amount, such as '$50,000', or a formula such as 'the fees paid in the last 12 months'."
+required = false
+
+[fields.noticeAddress]
+type = "text"
+label = "where legal notices should be sent"
+hint = "Leave this out and notices go to the addresses in the signature block."
+required = false

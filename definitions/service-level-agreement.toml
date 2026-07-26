@@ -1,0 +1,68 @@
+slug = "service-level-agreement"
+name = "Service Level Agreement"
+template = "templates/service-level-agreement.md"
+version = "2.0"
+sourceUrl = "https://commonpaper.com/standards/service-level-agreement/2.0"
+
+summary = "Uptime and response-time commitments for a cloud service, and the service credits owed when they are missed."
+aliases = [
+  "SLA",
+  "uptime guarantee",
+  "service levels",
+  "availability commitment",
+  "support response times",
+  "service credits",
+  "99.9%",
+]
+attachment = "An SLA attaches to a Cloud Service Agreement. The customer, provider and subscription period are defined by that agreement, and are repeated here so the document reads on its own."
+
+[fields.provider]
+type = "party"
+label = "the company providing the service"
+required = true
+
+[fields.customer]
+type = "party"
+label = "the customer it is promised to"
+required = true
+
+[fields.targetUptime]
+type = "text"
+label = "the uptime you are committing to"
+hint = "A percentage, such as '99.9%'."
+required = true
+
+[fields.subscriptionPeriod]
+type = "text"
+label = "the subscription period these levels are measured over"
+hint = "This comes from the Cloud Service Agreement, such as '12 months from the Order Date'."
+required = true
+
+[fields.targetResponseTime]
+type = "text"
+label = "how quickly support will respond"
+hint = "A time, such as '4 business hours'."
+required = false
+
+[fields.supportChannel]
+type = "text"
+label = "how customers reach support"
+hint = "An email address, portal, or phone number."
+required = false
+
+[fields.uptimeCredit]
+type = "longText"
+label = "the credit owed when uptime is missed"
+hint = "Often a tier list, such as '10% of monthly fees below 99.9%, 25% below 99%'. Describe it in your own words."
+required = false
+
+[fields.responseTimeCredit]
+type = "longText"
+label = "the credit owed when response times are missed"
+required = false
+
+[fields.scheduledDowntime]
+type = "longText"
+label = "maintenance windows that do not count against uptime"
+hint = "Such as 'Sundays 02:00-06:00 UTC, with 48 hours notice'."
+required = false

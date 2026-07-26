@@ -1,0 +1,1415 @@
+{
+  "slug": "business-associate-agreement",
+  "clauses": [
+    {
+      "number": "1",
+      "depth": 0,
+      "heading": "Business Associate Obligations",
+      "segments": []
+    },
+    {
+      "number": "1.1",
+      "depth": 1,
+      "heading": "Obligations and Restrictions",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may not use or disclose PHI other than as described in this BAA, as permitted under the Privacy Rule, or as otherwise required by applicable law."
+        }
+      ]
+    },
+    {
+      "number": "1.2",
+      "depth": 1,
+      "heading": "Permitted Uses and Disclosures",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except as otherwise permitted or required in this BAA, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may only use or disclose PHI as reasonably necessary to provide the Services or as otherwise required by applicable law."
+        }
+      ]
+    },
+    {
+      "number": "1.3",
+      "depth": 1,
+      "heading": "Privacy and Information Security Program",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will maintain a privacy and information security program that takes steps to ensure that employees or agents of "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " comply with this BAA. This includes giving training to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " workforce to ensure compliance with this BAA, implementing policies and practices that meet the current standards for the protection of PHI, and appointing Privacy and Security Officials as required under HIPAA."
+        }
+      ]
+    },
+    {
+      "number": "1.4",
+      "depth": 1,
+      "heading": "Safeguards",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will implement appropriate administrative, physical, and technical safeguards to protect the confidentiality, integrity, and availability of PHI that it receives, creates, maintains, or transmits on behalf of "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": ". "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will maintain appropriate technical and organizational safeguards to reduce the risk of misuse or disclosure of PHI except as permitted under this BAA. In addition, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will comply with its obligations under the Security Rule."
+        }
+      ]
+    },
+    {
+      "number": "1.5",
+      "depth": 1,
+      "heading": "Assessments",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " agrees to conduct regular assessments of its compliance with its obligations under the Privacy Rule and Security Rule. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will make available a summary of such assessments to "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " upon "
+        },
+        {
+          "kind": "variable",
+          "text": "Company's",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " reasonable request."
+        }
+      ]
+    },
+    {
+      "number": "1.6",
+      "depth": 1,
+      "heading": "Mitigation of Risks",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " agrees to mitigate, to the extent practicable, any harmful effect that is known to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " of a use or disclosure of PHI by "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and to promptly communicate to "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " any actions taken pursuant to this paragraph."
+        }
+      ]
+    },
+    {
+      "number": "1.7",
+      "depth": 1,
+      "heading": "Subcontractors",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except as restricted by applicable "
+        },
+        {
+          "kind": "variable",
+          "text": "Limitations",
+          "key": "limitations"
+        },
+        {
+          "kind": "text",
+          "text": ", (a) "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may disclose PHI to a Subcontractor; and (b) may allow the Subcontractor to create, receive, maintain, or transmit PHI on its behalf. However, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " must first ensure that each Subcontractor executes a binding, written agreement requiring the Subcontractor to protect PHI under terms substantially similar to and no less stringent than this BAA. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will not be in compliance with this BAA if "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " knew of a pattern of activity or practice of a Subcontractor that constituted a material breach or violation of the Subcontractor’s obligations under any agreement between "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and the Subcontractor. "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will conduct appropriate due diligence on all Subcontractors."
+        }
+      ]
+    },
+    {
+      "number": "1.8",
+      "depth": 1,
+      "heading": "Books and Records to HHS",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Upon request, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will make its books, records, and internal policies and procedures relating to the use and disclosure of PHI available to the Secretary of HHS for the purpose of determining "
+        },
+        {
+          "kind": "variable",
+          "text": "Company's",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " compliance with HIPAA."
+        }
+      ]
+    },
+    {
+      "number": "1.9",
+      "depth": 1,
+      "heading": "Audit of Books and Records",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Upon reasonable request, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will make its books, records, and internal policies and procedures relating to its compliance with this BAA available to "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": ". However, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " is not required to provide any information or records that interfere with "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " confidentiality or proprietary rights or that would otherwise impact "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " compliance with its legal obligations."
+        }
+      ]
+    },
+    {
+      "number": "1.10",
+      "depth": 1,
+      "heading": "Individual Requests",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will take reasonable efforts to support "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " in completing requests related to individuals’ rights under HIPAA as related to the Services in a timely manner, but in no event will "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " response take more than ten business days. Examples of individual rights under HIPAA include the right to access PHI pursuant to 45 CFR §164.524, amend PHI pursuant to 45 CFR §164.526, and receive accounting of disclosures pursuant to 45 CFR §164.528. If relevant to the Services, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will maintain an accounting of disclosures it makes on "
+        },
+        {
+          "kind": "variable",
+          "text": "Company's",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " behalf as required under 45 CFR §164.528(a). Except as directed by "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " or required by law, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will not respond directly to any individual requests regarding their rights under HIPAA."
+        }
+      ]
+    },
+    {
+      "number": "1.11",
+      "depth": 1,
+      "heading": "Compliance with Covered Entity’s Obligations",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "To the extent that "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " carries out "
+        },
+        {
+          "kind": "variable",
+          "text": "Company's",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " obligations under the Privacy Rule, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will comply with the requirements of the relevant Privacy Rule regulations that apply to "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " in the performance of such obligations."
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "depth": 0,
+      "heading": "Company Obligations",
+      "segments": []
+    },
+    {
+      "number": "2.1",
+      "depth": 1,
+      "heading": "Notice of Privacy Practices",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Upon request, "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " will provide "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " with its current notice of privacy practices adopted as required by the Privacy Rule. "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " will notify "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " if any limitations in its notice of privacy practices impact "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " use or disclosure of PHI under the BAA."
+        }
+      ]
+    },
+    {
+      "number": "2.2",
+      "depth": 1,
+      "heading": "Notice of Changes",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " will notify "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " in a timely manner of any changes to how "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " uses or discloses PHI to the extent that the changes impact how "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " uses or discloses PHI under the BAA."
+        }
+      ]
+    },
+    {
+      "number": "2.3",
+      "depth": 1,
+      "heading": "Notice of Restrictions",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " will notify "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " in a timely manner of any restrictions agreed upon with an individual or their legal representative to the extent that the restrictions may impact "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " use or disclosure of PHI under the BAA."
+        }
+      ]
+    },
+    {
+      "number": "2.4",
+      "depth": 1,
+      "heading": "Compliance with Laws",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " will only use and disclose PHI to "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " in accordance with its obligations under HIPAA and with applicable law."
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "depth": 0,
+      "heading": "Data Rights & Restrictions",
+      "segments": []
+    },
+    {
+      "number": "3.1",
+      "depth": 1,
+      "heading": "Offshoring PHI",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except as restricted by applicable "
+        },
+        {
+          "kind": "variable",
+          "text": "Limitations",
+          "key": "limitations"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " is permitted to use and disclose PHI outside of the United States to provide the Services."
+        }
+      ]
+    },
+    {
+      "number": "3.2",
+      "depth": 1,
+      "heading": "De-Identification",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except as restricted by applicable "
+        },
+        {
+          "kind": "variable",
+          "text": "Limitations",
+          "key": "limitations"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may de-identify PHI."
+        }
+      ]
+    },
+    {
+      "number": "3.3",
+      "depth": 1,
+      "heading": "Aggregation",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Except as restricted by applicable "
+        },
+        {
+          "kind": "variable",
+          "text": "Limitations",
+          "key": "limitations"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may aggregate PHI for its own purposes."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "depth": 0,
+      "heading": "Breach Notification",
+      "segments": []
+    },
+    {
+      "number": "4.1",
+      "depth": 1,
+      "heading": "Breach Reporting",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will report to "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " within the "
+        },
+        {
+          "kind": "variable",
+          "text": "Breach Notification Period",
+          "key": "breachNotificationPeriod"
+        },
+        {
+          "kind": "text",
+          "text": " each use or disclosure of PHI not permitted under this BAA of which "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " becomes aware, including breaches of unsecured PHI as required by §164.410 of HIPAA and any Security Incident involving PHI. In addition, each party will comply with its notification obligations under HIPAA regarding a Security Incident involving PHI."
+        }
+      ]
+    },
+    {
+      "number": "4.2",
+      "depth": 1,
+      "heading": "Unsuccessful Attempts",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " agrees that this section will be deemed as sufficient notice under Section 4.1 if "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " periodically receives unsuccessful attempts for unauthorized access to, use of, or disclosure of PHI, or for general interference with the general operation of "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider's",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " products and services."
+        }
+      ]
+    },
+    {
+      "number": "4.3",
+      "depth": 1,
+      "heading": "Security Incident Reimbursement",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will reimburse "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " for costs reasonably associated with a Security Incident caused by "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " or one of its Subcontractors."
+        }
+      ]
+    },
+    {
+      "number": "4.4",
+      "depth": 1,
+      "heading": "Confidentiality",
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will not disclose information related to a Security Incident except as required by applicable law."
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "depth": 0,
+      "heading": "Term & Termination",
+      "segments": []
+    },
+    {
+      "number": "5.1",
+      "depth": 1,
+      "heading": "Term",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "This BAA will start on the "
+        },
+        {
+          "kind": "variable",
+          "text": "BAA Effective Date",
+          "key": "baaEffectiveDate"
+        },
+        {
+          "kind": "text",
+          "text": " and will continue in effect until the later of when all obligations of the parties have been met under this BAA or when the "
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement"
+        },
+        {
+          "kind": "text",
+          "text": " ends or expires."
+        }
+      ]
+    },
+    {
+      "number": "5.2",
+      "depth": 1,
+      "heading": "Termination",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Either party may terminate this BAA if the other party fails to cure a material breach of the BAA within 30 days after receiving notice of the breach. A material breach of the BAA will be deemed a material breach of the "
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "5.3",
+      "depth": 1,
+      "heading": "Effect of Termination",
+      "segments": []
+    },
+    {
+      "number": "5.3.a",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Upon any expiration or termination of this BAA, or earlier if directed by "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " will either return or destroy, at "
+        },
+        {
+          "kind": "variable",
+          "text": "Company's",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " discretion and according to "
+        },
+        {
+          "kind": "variable",
+          "text": "Company's",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " instructions, all PHI maintained in any form by "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": ", its agents, or its Subcontractors."
+        }
+      ]
+    },
+    {
+      "number": "5.3.b",
+      "depth": 2,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may not retain any copies of PHI unless directed to do so by "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": ". However, if neither return nor destruction are feasible, "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " may retain PHI as long as "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " continues to comply with all provisions of this BAA for the time it retains PHI and limits the use or disclosure of retained PHI to those purposes that made the return or destruction of PHI infeasible."
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "depth": 0,
+      "heading": "Definitions",
+      "segments": []
+    },
+    {
+      "number": "6.1",
+      "depth": 1,
+      "heading": "Defining Variables",
+      "segments": [
+        {
+          "kind": "text",
+          "text": "Variables have the meanings or descriptions given on the Cover Page. However, if the Cover Page omits or does not define a Variable, the default meaning will be \"none\" or \"not applicable\" and the correlating clause, sentence, or section does not apply to the BAA."
+        }
+      ]
+    },
+    {
+      "number": "6.2",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"BAA\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the Cover Page between "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": " that incorporates these BAA Standard Terms and any policies and documents referenced in or attached to the Cover Page."
+        }
+      ]
+    },
+    {
+      "number": "6.3",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"BAA Standard Terms\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means these Common Paper BAA Standard Terms Version 1.0, which are posted at https://commonpaper.com/standards/business-associate-agreement/1.0."
+        }
+      ]
+    },
+    {
+      "number": "6.4",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Breach\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " has the meaning given to it under HIPAA."
+        }
+      ]
+    },
+    {
+      "number": "6.5",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Business Associate\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " has the meaning given to it under HIPAA."
+        }
+      ]
+    },
+    {
+      "number": "6.6",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Covered Entity\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " has the meaning given to it under HIPAA."
+        }
+      ]
+    },
+    {
+      "number": "6.7",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Cover Page\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a document that is signed by the parties, identifies "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "variable",
+          "text": "Company",
+          "key": "company"
+        },
+        {
+          "kind": "text",
+          "text": ", incorporates these BAA Standard Terms, and includes definitions or descriptions for Variables."
+        }
+      ]
+    },
+    {
+      "number": "6.8",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Designated Record Set\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " has the meaning given to it under HIPAA."
+        }
+      ]
+    },
+    {
+      "number": "6.9",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"HHS\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the U.S. Department of Health and Human Services."
+        }
+      ]
+    },
+    {
+      "number": "6.10",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"HIPAA\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the Health Insurance Portability and Accountability Act of 1996 and the rules and regulations thereunder, as amended from time to time."
+        }
+      ]
+    },
+    {
+      "number": "6.11",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Privacy and Security Officials\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " has the meaning given to it under HIPAA."
+        }
+      ]
+    },
+    {
+      "number": "6.12",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Privacy Rule\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the federal privacy regulations issued pursuant to HIPAA, codified at 45 CFR Parts 160 and 164 (Subparts A & E)."
+        }
+      ]
+    },
+    {
+      "number": "6.13",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Protected Health Information\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " or "
+        },
+        {
+          "kind": "text",
+          "text": "\"PHI\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " has the meaning given to it under HIPAA."
+        }
+      ]
+    },
+    {
+      "number": "6.14",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Security Incident\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " has the meaning given to it under HIPAA."
+        }
+      ]
+    },
+    {
+      "number": "6.15",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Security Rule\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the federal security regulations issued pursuant to HIPAA, codified at 45 CFR Parts 160 and 164 (Subparts A & C)."
+        }
+      ]
+    },
+    {
+      "number": "6.16",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Services\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means the products and services provided by "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " under the "
+        },
+        {
+          "kind": "variable",
+          "text": "Agreement",
+          "key": "agreement"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "number": "6.17",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Subcontractor\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a third party to whom "
+        },
+        {
+          "kind": "variable",
+          "text": "Provider",
+          "key": "provider"
+        },
+        {
+          "kind": "text",
+          "text": " provides PHI under this BAA."
+        }
+      ]
+    },
+    {
+      "number": "6.18",
+      "depth": 1,
+      "heading": null,
+      "segments": [
+        {
+          "kind": "text",
+          "text": "\"Variable\"",
+          "strong": true
+        },
+        {
+          "kind": "text",
+          "text": " means a word or phrase in the BAA Standard Terms that is highlighted and capitalized, such as "
+        },
+        {
+          "kind": "variable",
+          "text": "Limitations",
+          "key": "limitations"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ]
+    }
+  ]
+}
