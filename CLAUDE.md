@@ -68,6 +68,7 @@ Done, on `main`:
 - `backend/` is a uv project. FastAPI serves `/api/*` and the built frontend from one origin on port 8000 — no reverse proxy, no Node at runtime. Stdlib `sqlite3` plus a small repository in `app/users.py`; no ORM.
 - The database is deleted and recreated from `app/schema.sql` on **every startup**, with no volume over it. Nothing survives a restart. Settings: `PRELEGAL_DATABASE_PATH`, `PRELEGAL_FRONTEND_DIR`, `PRELEGAL_DEV_ORIGINS` — all optional, all defaulting to the repo layout. `OPENROUTER_API_KEY` is optional in the sense that the app starts and serves without it, but the chat cannot answer, and the chat is the only way to fill a document in.
 - `frontend/` exports to static files (`output: "export"`, `trailingSlash: true`). `/` is the login screen, `/draft/` the workspace — one route for every document, since which one you are drafting is session state and nothing is persisted.
+- `templates/` holds the Common Paper source documents and is the record of what the contracts say; `definitions/` holds one small TOML per document saying what its fill-in values *are*. Neither is read at runtime — both are compiled ahead of time, as below.
 - Run it with the `scripts/` above; run the tests with `cd backend && uv run pytest` (197) and `cd frontend && npm test` (249).
 
 ### Where a document comes from
