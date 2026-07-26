@@ -1,0 +1,725 @@
+/*
+ * Two materials, two type worlds.
+ *
+ * The control panel is the machine: dark, engineered, IBM Plex.
+ * The document is paper: light, printed, Newsreader.
+ *
+ * The signature of the design is the second ink — every value the user supplies
+ * lands in the agreement in pen blue, the way a completed paper form looks. That
+ * carries into the PDF, so a reader can tell at a glance which words were chosen
+ * and which are the untouched Common Paper Standard Terms.
+ */
+
+:root {
+  /* Paper */
+  --paper: #fcfbf8;
+  --paper-edge: #ded9cc;
+  --ink: #1a1a1e;
+  --ink-soft: #55525a;
+  /* The second ink */
+  --hand: #2246a0;
+  --hand-blank: #9aa4bd;
+
+  /* Machine */
+  --desk: #e4e1d8;
+  --panel: #191b21;
+  --panel-raised: #22252e;
+  --panel-line: #31353f;
+  --panel-text: #d9dce3;
+  --panel-muted: #8c93a1;
+  --panel-accent: #7fa5f0;
+  --alert: #f0836a;
+
+  --topbar-h: 3.5rem;
+  --radius: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--panel);
+  color: var(--panel-text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Announced to screen readers, invisible on screen and on paper. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 2px solid var(--panel-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Shell
+ * ------------------------------------------------------------------ */
+
+/*
+ * Exactly one viewport tall, so the form and the document each scroll inside
+ * their own column. `min-height` would let the shell grow to fit its content,
+ * which pushes the scrolling out to the window and moves both columns at once.
+ */
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  height: var(--topbar-h);
+  padding: 0 1.25rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--panel-line);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.brand-mark {
+  font-family: var(--font-serif), serif;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--panel-accent);
+}
+
+.brand-name {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.topbar-doc {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--panel-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(360px, 30rem) 1fr;
+  /* Pins the row to the workspace's own height. Without it the row auto-sizes to
+     its tallest child, the columns never become scroll containers, and the whole
+     window scrolls instead of the form and the document scrolling separately. */
+  grid-template-rows: minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Control panel
+ * ------------------------------------------------------------------ */
+
+.panel {
+  border-right: 1px solid var(--panel-line);
+  padding: 1.75rem 1.5rem 4rem;
+  overflow-y: auto;
+}
+
+.panel-intro {
+  margin: 0 0 2rem;
+  max-width: 34ch;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--panel-muted);
+}
+
+.group {
+  padding: 1.25rem 0 1.5rem;
+  border-top: 1px solid var(--panel-line);
+}
+
+.group:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.group-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.group-title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/*
+ * Tells the user which clauses their answer rewrites. Focusing the group also
+ * marks those clauses in the document, so the connection is visible, not implied.
+ */
+.group-affects {
+  flex: none;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--panel-muted);
+}
+
+.group-note {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--panel-muted);
+}
+
+.field {
+  margin-top: 0.875rem;
+}
+
+/* `.field` is used on fieldsets too, so drop the browser's box and legend inset. */
+fieldset.field {
+  border: 0;
+  padding: 0;
+  margin-inline: 0;
+  min-width: 0;
+}
+
+fieldset.field > legend {
+  padding: 0;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--panel-muted);
+}
+
+.field-input,
+.field-textarea {
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  background: var(--panel-raised);
+  border: 1px solid var(--panel-line);
+  border-radius: var(--radius);
+  color: var(--panel-text);
+  font: inherit;
+  transition: border-color 120ms ease;
+}
+
+.field-textarea {
+  min-height: 5rem;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.field-input:hover,
+.field-textarea:hover {
+  border-color: #414653;
+}
+
+.field-input::placeholder,
+.field-textarea::placeholder {
+  color: #616878;
+}
+
+.field-input[aria-invalid="true"],
+.field-textarea[aria-invalid="true"] {
+  border-color: var(--alert);
+}
+
+.field-error {
+  display: block;
+  margin-top: 0.3125rem;
+  font-size: 0.75rem;
+  color: var(--alert);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+}
+
+/* Term choices: a radio pair plus the year count the first choice needs. */
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4375rem 0;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+/* Typed rather than `.choice input`, which would also capture the year box. */
+.choice input[type="radio"] {
+  flex: none;
+  accent-color: var(--panel-accent);
+  width: 0.9375rem;
+  height: 0.9375rem;
+  cursor: pointer;
+}
+
+.choice-years {
+  width: 3.75rem;
+  padding: 0.1875rem 0.375rem;
+  background: var(--panel-raised);
+  border: 1px solid var(--panel-line);
+  border-radius: var(--radius);
+  color: var(--panel-text);
+  font: inherit;
+  text-align: center;
+}
+
+.choice-years:disabled {
+  opacity: 0.4;
+}
+
+.party {
+  margin-top: 1.125rem;
+  padding: 1rem;
+  background: var(--panel-raised);
+  border: 1px solid var(--panel-line);
+  border-radius: var(--radius);
+}
+
+.party-name {
+  margin: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--panel-accent);
+}
+
+.party .field:first-of-type {
+  margin-top: 0.625rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Download
+ * ------------------------------------------------------------------ */
+
+.download {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: none;
+}
+
+.download-hint {
+  font-size: 0.75rem;
+  color: var(--panel-muted);
+  text-align: right;
+  max-width: 21rem;
+}
+
+.download-hint[data-state="blocked"] {
+  color: var(--alert);
+}
+
+.download-button {
+  padding: 0.5rem 1.125rem;
+  background: var(--panel-accent);
+  border: 1px solid var(--panel-accent);
+  border-radius: var(--radius);
+  color: #10131a;
+  font: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.download-button:hover:not(:disabled) {
+  background: #9dbaf5;
+}
+
+.download-button:disabled {
+  background: transparent;
+  border-color: var(--panel-line);
+  color: var(--panel-muted);
+  cursor: not-allowed;
+}
+
+/* ------------------------------------------------------------------ *
+ * The desk and the paper
+ * ------------------------------------------------------------------ */
+
+.desk {
+  background: var(--desk);
+  padding: 2.5rem 2rem 5rem;
+  overflow-y: auto;
+}
+
+.doc {
+  /* Containing block for the `.visually-hidden` spans inside. Without it they
+     resolve against the viewport, and their static position deep in the scrolled
+     document stretches the page far below the fold. */
+  position: relative;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 4rem 4.25rem 3.5rem;
+  background: var(--paper);
+  border: 1px solid var(--paper-edge);
+  box-shadow: 0 1px 2px rgb(26 26 30 / 8%), 0 12px 32px rgb(26 26 30 / 10%);
+  color: var(--ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.doc-eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.doc-title {
+  margin: 0 0 1.5rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.doc-preamble {
+  margin: 0 0 2.25rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--paper-edge);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.doc-section {
+  margin-bottom: 1.75rem;
+}
+
+.doc-heading {
+  margin: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.doc-caption {
+  margin: 0.125rem 0 0;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.doc-body {
+  margin: 0.5rem 0 0;
+}
+
+/* The second ink. */
+.ink {
+  color: var(--hand);
+}
+
+/* Cover Page values keep the ruled underline of a filled form. Inside the
+   Standard Terms the same values run inline in prose, where a rule would
+   fight the text — there, the ink alone carries the distinction. */
+.ink-field {
+  color: var(--hand);
+  border-bottom: 1px solid color-mix(in srgb, var(--hand) 35%, transparent);
+  padding-bottom: 1px;
+}
+
+.blank {
+  color: var(--hand-blank);
+  border-bottom: 1px solid var(--hand-blank);
+  font-style: italic;
+}
+
+.choice-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.375rem;
+}
+
+.choice-line[data-selected="false"] {
+  color: #9c9aa2;
+}
+
+.choice-box {
+  flex: none;
+  width: 0.6875rem;
+  height: 0.6875rem;
+  border: 1px solid currentColor;
+  transform: translateY(1px);
+}
+
+.choice-line[data-selected="true"] .choice-box {
+  background: var(--hand);
+  border-color: var(--hand);
+}
+
+.doc-clauses {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: clause;
+}
+
+.clause {
+  display: flex;
+  gap: 0.875rem;
+  margin-bottom: 1.125rem;
+  transition: none;
+}
+
+.clause-number {
+  flex: none;
+  width: 1.5rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  padding-top: 0.15rem;
+}
+
+.clause-body {
+  margin: 0;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Marked while the form group that feeds this clause has focus. */
+.clause[data-linked="true"] .clause-number {
+  color: var(--hand);
+  font-weight: 600;
+}
+
+.clause[data-linked="true"] .clause-body {
+  box-shadow: -0.6875rem 0 0 -0.5625rem var(--hand);
+}
+
+.signatures {
+  width: 100%;
+  margin-top: 0.75rem;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.signatures th,
+.signatures td {
+  padding: 0.5rem 0.625rem;
+  border: 1px solid var(--paper-edge);
+  text-align: left;
+  vertical-align: top;
+}
+
+.signatures thead th {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.signatures tbody th {
+  width: 11rem;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.signatures td {
+  color: var(--hand);
+}
+
+/* Signature and date are filled by hand after printing. */
+.sign-here {
+  height: 2.25rem;
+}
+
+.doc-attribution {
+  margin: 2.5rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--paper-edge);
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.doc-attribution a {
+  color: inherit;
+}
+
+/* ------------------------------------------------------------------ *
+ * Narrow screens: the panel stacks above the paper.
+ * ------------------------------------------------------------------ */
+
+@media (max-width: 60rem) {
+  /* Stacked, the page itself scrolls and the shell grows past the viewport. */
+  .shell {
+    height: auto;
+    min-height: 100dvh;
+  }
+
+  /* Stacked, the page itself scrolls, so the row must size to its content again. */
+  .workspace {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .panel {
+    border-right: none;
+    border-bottom: 1px solid var(--panel-line);
+    padding-bottom: 2rem;
+    overflow-y: visible;
+  }
+
+  .desk {
+    padding: 1.5rem 1rem 3rem;
+    overflow-y: visible;
+  }
+
+  .doc {
+    padding: 2rem 1.5rem;
+  }
+
+  .topbar {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+  }
+
+  .topbar-doc {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .download-hint {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Print — the paper is the only thing that survives.
+ * ------------------------------------------------------------------ */
+
+@page {
+  size: letter;
+  margin: 0.9in 0.85in;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .topbar,
+  .panel {
+    display: none;
+  }
+
+  /* Height and overflow are dropped so the agreement flows across pages. */
+  .shell,
+  .workspace,
+  .desk {
+    display: block;
+    height: auto;
+    padding: 0;
+    background: #fff;
+    overflow: visible;
+  }
+
+  .doc {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: #fff;
+    font-size: 10pt;
+    line-height: 1.55;
+  }
+
+  .doc-title {
+    font-size: 18pt;
+  }
+
+  /* Keep a clause and its number together, and never orphan a heading. */
+  .clause,
+  .doc-section,
+  .signatures tr {
+    break-inside: avoid;
+  }
+
+  .doc-heading {
+    break-after: avoid;
+  }
+
+  .doc-standard-terms {
+    break-before: page;
+  }
+
+  .clause[data-linked="true"] .clause-body {
+    box-shadow: none;
+  }
+
+  .clause[data-linked="true"] .clause-number {
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  .sign-here {
+    height: 2.75rem;
+  }
+}
