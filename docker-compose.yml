@@ -1,0 +1,24 @@
+services:
+  prelegal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: prelegal:latest
+    container_name: prelegal
+    ports:
+      - "8000:8000"
+    # Deliberately no volumes. The SQLite database lives inside the container's
+    # writable layer, so `down` discards it and the next `up` builds a new one
+    # from schema.sql — see backend/app/db.py.
+    healthcheck:
+      # The image has no curl; Python is the thing it definitely has.
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health').read()"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped

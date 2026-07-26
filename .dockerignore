@@ -1,0 +1,36 @@
+# Build inputs only. Everything here is either rebuilt in the image, irrelevant
+# to it, or must never be baked into it.
+
+.git/
+.github/
+.claude/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Rebuilt inside the image
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+backend/.venv/
+backend/data/
+
+# Caches and local artefacts
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.ruff_cache/
+**/.mypy_cache/
+**/*.tsbuildinfo
+**/.eslintcache
+frontend/coverage/
+
+# Not needed at runtime
+scripts/
+docker-compose.yml
+docker-compose.override.yml
+*.md
+!templates/*.md
+LICENSE

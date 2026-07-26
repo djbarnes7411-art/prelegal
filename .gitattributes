@@ -1,0 +1,21 @@
+# Line endings are a cross-platform correctness issue here, not a style one:
+# the start/stop scripts ship for all three platforms and are edited on any of
+# them.
+
+* text=auto
+
+# A CRLF shebang makes a script unrunnable on macOS and Linux — the kernel reads
+# the carriage return as part of the interpreter path and reports
+# "bad interpreter: /usr/bin/env bash^M".
+*.sh text eol=lf
+
+# PowerShell is Windows-native; CRLF is what its tooling expects.
+*.ps1 text eol=crlf
+
+# Contract text. A line-ending rewrite would show up as a diff in every clause
+# and bury a real wording change.
+templates/*.md text eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary

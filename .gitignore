@@ -3,6 +3,8 @@
 .env.*
 !.env.example
 !.env.template
+# Holds one localhost URL, so `npm run dev` works without local setup.
+!frontend/.env.development
 *.pem
 *.key
 secrets.json
