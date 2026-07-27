@@ -62,3 +62,29 @@ def client(settings: Settings) -> Iterator[TestClient]:
     """
     with TestClient(create_app(settings)) as client:
         yield client
+
+
+def sign_in(
+    client: TestClient,
+    email: str = "ada@example.com",
+    password: str = "correct-horse",
+) -> TestClient:
+    """
+    Signs a client up and leaves its bearer token on the session's headers.
+
+    Returns the same client rather than a new one, so a fixture can wrap an
+    existing one and every request through it is authenticated from then on —
+    which is what most tests want, most of the time, without repeating the
+    signup call or the header.
+    """
+    body = client.post(
+        "/api/auth/signup", json={"email": email, "password": password}
+    ).json()
+    client.headers["Authorization"] = f"Bearer {body['token']}"
+    return client
+
+
+@pytest.fixture
+def signed_in_client(client: TestClient) -> TestClient:
+    """A client already signed in as one account."""
+    return sign_in(client)

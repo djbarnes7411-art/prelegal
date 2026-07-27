@@ -18,6 +18,7 @@ from app.config import Settings
 from app.documents.chat import Selection, draft_model
 from app.llm import LlmNotConfigured, LlmUnavailable
 from app.main import create_app
+from tests.conftest import sign_in
 
 SUBSTITUTE = "app.documents.chat.complete_structured"
 
@@ -59,8 +60,9 @@ def configured_settings(database_path: Path, tmp_path: Path) -> Settings:
 
 @pytest.fixture
 def configured_client(configured_settings: Settings) -> Iterator[TestClient]:
+    """Signed in, since PL-7 — `/api/chat` refuses a turn without an account."""
     with TestClient(create_app(configured_settings)) as client:
-        yield client
+        yield sign_in(client)
 
 
 def drafting(slug: str, reply: str, patch: dict | None = None):
@@ -221,12 +223,35 @@ class TestAnsweringATurn:
 
 
 class TestWhenTheAssistantCannotAnswer:
-    def test_says_so_when_no_key_is_configured(self, client: TestClient) -> None:
+    def test_says_so_when_no_key_is_configured(
+        self, signed_in_client: TestClient
+    ) -> None:
         """The `client` fixture's settings carry no key, as a fresh install would."""
-        response = client.post("/api/chat", json=REQUEST)
+        response = signed_in_client.post("/api/chat", json=REQUEST)
 
         assert response.status_code == 503
         assert "not configured" in response.json()["detail"]
+
+    def test_refuses_a_turn_from_nobody(self, client: TestClient) -> None:
+        """
+        Checked before the key is, and so before any request could be paid for.
+
+        A turn with no account is refused whether or not the assistant could
+        have answered it — which is the point of gating this endpoint.
+        """
+        response = client.post("/api/chat", json=REQUEST)
+
+        assert response.status_code == 401
+        assert response.json()["detail"] == "Sign in to continue."
+
+    def test_refuses_a_turn_from_a_stale_token(
+        self, configured_client: TestClient
+    ) -> None:
+        configured_client.post("/api/auth/logout")
+
+        response = configured_client.post("/api/chat", json=REQUEST)
+
+        assert response.status_code == 401
 
     def test_reports_a_provider_failure_as_temporary(
         self, configured_client: TestClient, monkeypatch: pytest.MonkeyPatch

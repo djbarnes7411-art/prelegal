@@ -1,3 +1,4 @@
+import { DocumentDisclaimer } from "./Disclaimer";
 import {
   CC_BY_URL,
   STANDARD_TERMS_URL,
@@ -25,6 +26,10 @@ export function NdaDocument({ data, activeClauses }: NdaDocumentProps) {
     <article className="doc">
       <p className="doc-eyebrow">Cover Page</p>
       <h1 className="doc-title">Mutual Non-Disclosure Agreement</h1>
+
+      {/* Ours, not Common Paper's — it sits above the reproduced cover page
+          rather than inside it, so nothing below this line is our wording. */}
+      <DocumentDisclaimer />
 
       {/* Reproduces the "USING THIS MUTUAL NON-DISCLOSURE AGREEMENT" paragraph
           from templates/mutual-nda-coverpage.md, including the parentheticals

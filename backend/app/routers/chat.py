@@ -19,9 +19,10 @@ from pydantic import BaseModel, ConfigDict, Field
 from pydantic.alias_generators import to_camel
 
 from ..config import Settings
-from ..dependencies import get_settings
+from ..dependencies import get_current_user, get_settings
 from ..documents.chat import ChatMessage, run_turn
 from ..llm import LlmNotConfigured, LlmUnavailable
+from ..users import User
 
 router = APIRouter(prefix="/api", tags=["chat"])
 
@@ -30,13 +31,15 @@ class ChatTurnRequest(BaseModel):
     """
     Everything needed to answer one message.
 
-    Nothing is stored between turns, so the browser sends the whole context
-    every time: what has been said, which document is being drafted, and what
-    that document now holds. The caps bound the prompt — and so the latency and
-    the bill — on the input the user controls. The values need no cap of their
-    own: `normalise` keeps only the fields the chosen document defines, and
-    clamps each one, so the prompt is bounded by the document rather than by
-    whatever the client sent.
+    This endpoint remembers nothing between turns, so the browser sends the
+    whole context every time: what has been said, which document is being
+    drafted, and what that document now holds. The draft *is* saved since
+    PL-7 — by `routers/documents.py`, from the browser, after the turn — but
+    not here, and nothing here reads it. The caps bound the prompt — and so the
+    latency and the bill — on the input the user controls. The values need no
+    cap of their own: `normalise` keeps only the fields the chosen document
+    defines, and clamps each one, so the prompt is bounded by the document
+    rather than by whatever the client sent.
     """
 
     model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True)
@@ -61,8 +64,16 @@ class ChatTurnResponse(BaseModel):
 def chat(
     request: ChatTurnRequest,
     settings: Settings = Depends(get_settings),
+    user: User = Depends(get_current_user),
 ) -> ChatTurnResponse:
-    """Answers the latest message and reports what it changed."""
+    """
+    Answers the latest message and reports what it changed.
+
+    The turn itself is still stateless — the account is required, not read. What
+    requiring it buys is that spending the OpenRouter key now takes an account
+    rather than only a reachable port. It does not buy a limit: an account is
+    free to create, and there is still no rate limit or spend cap.
+    """
     try:
         turn = run_turn(
             request.document_slug,

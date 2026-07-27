@@ -1,14 +1,38 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { ApiError, login, sendChatTurn, signup } from "./api";
+import {
+  ApiError,
+  createDocument,
+  deleteDocument,
+  listDocuments,
+  loadDocument,
+  login,
+  saveDocument,
+  sendChatTurn,
+  signOut,
+  signup,
+} from "./api";
 import { createEmptyState } from "./documents/values";
 import { DOCUMENTS } from "./documents/catalog";
+import { readSession, storeSession } from "./session";
 
 const USER_PAYLOAD = {
   id: 1,
   email: "ada@example.com",
   created_at: "2026-07-26T09:00:00Z",
 };
+
+const SESSION_PAYLOAD = { user: USER_PAYLOAD, token: "opaque-token" };
+
+const STORED_SESSION = {
+  user: { id: 1, email: "ada@example.com", createdAt: "2026-07-26T09:00:00Z" },
+  token: "opaque-token",
+};
+
+/** The header every authenticated call is expected to carry. */
+function sentHeaders(call = 0): Headers {
+  return fetchMock.mock.calls[call][1].headers as Headers;
+}
 
 function respondWith(body: unknown, status = 200): Response {
   return {
@@ -23,6 +47,7 @@ const fetchMock = vi.fn();
 beforeEach(() => {
   fetchMock.mockReset();
   vi.stubGlobal("fetch", fetchMock);
+  window.localStorage.clear();
 });
 
 afterEach(() => {
@@ -31,7 +56,7 @@ afterEach(() => {
 
 describe("signup", () => {
   it("posts the credentials to the signup endpoint", async () => {
-    fetchMock.mockResolvedValue(respondWith(USER_PAYLOAD, 201));
+    fetchMock.mockResolvedValue(respondWith(SESSION_PAYLOAD, 201));
 
     await signup("ada@example.com", "hunter2");
 
@@ -44,14 +69,21 @@ describe("signup", () => {
     });
   });
 
-  it("converts the response to camelCase", async () => {
-    fetchMock.mockResolvedValue(respondWith(USER_PAYLOAD, 201));
+  it("converts the account to camelCase and keeps the token", async () => {
+    fetchMock.mockResolvedValue(respondWith(SESSION_PAYLOAD, 201));
 
-    await expect(signup("ada@example.com", "hunter2")).resolves.toEqual({
-      id: 1,
-      email: "ada@example.com",
-      createdAt: "2026-07-26T09:00:00Z",
-    });
+    await expect(signup("ada@example.com", "hunter2")).resolves.toEqual(
+      STORED_SESSION,
+    );
+  });
+
+  it("sends no token of its own — there is not one yet", async () => {
+    fetchMock.mockResolvedValue(respondWith(SESSION_PAYLOAD, 201));
+
+    await signup("ada@example.com", "hunter2");
+
+    const headers = fetchMock.mock.calls[0][1].headers;
+    expect(headers["Authorization"]).toBeUndefined();
   });
 
   it("surfaces the server's reason for a conflict", async () => {
@@ -67,7 +99,7 @@ describe("signup", () => {
 
 describe("login", () => {
   it("posts to the login endpoint", async () => {
-    fetchMock.mockResolvedValue(respondWith(USER_PAYLOAD));
+    fetchMock.mockResolvedValue(respondWith(SESSION_PAYLOAD));
 
     await login("ada@example.com", "hunter2");
 
@@ -82,6 +114,193 @@ describe("login", () => {
     await expect(login("nobody@example.com", "hunter2")).rejects.toThrow(
       "No account found for that email.",
     );
+  });
+});
+
+describe("signing out", () => {
+  it("tells the server to revoke the token", async () => {
+    storeSession(STORED_SESSION);
+    fetchMock.mockResolvedValue(respondWith(null, 204));
+
+    await signOut();
+
+    expect(fetchMock.mock.calls[0][0]).toBe("/api/auth/logout");
+    expect(sentHeaders().get("Authorization")).toBe("Bearer opaque-token");
+  });
+
+  it("forgets the session locally", async () => {
+    storeSession(STORED_SESSION);
+    fetchMock.mockResolvedValue(respondWith(null, 204));
+
+    await signOut();
+
+    expect(readSession()).toBeNull();
+  });
+
+  it("forgets it even when the server cannot be reached", async () => {
+    /* Someone who pressed sign out must not be left on a signed-in screen
+       because a request failed. The token expires on its own. */
+    storeSession(STORED_SESSION);
+    fetchMock.mockRejectedValue(new TypeError("Failed to fetch"));
+
+    await expect(signOut()).resolves.toBeUndefined();
+    expect(readSession()).toBeNull();
+  });
+});
+
+describe("the session token", () => {
+  beforeEach(() => {
+    storeSession(STORED_SESSION);
+  });
+
+  it("goes with an authenticated request", async () => {
+    fetchMock.mockResolvedValue(respondWith([]));
+
+    await listDocuments();
+
+    expect(sentHeaders().get("Authorization")).toBe("Bearer opaque-token");
+  });
+
+  it("goes with a chat turn", async () => {
+    fetchMock.mockResolvedValue(respondWith({ reply: "Noted." }));
+
+    await sendChatTurn([{ role: "user", content: "hi" }], null, {});
+
+    expect(sentHeaders().get("Authorization")).toBe("Bearer opaque-token");
+  });
+
+  it("is simply absent when there is no session", async () => {
+    window.localStorage.clear();
+    fetchMock.mockResolvedValue(respondWith([]));
+
+    await listDocuments();
+
+    expect(sentHeaders().get("Authorization")).toBeNull();
+  });
+});
+
+describe("when the session has ended", () => {
+  beforeEach(() => {
+    storeSession(STORED_SESSION);
+  });
+
+  it("signs the browser out", async () => {
+    /* Clearing it here is what makes every `useSession` re-render, which is
+       what sends the pages back to the login screen. */
+    fetchMock.mockResolvedValue(respondWith({ detail: "Sign in to continue." }, 401));
+
+    await expect(listDocuments()).rejects.toThrow("Your session has ended");
+    expect(readSession()).toBeNull();
+  });
+
+  it("says so in our words, not the backend's", async () => {
+    fetchMock.mockResolvedValue(respondWith({ detail: "Sign in to continue." }, 401));
+
+    await expect(sendChatTurn([{ role: "user", content: "hi" }], null, {})).rejects.toThrow(
+      "Your session has ended. Sign in again.",
+    );
+  });
+
+  it("survives a 401 carrying no body at all", async () => {
+    fetchMock.mockResolvedValue({
+      ok: false,
+      status: 401,
+      json: async () => {
+        throw new Error("no body");
+      },
+    } as unknown as Response);
+
+    await expect(listDocuments()).rejects.toMatchObject({ status: 401 });
+    expect(readSession()).toBeNull();
+  });
+
+  it("leaves the session alone for any other failure", async () => {
+    fetchMock.mockResolvedValue(respondWith({ detail: "Nope." }, 500));
+
+    await expect(listDocuments()).rejects.toThrow("Nope.");
+    expect(readSession()).not.toBeNull();
+  });
+});
+
+describe("saved documents", () => {
+  const SAVED = {
+    id: 7,
+    documentSlug: "pilot-agreement",
+    fields: {},
+    messages: [],
+    createdAt: "2026-07-26T09:00:00Z",
+    updatedAt: "2026-07-26T09:30:00Z",
+  };
+
+  beforeEach(() => {
+    storeSession(STORED_SESSION);
+  });
+
+  it("lists them", async () => {
+    fetchMock.mockResolvedValue(respondWith([SAVED]));
+
+    await expect(listDocuments()).resolves.toEqual([SAVED]);
+    expect(fetchMock.mock.calls[0][0]).toBe("/api/documents");
+  });
+
+  it("treats an empty list response as no documents", async () => {
+    fetchMock.mockResolvedValue(respondWith(null));
+
+    await expect(listDocuments()).resolves.toEqual([]);
+  });
+
+  it("opens one", async () => {
+    fetchMock.mockResolvedValue(respondWith(SAVED));
+
+    await expect(loadDocument(7)).resolves.toEqual(SAVED);
+    expect(fetchMock.mock.calls[0][0]).toBe("/api/documents/7");
+  });
+
+  it("creates one with the document, its values and the conversation", async () => {
+    fetchMock.mockResolvedValue(respondWith(SAVED, 201));
+    const messages = [{ role: "user" as const, content: "a pilot" }];
+
+    await createDocument("pilot-agreement", { pilotPeriod: "60 days" }, messages);
+
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("/api/documents");
+    expect(init.method).toBe("POST");
+    expect(JSON.parse(init.body)).toEqual({
+      documentSlug: "pilot-agreement",
+      fields: { pilotPeriod: "60 days" },
+      messages,
+    });
+  });
+
+  it("saves one whole, without naming a document", async () => {
+    /* The document a draft is never changes, so the endpoint does not take it
+       and neither does this. */
+    fetchMock.mockResolvedValue(respondWith(SAVED));
+
+    await saveDocument(7, { pilotPeriod: "90 days" }, []);
+
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("/api/documents/7");
+    expect(init.method).toBe("PUT");
+    expect(JSON.parse(init.body)).toEqual({
+      fields: { pilotPeriod: "90 days" },
+      messages: [],
+    });
+  });
+
+  it("deletes one", async () => {
+    fetchMock.mockResolvedValue(respondWith(null, 204));
+
+    await expect(deleteDocument(7)).resolves.toBeUndefined();
+    expect(fetchMock.mock.calls[0][1].method).toBe("DELETE");
+  });
+
+  it("surfaces the server's reason for one it cannot find", async () => {
+    fetchMock.mockResolvedValue(
+      respondWith({ detail: "No document found with that id." }, 404),
+    );
+
+    await expect(loadDocument(7)).rejects.toThrow("No document found with that id.");
   });
 });
 
