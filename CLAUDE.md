@@ -56,6 +56,18 @@ Backend available at http://localhost:8000
 
 ## Current state
 
+**Today the whole loop works.** You create an account, talk to an assistant
+about what you need, it works out which of the eleven documents that is and
+fills it in as you answer, the agreement builds up beside the conversation, and
+Download PDF hands the finished thing to the browser's print dialog. Your drafts
+save themselves as you go and are waiting under My documents when you come back.
+
+The two things a newcomer should know before trusting any of it: **nothing
+survives the container restarting** — accounts, sessions and drafts all come
+back empty from `schema.sql` — and **there is still no rate limit on the chat
+endpoint**, which now needs an account but not a budget. Neither is an
+oversight; both are written up below.
+
 Done, on `main`:
 
 - **PL-3 — Mutual NDA creator.** Cover Page beside a live document; "Download PDF" hands it to the browser's print dialog.
@@ -66,8 +78,10 @@ Done, on `main`:
 
 ### How it fits together
 
-- `backend/` is a uv project. FastAPI serves `/api/*` and the built frontend from one origin on port 8000 — no reverse proxy, no Node at runtime. Stdlib `sqlite3` plus a small repository in `app/users.py`; no ORM.
-- The database is deleted and recreated from `app/schema.sql` on **every startup**, with no volume over it. Nothing survives a restart. Settings: `PRELEGAL_DATABASE_PATH`, `PRELEGAL_FRONTEND_DIR`, `PRELEGAL_DEV_ORIGINS` — all optional, all defaulting to the repo layout. `OPENROUTER_API_KEY` is optional in the sense that the app starts and serves without it, but the chat cannot answer, and the chat is the only way to fill a document in.
+- `backend/` is a uv project. FastAPI serves `/api/*` and the built frontend from one origin on port 8000 — no reverse proxy, no Node at runtime. Stdlib `sqlite3` and no ORM: one flat module per table, each named after it — `app/users.py`, `app/sessions.py`, `app/drafts.py` — holding plain functions that take a connection as their first argument. Routers are thin and are the only place an HTTP status or a `detail` sentence is decided.
+- **Where things are, backend.** `main.py` builds the app and mounts the frontend last, since `/api/*` has to match first. `config.py` holds the frozen `Settings`, `db.py` the connection and the once-per-startup reset, `dependencies.py` the three injectables (`get_settings`, `get_connection`, `get_current_user`), `models.py` the auth wire shapes. `passwords.py` hashes, `sessions.py` issues and checks tokens, `users.py`/`drafts.py` are the other two tables, `llm.py` owns the provider. Routers: `auth`, `documents`, `chat`, `health`. `documents/` — the package, not the router — is a different thing entirely: the compiled catalog, the prompts and the trust boundary, described under "Where a document comes from" below.
+- **Where things are, frontend.** `app/` is three routes and nothing else. `components/` holds `AppShell` (the bar on every signed-in screen), `LoginScreen`, `DocumentsList`, `DocumentWorkspace` (which owns *all* drafting state), `ChatPanel`, `GenericDocument`, `NdaDocument`, `Disclaimer`, `DownloadButton`, `DocumentCatalog`. `lib/api.ts` is the only place that calls the backend and `lib/session.ts` the only place that knows what a session is.
+- The database is deleted and recreated from `app/schema.sql` on **every startup**, with no volume over it. Three tables — `users`, `sessions`, `drafts` — and nothing survives a restart. Settings: `PRELEGAL_DATABASE_PATH`, `PRELEGAL_FRONTEND_DIR`, `PRELEGAL_DEV_ORIGINS` — all optional, all defaulting to the repo layout. `OPENROUTER_API_KEY` is optional in the sense that the app starts and serves without it, but the chat cannot answer, and the chat is the only way to fill a document in. **No other secret exists**: sessions are random opaque tokens validated by lookup, so there is no signing key to configure or to keep.
 - `frontend/` exports to static files (`output: "export"`, `trailingSlash: true`). `/` is the login screen, `/documents/` the list, `/draft/` the workspace — still one route for every document. **Which saved draft you are opening is `?doc=<id>`, not a route segment**, because the export enumerates every route at build time and nobody's ids exist then. The static mount resolves on path alone, so a hard reload of `/draft/?doc=42` serves the same page and the browser reads the query itself.
 - `templates/` holds the Common Paper source documents and is the record of what the contracts say; `definitions/` holds one small TOML per document saying what its fill-in values *are*. Neither is read at runtime — both are compiled ahead of time, as below.
 - Run it with the `scripts/` above; run the tests with `cd backend && uv run pytest` (306) and `cd frontend && npm test` (338).
@@ -175,7 +189,7 @@ Still missing: password reset, email verification, rate limiting. And accounts a
 
 ### Conventions worth knowing
 
-- **Two palettes, deliberately.** The colours above are the platform's, used on the login screen and the Documents list (`entry-*` and `library-*`). The drafting workspace keeps its own dark-panel palette so the document beside it reads as paper — don't "correct" it to brand colours. Note `#888888` is only 3.5:1 on a light card, so body copy uses a darkened sibling. PL-7's polish reached the shell, the entry screen and the list; the chat panel and the `.doc` surface were left alone, for the reason this bullet already gives. The one thing spanning both worlds is the top bar (`topbar-*`), which stays in the machine palette on every screen — following the surface under it would make the two read as different applications.
+- **Two palettes, deliberately.** The colours above are the platform's, used on the login screen and the Documents list (`entry-*` and `library-*`). The drafting workspace keeps its own dark-panel palette so the document beside it reads as paper — don't "correct" it to brand colours. Note `#888888` is only 3.5:1 on a light card, so body copy uses a darkened sibling (`--brand-gray-text`); failures on a light surface use `--brand-alert`, which is the panel's `--alert` darkened for the same reason. **The rule is that any colour used more than once is a token**, so that a value and the reasoning behind it cannot drift apart across rules; plain `#fff` and the one-off green on a finished draft are the only literals left. PL-7's polish reached the shell, the entry screen and the list; the chat panel and the `.doc` surface were left alone, for the reason this bullet already gives. The one thing spanning both worlds is the top bar (`topbar-*`), which stays in the machine palette on every screen — following the surface under it would make the two read as different applications.
 - **The disclaimer is on the paper, not just in the app.** `DRAFT_DISCLAIMER` in `chat-copy.ts` is one constant rendered by `Disclaimer.tsx` inside *both* renderers, so the wording cannot drift between the Mutual NDA's hand-built page and the ten generated ones. It is on the document because the PDF is the copy that leaves this product, and that is the copy the warning has to reach; it is in the print rules' `break-inside: avoid` group so it is never split across a page.
 - **`frontend/lib/nda/standard-terms.test.ts` diffs the contract text against `templates/mutual-nda.md`.** If it fails, read both before touching the expectation — that is a decision to change contract wording. The other ten documents get the same guarantee a different way: `test_documents_parse.py` parses the whole corpus and fails if any word of a template is lost or any markup leaks into the page.
 - **Adding a document is a definition file, not a code change.** Drop the template in `templates/`, write `definitions/<slug>.toml`, run the build. The build tells you exactly which variables you have not accounted for.
