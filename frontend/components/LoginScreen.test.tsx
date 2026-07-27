@@ -3,7 +3,7 @@ import userEvent, { type UserEvent } from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoginScreen } from "./LoginScreen";
-import { ApiError, type User } from "@/lib/api";
+import { ApiError, type Session, type User } from "@/lib/api";
 import { readSession, storeSession } from "@/lib/session";
 
 /*
@@ -18,15 +18,17 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({ push, replace }),
 }));
 
-const { login, signup } = vi.hoisted(() => ({
+const { login, signup, signOut } = vi.hoisted(() => ({
   login: vi.fn(),
   signup: vi.fn(),
+  signOut: vi.fn(),
 }));
 
 vi.mock("@/lib/api", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/api")>()),
   login,
   signup,
+  signOut,
 }));
 
 const ADA: User = {
@@ -35,12 +37,21 @@ const ADA: User = {
   createdAt: "2026-07-26T09:00:00Z",
 };
 
+const SESSION: Session = { user: ADA, token: "opaque-token" };
+
 beforeEach(() => {
   window.localStorage.clear();
   push.mockReset();
   replace.mockReset();
   login.mockReset();
   signup.mockReset();
+  /* The real one clears storage; this stand-in has to do the same, or the
+     "signing out returns to the form" test would assert nothing. */
+  signOut.mockReset();
+  signOut.mockImplementation(async () => {
+    window.localStorage.removeItem("prelegal.session");
+    window.dispatchEvent(new Event("storage"));
+  });
 });
 
 async function submit(user: UserEvent, action: string | RegExp) {
@@ -60,7 +71,7 @@ describe("signing in", () => {
 
   it("sends what was typed to the login endpoint", async () => {
     const user = userEvent.setup();
-    login.mockResolvedValue(ADA);
+    login.mockResolvedValue(SESSION);
     render(<LoginScreen />);
     await screen.findByLabelText("Email");
 
@@ -69,21 +80,21 @@ describe("signing in", () => {
     expect(login).toHaveBeenCalledWith(ADA.email, "hunter2");
   });
 
-  it("stores the account and opens the workspace", async () => {
+  it("stores the session and opens the documents list", async () => {
     const user = userEvent.setup();
-    login.mockResolvedValue(ADA);
+    login.mockResolvedValue(SESSION);
     render(<LoginScreen />);
     await screen.findByLabelText("Email");
 
     await submit(user, "Sign in");
 
-    await waitFor(() => expect(push).toHaveBeenCalledWith("/draft/"));
-    expect(readSession()).toEqual(ADA);
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/documents/"));
+    expect(readSession()).toEqual(SESSION);
   });
 
   it("does not sign up when signing in", async () => {
     const user = userEvent.setup();
-    login.mockResolvedValue(ADA);
+    login.mockResolvedValue(SESSION);
     render(<LoginScreen />);
     await screen.findByLabelText("Email");
 
@@ -108,7 +119,7 @@ describe("creating an account", () => {
 
   it("sends what was typed to the signup endpoint", async () => {
     const user = userEvent.setup();
-    signup.mockResolvedValue(ADA);
+    signup.mockResolvedValue(SESSION);
     render(<LoginScreen />);
     await screen.findByLabelText("Email");
     await user.click(screen.getByRole("button", { name: "Create one" }));
@@ -168,10 +179,10 @@ describe("when the server refuses", () => {
     await submit(user, "Sign in");
     await screen.findByRole("alert");
 
-    login.mockResolvedValue(ADA);
+    login.mockResolvedValue(SESSION);
     await user.click(screen.getByRole("button", { name: "Sign in" }));
 
-    await waitFor(() => expect(push).toHaveBeenCalledWith("/draft/"));
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/documents/"));
   });
 
   it("clears the message when switching form", async () => {
@@ -203,7 +214,7 @@ describe("when the server refuses", () => {
 
 describe("when already signed in", () => {
   it("offers to continue rather than asking again", async () => {
-    storeSession(ADA);
+    storeSession(SESSION);
 
     render(<LoginScreen />);
 
@@ -214,26 +225,26 @@ describe("when already signed in", () => {
   });
 
   it("names the account", async () => {
-    storeSession(ADA);
+    storeSession(SESSION);
 
     render(<LoginScreen />);
 
     expect(await screen.findByText(ADA.email)).toBeInTheDocument();
   });
 
-  it("continues to the workspace", async () => {
+  it("continues to the documents list", async () => {
     const user = userEvent.setup();
-    storeSession(ADA);
+    storeSession(SESSION);
     render(<LoginScreen />);
 
     await user.click(await screen.findByRole("button", { name: "Continue" }));
 
-    expect(push).toHaveBeenCalledWith("/draft/");
+    expect(push).toHaveBeenCalledWith("/documents/");
   });
 
   it("signing out returns to the form and forgets the account", async () => {
     const user = userEvent.setup();
-    storeSession(ADA);
+    storeSession(SESSION);
     render(<LoginScreen />);
 
     await user.click(await screen.findByRole("button", { name: "Sign out" }));
@@ -244,10 +255,22 @@ describe("when already signed in", () => {
 });
 
 describe("the honesty notice", () => {
-  it("says passwords are not checked and accounts do not persist", async () => {
+  it("says the password is checked but nothing survives a restart", async () => {
+    /*
+     * The claim this replaces was that passwords are not checked at all. It was
+     * true and is not any more; what is still true, and still worth saying
+     * before anyone types, is that the account does not survive a restart.
+     */
     render(<LoginScreen />);
 
-    const notice = await screen.findByText(/passwords are not checked/i);
+    const notice = await screen.findByText(/your password is checked/i);
     expect(notice).toHaveTextContent(/cleared each time the server restarts/i);
+  });
+
+  it("no longer claims passwords go unchecked", async () => {
+    render(<LoginScreen />);
+    await screen.findByLabelText("Email");
+
+    expect(screen.queryByText(/passwords are not checked/i)).not.toBeInTheDocument();
   });
 });

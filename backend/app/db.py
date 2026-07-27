@@ -3,8 +3,8 @@ SQLite connection handling and the once-per-startup schema reset.
 
 The database is scratch space, not a store of record: it is deleted and rebuilt
 from `schema.sql` every time the app starts, and the container mounts no volume
-over it. Anything a user types is gone on restart, by design, until persistence
-becomes a product requirement.
+over it. Accounts and saved drafts survive a reload — that is what PL-7 added —
+but not a restart, and that much is still deliberate.
 """
 
 from __future__ import annotations
@@ -31,6 +31,10 @@ def connect(database_path: Path) -> sqlite3.Connection:
     """
     connection = sqlite3.connect(database_path, check_same_thread=False)
     connection.row_factory = sqlite3.Row
+    # Foreign keys are off by default per *connection*, not per database file,
+    # so without this the `ON DELETE CASCADE` in schema.sql silently does
+    # nothing and deleting an account would strand its sessions and drafts.
+    connection.execute("PRAGMA foreign_keys = ON")
     return connection
 
 

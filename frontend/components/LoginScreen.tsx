@@ -3,11 +3,16 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useState, type FormEvent } from "react";
 
-import { ApiError, login, signup } from "@/lib/api";
-import { clearSession, storeSession, useSession } from "@/lib/session";
+import { ApiError, login, signOut, signup } from "@/lib/api";
+import { storeSession, useSession } from "@/lib/session";
 
-/** Where signing in takes you. The only document in the platform so far. */
-const WORKSPACE_PATH = "/draft/";
+/**
+ * Where signing in takes you.
+ *
+ * The list, not a blank workspace: someone coming back has drafts waiting, and
+ * the list is one click from starting a new one either way.
+ */
+const LANDING_PATH = "/documents/";
 
 type Mode = "signIn" | "createAccount";
 
@@ -51,14 +56,14 @@ export function LoginScreen() {
       setError(null);
 
       try {
-        const user =
+        const session =
           mode === "signIn"
             ? await login(email, password)
             : await signup(email, password);
-        storeSession(user);
+        storeSession(session);
         // Deliberately not clearing `submitting` — the button stays disabled
         // while the route change is in flight.
-        router.push(WORKSPACE_PATH);
+        router.push(LANDING_PATH);
       } catch (caught) {
         setError(
           caught instanceof ApiError
@@ -98,9 +103,9 @@ export function LoginScreen() {
 
         {session ? (
           <ReturningUser
-            email={session.email}
-            onContinue={() => router.push(WORKSPACE_PATH)}
-            onSignOut={clearSession}
+            email={session.user.email}
+            onContinue={() => router.push(LANDING_PATH)}
+            onSignOut={() => void signOut()}
           />
         ) : (
           <form className="entry-form" onSubmit={handleSubmit}>
@@ -164,13 +169,15 @@ export function LoginScreen() {
         )}
 
         {/*
-          Stated plainly rather than buried: anyone can sign in as any registered
-          address, and the accounts themselves are discarded when the container
-          restarts. Both are true of this build and of nothing after it.
+          Stated plainly rather than buried. The password is real now; what is
+          still true, and still worth saying before someone types anything, is
+          that the account and everything drafted under it are discarded when
+          the container restarts.
         */}
         <p className="entry-notice">
-          Early build — passwords are not checked and accounts are cleared each
-          time the server restarts. Do not put anything private here.
+          Early build — your password is checked and never stored in the clear,
+          but accounts and saved documents are cleared each time the server
+          restarts. Treat this as a sandbox, not a system of record.
         </p>
       </div>
     </main>

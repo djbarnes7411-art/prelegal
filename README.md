@@ -47,16 +47,27 @@ few minutes; later ones are much faster.
 ### The database is temporary
 
 SQLite, rebuilt from `backend/app/schema.sql` on **every startup**, with no volume
-mounted over it. Accounts created in one run are gone the next. That is deliberate
-for now — nothing in the product needs to survive a restart yet.
+mounted over it. Accounts, sessions and saved documents created in one run are gone
+the next. Still deliberate: a reload keeps your session and your drafts, a restart
+does not, and nothing here is meant to be a record of anything.
 
-### There is no authentication yet
+### Authentication, for as long as the container runs
 
-The login screen creates and looks up accounts for real, but passwords are never
-stored or checked, and knowing an email address is enough to sign in as it. The
-endpoints have the shape real authentication needs, so adding hashing and sessions
-later is a change to two function bodies. Until then, the app says so on the login
-screen.
+The login screen checks a real password — hashed with `hashlib.scrypt`, never stored
+in the clear — and signing in issues a session token the browser keeps and sends
+back on every request that needs an account behind it. Signing out revokes it.
+
+What is still missing: password reset, email verification, and any rate limiting on
+sign-up, sign-in, or the chat endpoint. That last one matters most — `/api/chat`
+needs an account now, but an account is free to make, so it is narrowed rather than
+protected. And the accounts themselves are exactly as temporary as everything else
+above.
+
+### Your documents are saved, until they aren't
+
+Every draft is saved as you go — the values *and* the conversation — so you can close
+the tab, sign back in, and pick it up from the Documents screen. Same caveat as the
+rest of the database: it does not survive the server restarting.
 
 ## Development
 
@@ -132,8 +143,14 @@ missing from the form while the clause that needs it stays in the agreement.
 What you type into the chat, and the document's values as they stand, are sent to
 the backend on each turn and forwarded to the model provider. That is a change
 from how this workspace started: it used to be a form that sent nothing anywhere.
-Nothing is written to disk at either end — the conversation lives in the tab and
-is gone when you close it — and the app says all of this above the chat.
+
+They are also saved to your account, after each turn, so the draft is still there
+when you come back — which is a change from how this started too. None of it
+survives the server restarting. The app says all of this above the chat.
+
+Every document it produces says on its own face that it is a draft, prepared with
+an AI assistant, that a lawyer should read before anyone signs it. That line is
+part of the document, so it is part of the PDF.
 
 ## Roadmap
 
@@ -141,8 +158,11 @@ is gone when you close it — and the app says all of this above the chat.
 - [x] V1 foundation: backend, database, container, scripts (PL-4)
 - [x] AI chat to fill the document in (PL-5)
 - [x] AI chat to choose *which* document to draft, and every agreement type from `catalog.json` (PL-6)
-- [ ] Real authentication and accounts that persist
+- [x] Real accounts: hashed passwords, sessions you can sign out of (PL-7)
+- [x] Saved documents you can come back to, and a screen to find them (PL-7)
+- [ ] Accounts and documents that survive a restart
 - [ ] Rate limiting and spend control on the chat endpoint
+- [ ] Password reset and email verification
 - [ ] Structured repeating fields (DPA subprocessors, multiple SOWs)
 - [ ] Target completion — August 1, 2026
 

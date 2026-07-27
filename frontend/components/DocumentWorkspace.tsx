@@ -2,12 +2,21 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { AppShell, DOCUMENTS_PATH } from "./AppShell";
 import { ChatPanel, type ChatEntry } from "./ChatPanel";
 import { DocumentCatalog } from "./DocumentCatalog";
 import { DownloadButton } from "./DownloadButton";
 import { GenericDocument } from "./GenericDocument";
 import { NdaDocument } from "./NdaDocument";
-import { ApiError, sendChatTurn, type ChatMessage } from "@/lib/api";
+import {
+  ApiError,
+  createDocument,
+  loadDocument,
+  saveDocument,
+  sendChatTurn,
+  type ChatMessage,
+  type SaveOptions,
+} from "@/lib/api";
 import { findDocument, loadClauses } from "@/lib/documents/catalog";
 import {
   completedMessage,
@@ -21,6 +30,7 @@ import type {
   DocumentState,
 } from "@/lib/documents/types";
 import { createEmptyState, missingFields } from "@/lib/documents/values";
+import { useSession } from "@/lib/session";
 import { clausesForPatch } from "@/lib/nda/chat-support";
 import type { CoverPageData } from "@/lib/nda/types";
 
@@ -36,7 +46,32 @@ const TRANSCRIPT_LIMIT = 40;
 /** How long a change stays marked in the Standard Terms. */
 const HIGHLIGHT_MS = 4000;
 
-export function DocumentWorkspace() {
+/**
+ * How long after the last change the draft is saved.
+ *
+ * A turn changes the document and the transcript in the same tick, and the
+ * welcome message plus a chosen document arrive close behind each other — one
+ * short wait coalesces all of it into a single request.
+ */
+export const AUTOSAVE_MS = 1000;
+
+/** Whether the draft on screen is on the server yet. */
+type SaveState = "idle" | "saving" | "failed";
+
+interface DocumentWorkspaceProps {
+  /** A saved document to reopen, from `?doc=` — null to start a new one. */
+  initialDocumentId?: number | null;
+  /**
+   * How long to wait before saving. Shortened by tests so they need not sit
+   * through the real delay; nothing in the app passes it.
+   */
+  autosaveDelayMs?: number;
+}
+
+export function DocumentWorkspace({
+  initialDocumentId = null,
+  autosaveDelayMs = AUTOSAVE_MS,
+}: DocumentWorkspaceProps = {}) {
   const [document_, setDocument] = useState<DocumentDef | null>(null);
   const [state, setState] = useState<DocumentState>({});
   const [clauses, setClauses] = useState<Clause[]>([]);
@@ -46,15 +81,32 @@ export function DocumentWorkspace() {
   ]);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [saveState, setSaveState] = useState<SaveState>("idle");
+  const [restoring, setRestoring] = useState(initialDocumentId !== null);
+  const [restoreError, setRestoreError] = useState<string | null>(null);
+
+  /* For the bar across the top. The page above this one will not render the
+     workspace without a session, so the fallback is never what is shown. */
+  const session = useSession();
+  const email = session?.user.email ?? "";
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const nextId = useRef(1);
   const highlightTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
-  /* Read inside the send callback so a turn always carries the document as it
-     stands, not as it stood when the callback was built. */
-  const latest = useRef({ document: document_, state });
+  /* Read inside the send and save callbacks so each always carries the document
+     as it stands, not as it stood when the callback was built. */
+  const latest = useRef({ document: document_, state, messages });
+  /* The row this draft is. Null until the first save creates one; a ref rather
+     than state because it drives no render, only whether the next save creates
+     or replaces. */
+  const savedId = useRef<number | null>(null);
+  const saving = useRef(false);
+  /* Set when a change lands mid-save: the save in flight is already stale, so
+     another one is owed the moment it finishes. */
+  const owed = useRef(false);
+  const saveTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const missing = useMemo(
     () => (document_ ? missingFields(document_, state) : []),
@@ -63,8 +115,8 @@ export function DocumentWorkspace() {
   const remaining = missing.length;
 
   useEffect(() => {
-    latest.current = { document: document_, state };
-  }, [document_, state]);
+    latest.current = { document: document_, state, messages };
+  }, [document_, state, messages]);
 
   /* Browsers use the document title as the default "Save as PDF" filename. */
   useEffect(() => {
@@ -104,6 +156,177 @@ export function DocumentWorkspace() {
       });
     }
   }, []);
+
+  /**
+   * Writes the draft as it currently stands.
+   *
+   * Reads `latest` rather than closing over state, so a save that fires a
+   * second after the last change carries what is on screen now. Creates the row
+   * the first time and replaces it after — whole, not as a diff.
+   */
+  const persist = useCallback(async (options: SaveOptions = {}) => {
+    /*
+     * Only one save at a time — two in flight together could land in either
+     * order and leave the older one winning. A change that arrives during one
+     * is not dropped, though: it sets `owed`, and the loop below goes round
+     * again rather than waiting for the user to say something else.
+     */
+    if (saving.current) {
+      owed.current = true;
+      return;
+    }
+    if (!latest.current.document) return;
+
+    saving.current = true;
+    setSaveState("saving");
+
+    try {
+      do {
+        owed.current = false;
+        const { document: current, state: fields, messages: log } =
+          latest.current;
+        if (!current) break;
+
+        const transcript: ChatMessage[] = log.map(({ role, content }) => ({
+          role,
+          content,
+        }));
+
+        const saved =
+          savedId.current === null
+            ? await createDocument(current.slug, fields, transcript, options)
+            : await saveDocument(savedId.current, fields, transcript, options);
+        savedId.current = saved.id;
+      } while (owed.current);
+
+      setSaveState("idle");
+    } catch {
+      /* A 401 has already cleared the session and the page is on its way back
+         to the login screen. Anything else is worth a quiet mark in the bar and
+         nothing more: the conversation is what has to stay trustworthy, and an
+         alert bubble here would interrupt it to report something the next turn
+         will retry anyway. */
+      setSaveState("failed");
+    } finally {
+      saving.current = false;
+    }
+  }, []);
+
+  /* Debounced: a turn changes the document and the transcript together, and
+     choosing a document changes both again straight after. */
+  useEffect(() => {
+    if (!document_ || restoring) return;
+
+    clearTimeout(saveTimer.current);
+    saveTimer.current = setTimeout(() => void persist(), autosaveDelayMs);
+
+    return () => clearTimeout(saveTimer.current);
+  }, [document_, state, messages, persist, restoring, autosaveDelayMs]);
+
+  /* Navigating away inside the app cancels the pending timer above, which would
+     drop the last turn. This sends it instead, unqueued. Fire and forget — this
+     component is gone before the request resolves. */
+  useEffect(
+    () => () => {
+      clearTimeout(saveTimer.current);
+      if (!saving.current) void persist();
+    },
+    [persist],
+  );
+
+  /*
+   * Closing the tab does not unmount anything: the page is torn down with the
+   * pending timer still on it, so the cleanup above never runs and the last
+   * answer is lost. `pagehide` is the last moment there is to send it, and
+   * `keepalive` is what lets the request outlive the page — an ordinary fetch
+   * started here is cancelled on the way out.
+   *
+   * Skipped while a save is already in flight, because firing a second one
+   * before the first has returned an id would create a duplicate draft rather
+   * than replace the one being written.
+   */
+  useEffect(() => {
+    const flush = () => {
+      if (saving.current || !latest.current.document) return;
+      clearTimeout(saveTimer.current);
+      void persist({ keepalive: true });
+    };
+
+    window.addEventListener("pagehide", flush);
+    return () => window.removeEventListener("pagehide", flush);
+  }, [persist]);
+
+  /**
+   * Reopens a saved document: its values, its clauses, and its conversation.
+   *
+   * Seeds `savedId` so the first autosave after this replaces the row rather
+   * than creating a second copy of the same draft.
+   */
+  useEffect(() => {
+    if (initialDocumentId === null) return;
+
+    let abandoned = false;
+
+    void loadDocument(initialDocumentId)
+      .then((saved) => {
+        if (abandoned) return;
+
+        const definition = findDocument(saved.documentSlug);
+        if (!definition) {
+          setRestoreError(
+            "This document is no longer one we can draft, so it cannot be opened.",
+          );
+          return;
+        }
+
+        savedId.current = saved.id;
+        setDocument(definition);
+        /* Merged onto a complete empty state rather than used as-is. The
+           backend returns every field the document defines, but a draft saved
+           before a field existed would arrive without it, and every renderer
+           here reads its values without checking they are there. */
+        setState({ ...createEmptyState(definition), ...saved.fields });
+
+        /* Ids restart from zero because they are local to this mount and only
+           have to be unique among these messages. */
+        const restored = saved.messages.map((message, index) => ({
+          id: index,
+          role: message.role,
+          content: message.content,
+        }));
+        setMessages(
+          restored.length > 0
+            ? restored
+            : [{ id: 0, role: "assistant" as const, content: WELCOME_MESSAGE }],
+        );
+        nextId.current = Math.max(restored.length, 1);
+
+        if (definition.renderer === "generic") {
+          void loadClauses(definition.slug).then((file) => {
+            if (!abandoned && file) setClauses(file.clauses);
+          });
+        }
+      })
+      .catch((failure) => {
+        if (abandoned) return;
+        /* A 401 is already taking the browser to the login screen. */
+        if (failure instanceof ApiError && failure.status === 401) return;
+        setRestoreError(
+          failure instanceof ApiError && failure.status === 404
+            ? "That document could not be found. It may belong to another account."
+            : failure instanceof ApiError
+              ? failure.message
+              : "That document could not be opened.",
+        );
+      })
+      .finally(() => {
+        if (!abandoned) setRestoring(false);
+      });
+
+    return () => {
+      abandoned = true;
+    };
+  }, [initialDocumentId]);
 
   const markChanged = useCallback(
     (patch: DocumentState, forDocument: DocumentDef) => {
@@ -226,14 +449,10 @@ export function DocumentWorkspace() {
   }, [missing, say]);
 
   return (
-    <div className="shell">
-      <header className="topbar">
-        <div className="brand">
-          <span className="brand-mark" aria-hidden="true">
-            §
-          </span>
-          <span className="brand-name">Prelegal</span>
-        </div>
+    <AppShell
+      active="draft"
+      email={email}
+      center={
         <p className="topbar-doc">
           {document_
             ? `${document_.name} · Common Paper Standard Terms${
@@ -241,11 +460,16 @@ export function DocumentWorkspace() {
               }`
             : "Choose a document to draft"}
         </p>
-        {document_ ? (
-          <DownloadButton remaining={remaining} onDownload={handleDownload} />
-        ) : null}
-      </header>
-
+      }
+      end={
+        document_ ? (
+          <>
+            <SaveState state={saveState} />
+            <DownloadButton remaining={remaining} onDownload={handleDownload} />
+          </>
+        ) : null
+      }
+    >
       <main className="workspace">
         <div className="panel">
           <ChatPanel
@@ -264,10 +488,29 @@ export function DocumentWorkspace() {
             state={state}
             clauses={clauses}
             activeClauses={activeClauses}
+            restoring={restoring}
+            restoreError={restoreError}
           />
         </div>
       </main>
-    </div>
+    </AppShell>
+  );
+}
+
+/**
+ * Whether the draft is on the server.
+ *
+ * Silent when it is, which is almost always — a permanent "Saved" would be
+ * noise beside the document it is describing. It speaks up only while a save is
+ * in flight or after one failed.
+ */
+function SaveState({ state }: { state: SaveState }) {
+  if (state === "idle") return null;
+
+  return (
+    <span className="topbar-save" data-state={state} role="status">
+      {state === "saving" ? "Saving…" : "Not saved"}
+    </span>
   );
 }
 
@@ -283,12 +526,38 @@ function DocumentPanel({
   state,
   clauses,
   activeClauses,
+  restoring,
+  restoreError,
 }: {
   document: DocumentDef | null;
   state: DocumentState;
   clauses: Clause[];
   activeClauses: string[];
+  restoring: boolean;
+  restoreError: string | null;
 }) {
+  if (restoreError) {
+    return (
+      <article className="doc">
+        <p className="doc-eyebrow">Not opened</p>
+        <h1 className="doc-title">This document could not be opened</h1>
+        <p className="doc-body">{restoreError}</p>
+        <p className="doc-body">
+          <a href={DOCUMENTS_PATH}>Back to my documents</a>
+        </p>
+      </article>
+    );
+  }
+
+  if (restoring) {
+    return (
+      <article className="doc">
+        <p className="doc-eyebrow">Key Terms</p>
+        <p className="doc-body">Opening your document…</p>
+      </article>
+    );
+  }
+
   if (!document) return <DocumentCatalog />;
 
   if (document.renderer === "mutual-nda") {

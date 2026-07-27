@@ -7,22 +7,26 @@ npm test          # once
 npm run test:watch
 ```
 
-249 tests across twelve files. What they cover:
+338 tests across sixteen files. What they cover:
 
 | File | Covers |
 | --- | --- |
 | `lib/documents/values.test.ts` | Starting values and defaults, what counts as answered, required-field counting, date and number formatting, how a value reads in the agreement |
 | `lib/documents/render.test.ts` | First-use expansion of defined terms, keeping the template's own inflection, emphasis across a value, unknown keys, document title, lazy clause loading |
-| `lib/documents/chat-copy.test.ts` | The greeting, the privacy notice, and how the "still missing" sentence reads |
+| `lib/documents/chat-copy.test.ts` | The greeting, the privacy notice, the draft disclaimer, and how the "still missing" sentence reads |
 | `lib/nda/render.test.ts` | Date formatting and timezone safety, number-to-words, term phrasing, the clause tokenizer, first-use expansion, unusable term lengths, document title |
 | `lib/nda/standard-terms.test.ts` | **Diffs the transcribed legal text against `templates/mutual-nda.md`**, clause by clause |
 | `lib/nda/chat-support.test.ts` | Which clauses a change marks in the Mutual NDA |
 | `components/NdaDocument.test.tsx` | Rendered cover page and clauses, blanks, checkbox states, signature block, CC BY attribution, cover-page fidelity |
 | `components/ChatPanel.test.tsx` | The panel alone: the transcript, who-said-what for screen readers, Enter and Shift+Enter, the pending and failed states |
-| `components/DocumentWorkspace.test.tsx` | The whole journey with the assistant substituted: choosing a document, a request we cannot meet, generic and Mutual NDA rendering, clause marking, download gating, focus, the completion message, retrying a failed turn, PDF filename |
-| `components/LoginScreen.test.tsx` | Signing in, creating an account, switching between the two, server refusals, the already-signed-in state, and the notice about there being no authentication |
-| `lib/api.test.ts` | Request shape, snake_case to camelCase, the chat turn's request and reply, which server errors are shown verbatim and which are replaced, an unreachable server |
-| `lib/session.test.ts` | Round trip through storage, and every way a stored value can be unusable |
+| `components/DocumentWorkspace.test.tsx` | The whole journey with the assistant substituted: choosing a document, a request we cannot meet, generic and Mutual NDA rendering, clause marking, download gating, focus, the completion message, retrying a failed turn, PDF filename, the disclaimer on both renderers, autosave, and reopening a saved document |
+| `components/LoginScreen.test.tsx` | Signing in, creating an account, switching between the two, server refusals, the already-signed-in state, and the notice about what is and is not temporary |
+| `components/AppShell.test.tsx` | The bar every signed-in screen wears: navigation, which screen is marked, the account, signing out |
+| `components/DocumentsList.test.tsx` | The list: loading, empty, titles and progress worked out from the catalog, opening one, deleting one with its confirmation, and a failed load |
+| `app/documents/page.test.tsx` | The Documents gate: signed in, signed out, and no flash of either |
+| `app/draft/page.test.tsx` | The workspace gate, and reading `?doc=` — including ids that are not ids |
+| `lib/api.test.ts` | Request shape, snake_case to camelCase, the bearer token on every authenticated call, what a 401 does to the session, the saved-document calls, the chat turn's request and reply, which server errors are shown verbatim and which are replaced, an unreachable server |
+| `lib/session.test.ts` | Round trip through storage, the token, and every way a stored value can be unusable — including the shape PL-4 left behind |
 
 **No test calls a real model.** `DocumentWorkspace.test.tsx` mocks `sendChatTurn`, and
 the backend suite substitutes the completion function. What the assistant would
@@ -55,8 +59,8 @@ Automation cannot reach these. Run them before releasing, and after any change t
 npm run dev    # http://localhost:3000
 ```
 
-Sign in first — the workspace is at `/draft/` and sends you back to `/` without a
-session. `npm run dev` needs the backend running on port 8000 for that, and the
+Sign in first — the workspace is at `/draft/` and your saved documents at
+`/documents/`, and both send you back to `/` without a session. `npm run dev` needs the backend running on port 8000 for that, and the
 backend needs `OPENROUTER_API_KEY` for the chat to answer at all; the root
 [README](../README.md) covers both.
 
@@ -143,7 +147,10 @@ None of this is covered automatically — every test substitutes the model.
 - [ ] Watch the Standard Terms as an answer lands: the clauses it feeds are marked, then unmark
 - [ ] Unset `OPENROUTER_API_KEY` and restart: sending says the assistant is not configured, and the app is otherwise intact
 - [ ] Go offline mid-conversation: the failure names an unreachable server, your message is still there, and **Try again** resends it
-- [ ] Reload the page: the conversation is gone and the document is blank again — nothing persists, by design
+- [ ] Reload the page mid-draft: the conversation and the document come back as they were — this is what autosave means now
+- [ ] Watch the top bar as an answer lands: "Saving…" appears briefly and then goes, rather than sitting there
+- [ ] Stop the backend, answer one more question: the bar says "Not saved" and the conversation carries on regardless
+- [ ] Every document, finished or not, carries the "this is a draft" note above its terms — and it is still there in the PDF
 
 ### 4. Browsers
 
@@ -169,8 +176,9 @@ round trip and the layout still need eyes.
 
 - [ ] Create an account, then restart the container and confirm the same email is
       unknown again — the accounts really are temporary
-- [ ] Sign in with the wrong password: it works, and the notice on the card says
-      why. If that ever stops being true, this file is out of date
+- [ ] Sign in with the wrong password: it is refused, and the message is not the
+      same one an unknown address gets
+- [ ] Sign up, sign out, sign back in with the same password: it works
 - [ ] Stop the backend and submit: the message names an unreachable server rather
       than showing a raw fetch error
 - [ ] Visit `/draft/` in a fresh profile: it redirects to `/` without flashing the
@@ -180,7 +188,23 @@ round trip and the layout still need eyes.
 - [ ] Tab order runs email → password → submit → switch link, and the focus ring is
       visible on the purple button
 
-### 7. Legal review — not an engineering task
+### 7. My documents
+
+- [ ] Draft part of a document, leave without downloading, then open it from
+      `/documents/` — the conversation and the document are where you left them
+- [ ] The card names the parties once they are known, and says what is still
+      needed before that
+- [ ] Delete one: it asks first, **Keep** backs out, and **Delete** removes only
+      that card
+- [ ] Sign in as a second account: its list is empty, and the first account's
+      drafts are nowhere in it
+- [ ] Edit the address to `/draft/?doc=` some other account's id: it says the
+      document could not be found, and offers the way back
+- [ ] Sign out on one screen: you land on `/`, and the back button does not put
+      you into a working workspace
+- [ ] The list and its cards are usable at 375px
+
+### 8. Legal review — not an engineering task
 
 - [ ] A lawyer confirms the two documented clause 9 deviations ("such State", "such courts") are acceptable
 - [ ] A lawyer confirms resolving cover-page references inline in the Standard Terms does not change their meaning

@@ -25,7 +25,22 @@ export const WELCOME_MESSAGE =
 /** Shown above the conversation, always, without a way to dismiss it. */
 export const PRIVACY_NOTICE =
   "What you type here, and the values on the document, are sent to our AI " +
-  "provider to draft it. Nothing is stored after you close the tab.";
+  "provider to draft it, and saved to your account so you can pick this draft " +
+  "up again. Nothing survives the server restarting.";
+
+/**
+ * What this product makes, said plainly, wherever a document is shown.
+ *
+ * One constant rather than one sentence per renderer: the Mutual NDA and the
+ * ten generated documents draw their pages by different code, and a disclaimer
+ * that drifted between them would be worse than none. It is on the document
+ * itself and not only in the app, because the PDF is the copy that gets sent to
+ * somebody, and that is the copy the warning has to reach.
+ */
+export const DRAFT_DISCLAIMER =
+  "This is a draft, not legal advice. It was prepared from a template with " +
+  "the help of an AI assistant and has not been reviewed by a lawyer — have " +
+  "qualified counsel review it before signing or relying on it.";
 
 /** Said once the last required blank is filled, however it happened. */
 export function completedMessage(document: DocumentDef): string {

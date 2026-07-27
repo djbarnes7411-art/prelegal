@@ -13,6 +13,7 @@
  * *was* published, keeps its own hand-built page in `NdaDocument`.
  */
 
+import { DocumentDisclaimer } from "./Disclaimer";
 import { renderClauses, type RenderedSegment } from "@/lib/documents/render";
 import type {
   Clause,
@@ -48,6 +49,8 @@ export function GenericDocument({
     <article className="doc">
       <p className="doc-eyebrow">Key Terms</p>
       <h1 className="doc-title">{document.title}</h1>
+
+      <DocumentDisclaimer />
 
       <p className="doc-preamble">
         This {document.name} consists of: (1) these Key Terms and (2) the Common

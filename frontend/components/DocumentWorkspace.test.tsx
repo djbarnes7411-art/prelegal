@@ -3,8 +3,17 @@ import userEvent, { type UserEvent } from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { DocumentWorkspace } from "./DocumentWorkspace";
-import { ApiError, sendChatTurn } from "@/lib/api";
+import {
+  ApiError,
+  createDocument,
+  loadDocument,
+  saveDocument,
+  sendChatTurn,
+  signOut,
+  type SavedDocument,
+} from "@/lib/api";
 import type { DocumentState } from "@/lib/documents/types";
+import { storeSession } from "@/lib/session";
 
 /*
  * Integration tests: everything is driven through the real UI, the way a user
@@ -16,10 +25,45 @@ import type { DocumentState } from "@/lib/documents/types";
 
 vi.mock("@/lib/api", async () => {
   const actual = await vi.importActual<typeof import("@/lib/api")>("@/lib/api");
-  return { ...actual, sendChatTurn: vi.fn() };
+  return {
+    ...actual,
+    sendChatTurn: vi.fn(),
+    createDocument: vi.fn(),
+    saveDocument: vi.fn(),
+    loadDocument: vi.fn(),
+    signOut: vi.fn(),
+  };
 });
 
+const push = vi.fn();
+const replace = vi.fn();
+
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({ push, replace }),
+}));
+
 const asMock = vi.mocked(sendChatTurn);
+const created = vi.mocked(createDocument);
+const saved = vi.mocked(saveDocument);
+const loaded = vi.mocked(loadDocument);
+
+const SESSION = {
+  user: { id: 1, email: "ada@example.com", createdAt: "2026-07-26T09:00:00Z" },
+  token: "opaque-token",
+};
+
+/** A saved document as the backend returns it. */
+function savedDocument(over: Partial<SavedDocument> = {}): SavedDocument {
+  return {
+    id: 7,
+    documentSlug: "mutual-nda",
+    fields: {},
+    messages: [],
+    createdAt: "2026-07-26T09:00:00Z",
+    updatedAt: "2026-07-26T09:30:00Z",
+    ...over,
+  };
+}
 
 const PARTY_ONE = {
   companyName: "Northwind Labs, Inc.",
@@ -49,6 +93,19 @@ beforeEach(() => {
   print = vi.fn();
   vi.stubGlobal("print", print);
   asMock.mockReset();
+  push.mockReset();
+  replace.mockReset();
+  /* The bar across the top names the signed-in account, and these tests mount
+     the workspace directly rather than through the page that gates it. */
+  window.localStorage.clear();
+  storeSession(SESSION);
+  created.mockReset();
+  created.mockResolvedValue(savedDocument());
+  saved.mockReset();
+  saved.mockResolvedValue(savedDocument());
+  loaded.mockReset();
+  vi.mocked(signOut).mockReset();
+  vi.mocked(signOut).mockResolvedValue(undefined);
 });
 
 afterEach(() => {
@@ -647,5 +704,360 @@ describe("DocumentWorkspace", () => {
 
       expect(container.querySelectorAll(".blank")).toHaveLength(0);
     });
+  });
+});
+
+describe("the draft disclaimer", () => {
+  it("is on the Mutual NDA's page", async () => {
+    const user = userEvent.setup();
+    render(<DocumentWorkspace />);
+
+    await startNda(user);
+
+    expect(screen.getByRole("note")).toHaveTextContent(/not legal advice/i);
+  });
+
+  it("is on a generated document's page too", async () => {
+    /* Two renderers, one component — the wording cannot drift between them. */
+    const user = userEvent.setup();
+    render(<DocumentWorkspace />);
+
+    await startPilot(user);
+
+    expect(screen.getByRole("note")).toHaveTextContent(/not legal advice/i);
+  });
+
+  it("stays on a finished agreement", async () => {
+    /* The finished document is the one that gets sent to somebody, so this is
+       exactly when the warning must not disappear. */
+    const user = userEvent.setup();
+    render(<DocumentWorkspace />);
+    await startNda(user);
+
+    await completeAgreement(user);
+
+    expect(screen.getByRole("note")).toHaveTextContent(/qualified counsel/i);
+  });
+});
+
+/*
+ * Autosave waits a second in the app, which there is no reason for a test to
+ * sit through — these mount the workspace with the delay turned down and wait
+ * for the call itself.
+ */
+describe("autosave", () => {
+  /** The workspace, saving as soon as a change settles rather than a second later. */
+  const mountSaving = (props: { initialDocumentId?: number | null } = {}) =>
+    render(<DocumentWorkspace autosaveDelayMs={0} {...props} />);
+
+  it("saves the draft once a document is chosen", async () => {
+    const user = userEvent.setup();
+    mountSaving();
+
+    await startNda(user);
+
+    await waitFor(() => expect(created).toHaveBeenCalledTimes(1));
+    expect(created.mock.calls[0][0]).toBe("mutual-nda");
+  });
+
+  it("carries the values and the conversation", async () => {
+    const user = userEvent.setup();
+    mountSaving();
+    await startNda(user);
+    await waitFor(() => expect(created).toHaveBeenCalled());
+
+    assistantAnswers({ governingLaw: "Delaware" });
+    await say(user, "Delaware law.");
+
+    await waitFor(() => expect(saved).toHaveBeenCalled());
+    const [, fields, messages] = saved.mock.calls.at(-1)!;
+    expect(fields.governingLaw).toBe("Delaware");
+    expect(messages.some((message) => message.content === "Delaware law.")).toBe(
+      true,
+    );
+  });
+
+  it("creates the draft once and replaces it after", async () => {
+    /* A second create would leave two copies of one conversation in the list. */
+    const user = userEvent.setup();
+    mountSaving();
+    await startNda(user);
+    await waitFor(() => expect(created).toHaveBeenCalled());
+
+    assistantAnswers({ governingLaw: "Delaware" });
+    await say(user, "Delaware law.");
+    await waitFor(() => expect(saved).toHaveBeenCalled());
+
+    assistantAnswers({ jurisdiction: "New Castle, DE" });
+    await say(user, "New Castle.");
+    await waitFor(() => expect(saved.mock.calls.length).toBeGreaterThan(1));
+
+    expect(created).toHaveBeenCalledTimes(1);
+    expect(saved.mock.calls.every((call) => call[0] === 7)).toBe(true);
+  });
+
+  it("saves nothing before a document has been chosen", async () => {
+    const user = userEvent.setup();
+    asMock.mockResolvedValueOnce({
+      reply: "Which one did you have in mind?",
+      patch: {},
+      documentSlug: null,
+    });
+    mountSaving();
+
+    await say(user, "I need something drawn up.");
+    await screen.findByText("Which one did you have in mind?");
+
+    expect(created).not.toHaveBeenCalled();
+  });
+
+  it("says so in the bar when a save fails", async () => {
+    const user = userEvent.setup();
+    created.mockRejectedValue(new ApiError("The server is unhappy.", 500));
+    mountSaving();
+
+    await startNda(user);
+
+    expect(await screen.findByText("Not saved")).toBeInTheDocument();
+  });
+
+  it("does not interrupt the conversation when a save fails", async () => {
+    /* The chat's error bubble and its focus handling are reserved for turns
+       that failed. A save is retried by the next turn on its own. */
+    const user = userEvent.setup();
+    created.mockRejectedValue(new ApiError("The server is unhappy.", 500));
+    mountSaving();
+
+    await startNda(user);
+    await screen.findByText("Not saved");
+
+    expect(
+      screen.queryByRole("button", { name: "Try again" }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("recovers on the next turn after a failed save", async () => {
+    const user = userEvent.setup();
+    created.mockRejectedValueOnce(new ApiError("The server is unhappy.", 500));
+    mountSaving();
+    await startNda(user);
+    await screen.findByText("Not saved");
+
+    created.mockResolvedValue(savedDocument());
+    assistantAnswers({ governingLaw: "Delaware" });
+    await say(user, "Delaware law.");
+
+    await waitFor(() =>
+      expect(screen.queryByText("Not saved")).not.toBeInTheDocument(),
+    );
+  });
+
+  it("goes round again for a change that landed mid-save", async () => {
+    /*
+     * A save in flight is already stale the moment the next turn lands. If the
+     * guard against overlapping saves simply dropped that change, the newest
+     * answer would sit unsaved until the user happened to say something else —
+     * and be lost outright if they closed the tab instead.
+     */
+    const user = userEvent.setup();
+    let release: (value: SavedDocument) => void = () => {};
+    created.mockReturnValue(
+      new Promise<SavedDocument>((resolve) => {
+        release = resolve;
+      }),
+    );
+    mountSaving();
+    await startNda(user);
+    await waitFor(() => expect(created).toHaveBeenCalled());
+
+    /* Lands while the create above is still unresolved. */
+    assistantAnswers({ governingLaw: "Delaware" });
+    await say(user, "Delaware law.");
+    release(savedDocument());
+
+    await waitFor(() => expect(saved).toHaveBeenCalled());
+    expect(saved.mock.calls.at(-1)![1].governingLaw).toBe("Delaware");
+  });
+
+  it("saves as the tab closes, in a request that outlives the page", async () => {
+    /*
+     * Closing the tab unmounts nothing — the page is torn down with the pending
+     * timer still on it. `pagehide` is the last moment there is to send the
+     * turn, and `keepalive` is what lets the request survive the page.
+     */
+    const user = userEvent.setup();
+    render(<DocumentWorkspace autosaveDelayMs={5000} />);
+    await startNda(user);
+
+    window.dispatchEvent(new Event("pagehide"));
+
+    await waitFor(() => expect(created).toHaveBeenCalled());
+    expect(created.mock.calls.at(-1)![3]).toEqual({ keepalive: true });
+  });
+
+  it("does not start a second draft when the tab closes mid-save", async () => {
+    /* A create fired before the first has returned an id would leave two rows
+       for one conversation. */
+    const user = userEvent.setup();
+    created.mockReturnValue(new Promise<SavedDocument>(() => {}));
+    mountSaving();
+    await startNda(user);
+    await waitFor(() => expect(created).toHaveBeenCalled());
+
+    window.dispatchEvent(new Event("pagehide"));
+
+    expect(created).toHaveBeenCalledTimes(1);
+  });
+
+  it("sends a last save on the way out", async () => {
+    /*
+     * Leaving cancels the pending timer, which would otherwise drop the turn
+     * that was still waiting to be written. Mounted with the app's real delay
+     * so the timer really is still pending when this unmounts.
+     */
+    const user = userEvent.setup();
+    const { unmount } = render(<DocumentWorkspace autosaveDelayMs={5000} />);
+    await startNda(user);
+
+    unmount();
+
+    await waitFor(() => expect(created).toHaveBeenCalled());
+  });
+});
+
+describe("reopening a saved document", () => {
+  it("puts the values back on the page", async () => {
+    loaded.mockResolvedValue(
+      savedDocument({ fields: { governingLaw: "Delaware" } }),
+    );
+
+    render(<DocumentWorkspace initialDocumentId={7} />);
+
+    /* Once on the cover page and again in the clause citing it — what matters
+       is that the value came back, not how many places quote it. */
+    expect(await screen.findAllByText("Delaware")).not.toHaveLength(0);
+    expect(loaded).toHaveBeenCalledWith(7);
+  });
+
+  it("fills in a field the draft was saved without", async () => {
+    /*
+     * A draft saved before a field existed comes back without it, and every
+     * renderer here reads its values without checking they are there — so the
+     * saved values are merged onto a complete empty state, not used as-is.
+     * Without that merge this render throws.
+     */
+    loaded.mockResolvedValue(savedDocument({ fields: {} }));
+
+    render(<DocumentWorkspace initialDocumentId={7} />);
+
+    expect(
+      await screen.findByRole("heading", { name: /Mutual Non-Disclosure/ }),
+    ).toBeInTheDocument();
+  });
+
+  it("puts the conversation back", async () => {
+    loaded.mockResolvedValue(
+      savedDocument({
+        messages: [
+          { role: "user", content: "I need an NDA." },
+          { role: "assistant", content: "Right, a Mutual NDA." },
+        ],
+      }),
+    );
+
+    render(<DocumentWorkspace initialDocumentId={7} />);
+
+    expect(await screen.findByText("I need an NDA.")).toBeInTheDocument();
+    expect(screen.getByText("Right, a Mutual NDA.")).toBeInTheDocument();
+  });
+
+  it("greets rather than showing an empty log when there was no conversation", async () => {
+    loaded.mockResolvedValue(savedDocument({ messages: [] }));
+
+    render(<DocumentWorkspace initialDocumentId={7} />);
+
+    expect(await screen.findByText(/I can help you draft/)).toBeInTheDocument();
+  });
+
+  it("loads a generated document's clauses too", async () => {
+    loaded.mockResolvedValue(savedDocument({ documentSlug: "pilot-agreement" }));
+
+    render(<DocumentWorkspace initialDocumentId={7} />);
+    /*
+     * The clauses arrive in a chunk of their own, so the page settles in two
+     * steps: the document first, then the agreement under it. Waited for by
+     * something only the second step renders — "Loading the agreement…" is
+     * absent before the first step too, so waiting for it to go would pass
+     * before anything had loaded at all.
+     */
+    expect(
+      await screen.findByRole(
+        "heading",
+        { name: "Standard Terms" },
+        { timeout: 4000 },
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Pilot Agreement", level: 1 }),
+    ).toBeInTheDocument();
+  });
+
+  it("replaces the row it came from rather than saving a second copy", async () => {
+    const user = userEvent.setup();
+    loaded.mockResolvedValue(savedDocument({ id: 42 }));
+    render(<DocumentWorkspace initialDocumentId={42} autosaveDelayMs={0} />);
+    await screen.findByRole("heading", { name: /Mutual Non-Disclosure/ });
+
+    lastSlug = "mutual-nda";
+    assistantAnswers({ governingLaw: "Delaware" });
+    await say(user, "Delaware law.");
+
+    await waitFor(() => expect(saved).toHaveBeenCalled());
+    expect(saved.mock.calls[0][0]).toBe(42);
+    expect(created).not.toHaveBeenCalled();
+  });
+
+  it("says so when the document belongs to someone else", async () => {
+    loaded.mockRejectedValue(
+      new ApiError("No document found with that id.", 404),
+    );
+
+    render(<DocumentWorkspace initialDocumentId={7} />);
+
+    expect(
+      await screen.findByText(/may belong to another account/i),
+    ).toBeInTheDocument();
+  });
+
+  it("says so when the document is no longer one we can draft", async () => {
+    loaded.mockResolvedValue(
+      savedDocument({ documentSlug: "withdrawn-template" }),
+    );
+
+    render(<DocumentWorkspace initialDocumentId={7} />);
+
+    expect(
+      await screen.findByText(/no longer one we can draft/i),
+    ).toBeInTheDocument();
+  });
+
+  it("saves nothing when it could not be opened", async () => {
+    /* Autosaving here would write an empty draft over whatever is really there. */
+    loaded.mockRejectedValue(
+      new ApiError("No document found with that id.", 404),
+    );
+
+    render(<DocumentWorkspace initialDocumentId={7} autosaveDelayMs={0} />);
+    await screen.findByText(/may belong to another account/i);
+
+    expect(created).not.toHaveBeenCalled();
+    expect(saved).not.toHaveBeenCalled();
+  });
+
+  it("starts a new document when no id is given", async () => {
+    render(<DocumentWorkspace initialDocumentId={null} />);
+
+    expect(await screen.findByText(/I can help you draft/)).toBeInTheDocument();
+    expect(loaded).not.toHaveBeenCalled();
   });
 });

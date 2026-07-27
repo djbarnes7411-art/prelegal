@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   completedMessage,
+  DRAFT_DISCLAIMER,
   missingFieldsMessage,
   PRIVACY_NOTICE,
   WELCOME_MESSAGE,
@@ -20,15 +21,34 @@ describe("what the product says for itself", () => {
     expect(WELCOME_MESSAGE).toMatch(/\?$/);
   });
 
-  it("says plainly where what you type goes", () => {
-    /* Keep this honest as scope grows — it is the only notice the user gets. */
+  it("says plainly where what you type goes, and that it is kept", () => {
+    /*
+     * Keep this honest as scope grows — it is the only notice the user gets.
+     * It used to say nothing was stored; since drafts are saved to the account,
+     * what is still true is that nothing survives a restart, and it says that
+     * instead rather than going quiet on the subject.
+     */
     expect(PRIVACY_NOTICE).toContain("AI provider");
-    expect(PRIVACY_NOTICE).toContain("Nothing is stored");
+    expect(PRIVACY_NOTICE).toContain("saved to your account");
+    expect(PRIVACY_NOTICE).toContain("Nothing survives the server restarting");
+    expect(PRIVACY_NOTICE).not.toContain("Nothing is stored");
   });
 
   it("names the document it just finished", () => {
     expect(completedMessage(nda)).toContain("Mutual NDA");
     expect(completedMessage(nda)).toContain("Download PDF");
+  });
+});
+
+describe("the draft disclaimer", () => {
+  it("says it is a draft, not advice, and wants a lawyer", () => {
+    expect(DRAFT_DISCLAIMER).toContain("draft");
+    expect(DRAFT_DISCLAIMER).toContain("not legal advice");
+    expect(DRAFT_DISCLAIMER).toMatch(/counsel review it before signing/i);
+  });
+
+  it("does not hedge about whether a lawyer is needed", () => {
+    expect(DRAFT_DISCLAIMER).not.toMatch(/may want|consider|if you wish/i);
   });
 });
 
