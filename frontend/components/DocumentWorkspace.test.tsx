@@ -852,6 +852,63 @@ describe("autosave", () => {
     );
   });
 
+  it("goes round again for a change that landed mid-save", async () => {
+    /*
+     * A save in flight is already stale the moment the next turn lands. If the
+     * guard against overlapping saves simply dropped that change, the newest
+     * answer would sit unsaved until the user happened to say something else —
+     * and be lost outright if they closed the tab instead.
+     */
+    const user = userEvent.setup();
+    let release: (value: SavedDocument) => void = () => {};
+    created.mockReturnValue(
+      new Promise<SavedDocument>((resolve) => {
+        release = resolve;
+      }),
+    );
+    mountSaving();
+    await startNda(user);
+    await waitFor(() => expect(created).toHaveBeenCalled());
+
+    /* Lands while the create above is still unresolved. */
+    assistantAnswers({ governingLaw: "Delaware" });
+    await say(user, "Delaware law.");
+    release(savedDocument());
+
+    await waitFor(() => expect(saved).toHaveBeenCalled());
+    expect(saved.mock.calls.at(-1)![1].governingLaw).toBe("Delaware");
+  });
+
+  it("saves as the tab closes, in a request that outlives the page", async () => {
+    /*
+     * Closing the tab unmounts nothing — the page is torn down with the pending
+     * timer still on it. `pagehide` is the last moment there is to send the
+     * turn, and `keepalive` is what lets the request survive the page.
+     */
+    const user = userEvent.setup();
+    render(<DocumentWorkspace autosaveDelayMs={5000} />);
+    await startNda(user);
+
+    window.dispatchEvent(new Event("pagehide"));
+
+    await waitFor(() => expect(created).toHaveBeenCalled());
+    expect(created.mock.calls.at(-1)![3]).toEqual({ keepalive: true });
+  });
+
+  it("does not start a second draft when the tab closes mid-save", async () => {
+    /* A create fired before the first has returned an id would leave two rows
+       for one conversation. */
+    const user = userEvent.setup();
+    created.mockReturnValue(new Promise<SavedDocument>(() => {}));
+    mountSaving();
+    await startNda(user);
+    await waitFor(() => expect(created).toHaveBeenCalled());
+
+    window.dispatchEvent(new Event("pagehide"));
+
+    expect(created).toHaveBeenCalledTimes(1);
+  });
+
   it("sends a last save on the way out", async () => {
     /*
      * Leaving cancels the pending timer, which would otherwise drop the turn

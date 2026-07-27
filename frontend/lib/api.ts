@@ -207,6 +207,19 @@ export interface SavedDocument extends DocumentSummary {
   messages: ChatMessage[];
 }
 
+/**
+ * How to send a save.
+ *
+ * `keepalive` lets the request outlive the page that started it, which is the
+ * only way a save fired as the tab closes actually arrives — an ordinary fetch
+ * is cancelled on the way out. Browsers cap keepalive bodies at 64 KB; a draft
+ * and its transcript are far under that, and the caps on `/api/documents`
+ * keep it so.
+ */
+export interface SaveOptions {
+  keepalive?: boolean;
+}
+
 const CANNOT_SAVE = "That draft could not be saved.";
 
 /** Every document this account has drafted, most recently worked on first. */
@@ -234,12 +247,14 @@ export async function createDocument(
   documentSlug: string,
   fields: DocumentState,
   messages: ChatMessage[],
+  options: SaveOptions = {},
 ): Promise<SavedDocument> {
   const body = await authorized(
     "/api/documents",
     {
       method: "POST",
       body: JSON.stringify({ documentSlug, fields, messages }),
+      ...options,
     },
     CANNOT_SAVE,
   );
@@ -256,10 +271,15 @@ export async function saveDocument(
   id: number,
   fields: DocumentState,
   messages: ChatMessage[],
+  options: SaveOptions = {},
 ): Promise<SavedDocument> {
   const body = await authorized(
     `/api/documents/${id}`,
-    { method: "PUT", body: JSON.stringify({ fields, messages }) },
+    {
+      method: "PUT",
+      body: JSON.stringify({ fields, messages }),
+      ...options,
+    },
     CANNOT_SAVE,
   );
   return body as SavedDocument;

@@ -7,7 +7,7 @@ npm test          # once
 npm run test:watch
 ```
 
-335 tests across sixteen files. What they cover:
+338 tests across sixteen files. What they cover:
 
 | File | Covers |
 | --- | --- |

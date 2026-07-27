@@ -15,6 +15,7 @@ import {
   saveDocument,
   sendChatTurn,
   type ChatMessage,
+  type SaveOptions,
 } from "@/lib/api";
 import { findDocument, loadClauses } from "@/lib/documents/catalog";
 import {
@@ -102,6 +103,9 @@ export function DocumentWorkspace({
      or replaces. */
   const savedId = useRef<number | null>(null);
   const saving = useRef(false);
+  /* Set when a change lands mid-save: the save in flight is already stale, so
+     another one is owed the moment it finishes. */
+  const owed = useRef(false);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const missing = useMemo(
@@ -160,28 +164,41 @@ export function DocumentWorkspace({
    * second after the last change carries what is on screen now. Creates the row
    * the first time and replaces it after — whole, not as a diff.
    */
-  const persist = useCallback(async () => {
-    /* A save already in flight wins; the change that arrived during it is
-       picked up by the next one, which the effect below has already queued. */
-    if (saving.current) return;
-
-    const { document: current, state: fields, messages: log } = latest.current;
-    if (!current) return;
+  const persist = useCallback(async (options: SaveOptions = {}) => {
+    /*
+     * Only one save at a time — two in flight together could land in either
+     * order and leave the older one winning. A change that arrives during one
+     * is not dropped, though: it sets `owed`, and the loop below goes round
+     * again rather than waiting for the user to say something else.
+     */
+    if (saving.current) {
+      owed.current = true;
+      return;
+    }
+    if (!latest.current.document) return;
 
     saving.current = true;
     setSaveState("saving");
 
-    const transcript: ChatMessage[] = log.map(({ role, content }) => ({
-      role,
-      content,
-    }));
-
     try {
-      const saved =
-        savedId.current === null
-          ? await createDocument(current.slug, fields, transcript)
-          : await saveDocument(savedId.current, fields, transcript);
-      savedId.current = saved.id;
+      do {
+        owed.current = false;
+        const { document: current, state: fields, messages: log } =
+          latest.current;
+        if (!current) break;
+
+        const transcript: ChatMessage[] = log.map(({ role, content }) => ({
+          role,
+          content,
+        }));
+
+        const saved =
+          savedId.current === null
+            ? await createDocument(current.slug, fields, transcript, options)
+            : await saveDocument(savedId.current, fields, transcript, options);
+        savedId.current = saved.id;
+      } while (owed.current);
+
       setSaveState("idle");
     } catch {
       /* A 401 has already cleared the session and the page is on its way back
@@ -206,9 +223,9 @@ export function DocumentWorkspace({
     return () => clearTimeout(saveTimer.current);
   }, [document_, state, messages, persist, restoring, autosaveDelayMs]);
 
-  /* Leaving the page cancels the pending timer above, which would drop the last
-     turn. This sends it instead, unqueued. Fire and forget — this component is
-     gone before the request resolves. */
+  /* Navigating away inside the app cancels the pending timer above, which would
+     drop the last turn. This sends it instead, unqueued. Fire and forget — this
+     component is gone before the request resolves. */
   useEffect(
     () => () => {
       clearTimeout(saveTimer.current);
@@ -216,6 +233,28 @@ export function DocumentWorkspace({
     },
     [persist],
   );
+
+  /*
+   * Closing the tab does not unmount anything: the page is torn down with the
+   * pending timer still on it, so the cleanup above never runs and the last
+   * answer is lost. `pagehide` is the last moment there is to send it, and
+   * `keepalive` is what lets the request outlive the page — an ordinary fetch
+   * started here is cancelled on the way out.
+   *
+   * Skipped while a save is already in flight, because firing a second one
+   * before the first has returned an id would create a duplicate draft rather
+   * than replace the one being written.
+   */
+  useEffect(() => {
+    const flush = () => {
+      if (saving.current || !latest.current.document) return;
+      clearTimeout(saveTimer.current);
+      void persist({ keepalive: true });
+    };
+
+    window.addEventListener("pagehide", flush);
+    return () => window.removeEventListener("pagehide", flush);
+  }, [persist]);
 
   /**
    * Reopens a saved document: its values, its clauses, and its conversation.

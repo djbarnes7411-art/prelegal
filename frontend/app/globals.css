@@ -58,6 +58,11 @@
    * 4.5:1 body text needs. This is that grey darkened until it passes.
    */
   --brand-gray-text: #63636b;
+  /*
+   * Something went wrong, on a light surface. Darker than the panel's --alert,
+   * which is tuned for the dark one and washes out on paper.
+   */
+  --brand-alert: #a8321a;
 
   --topbar-h: 3.5rem;
   --radius: 3px;
@@ -980,8 +985,7 @@ body {
 .entry-error {
   margin: 0;
   font-size: 0.875rem;
-  /* Darker than the panel's --alert, which is tuned for the dark surface. */
-  color: #a8321a;
+  color: var(--brand-alert);
 }
 
 .entry-switch {
@@ -1080,8 +1084,7 @@ body {
 
 .library-status-text {
   margin: 0 0 0.75rem;
-  /* Darker than the panel's --alert, which is tuned for the dark surface. */
-  color: #a8321a;
+  color: var(--brand-alert);
 }
 
 .library-retry {
@@ -1171,7 +1174,7 @@ body {
 .library-card-error {
   margin: 0.5rem 0 0;
   font-size: 0.8125rem;
-  color: #a8321a;
+  color: var(--brand-alert);
 }
 
 .library-card-actions {
@@ -1205,15 +1208,15 @@ body {
 .library-card-danger {
   padding: 0.3125rem 0.625rem;
   background: none;
-  border: 1px solid #a8321a;
+  border: 1px solid var(--brand-alert);
   border-radius: var(--radius);
-  color: #a8321a;
+  color: var(--brand-alert);
   font: inherit;
   cursor: pointer;
 }
 
 .library-card-danger:hover:not(:disabled) {
-  background: #a8321a;
+  background: var(--brand-alert);
   color: #fff;
 }
 
